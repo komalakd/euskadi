@@ -1,0 +1,57 @@
+<h1>Detalle del Pasajero</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Dni:</b>
+  <%= @passenger.dni %>
+</p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @passenger.name %>
+</p>
+
+<p>
+  <b>Apellido:</b>
+  <%= @passenger.lastname %>
+</p>
+
+<p>
+  <b>Nacionalidad:</b>
+  <%= @passenger.nationality %>
+</p>
+
+<p>
+  <b>Fecha de nacimiento:</b>
+  <%= @passenger.birthdate %>
+</p>
+
+<p>
+  <b>Direcci&oacute;n:</b>
+  <%= @passenger.address %>
+</p>
+
+<p>
+  <b>Localidad:</b>
+  <%= @passenger.city %>
+</p>
+
+<p>
+  <b>Pa&iacute;:</b>
+  <%= @passenger.country %>
+</p>
+
+<p>
+  <b>Profesi&oacute;n:</b>
+  <%= @passenger.proffesion %>
+</p>
+
+<p>
+  <b>Estado civil:</b>
+  <%= @passenger.civil_status %>
+</p>
+
+
+<%= link_to 'Editar', edit_passenger_path(@passenger) %> |
+<%= link_to 'Atras', passengers_path %>

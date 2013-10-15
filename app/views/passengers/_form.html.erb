@@ -1,0 +1,97 @@
+<%= form_for @passenger, html: {class: "form-horizontal"} do |f| %>
+
+  <% if @passenger.errors.any? %>
+    <div class="alert alert-error">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <h3><%= pluralize(@passenger.errors.count, "error") %> prohibited this passenger from being saved:</h3>
+      <ul>
+      <% @passenger.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if notice %>
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <p><%= notice %></p>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= label_tag 'dni', 'DNI', { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :dni %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag 'name', 'Nombre', { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag 'lastname', 'Apellido', { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :lastname %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag 'nationality', 'Nacionalidad', { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :nationality %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag 'birthdate', 'Fecha de nacimiento', { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :birthdate %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag 'address', 'Direccion', { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :address %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag 'city', 'Ciudad', { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :city %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag 'country', 'Pais', { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :country %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag 'proffesion', 'Profesion', { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :proffesion %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag 'civil_status', 'Estado civil', { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :civil_status %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Guardar", { class: 'btn btn-primary' } %>
+    <%= link_to 'Atras', passengers_path, { class: 'btn' } %>
+  </div>
+
+<% end %>

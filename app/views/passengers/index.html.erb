@@ -1,0 +1,36 @@
+<h1>Listado de pasajeros</h1>
+
+<% if notice %>
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <p><%= notice %></p>
+  </div>
+<% end %>
+
+<table class="table table-hover table-condensed table-striped table-bordered">
+  <tr>
+    <th>Dni</th>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Nacionalidad</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @passengers.each do |passenger| %>
+  <tr>
+    <td><%= passenger.dni %></td>
+    <td><%= passenger.name %></td>
+    <td><%= passenger.lastname %></td>
+    <td><%= passenger.nationality %></td>
+    <td><%= link_to 'Detalle', passenger %></td>
+    <td><%= link_to 'Editar', edit_passenger_path(passenger) %></td>
+    <td><%= link_to 'Eliminar', passenger, method: :delete, data: { confirm: 'Esta seguro que desea eliminar el pasajero?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuevo Pasajero', new_passenger_path, { class: 'btn btn-primary' } %>

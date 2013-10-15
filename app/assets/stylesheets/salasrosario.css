@@ -1,0 +1,8 @@
+.container {
+    padding-top: 60px;
+}
+
+.navbar-center, .container {
+    width: 920px;
+    margin: 0 auto;
+}
