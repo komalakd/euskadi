@@ -1,57 +1,63 @@
-<h1>Detalle del Pasajero</h1>
+<h2>Detalle del Pasajero</h2>
 
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <p><%= notice %></p>
+  </div>
+<% end %>
 
 <p>
-  <b>Dni:</b>
+  <b><%= t('activerecord.attributes.passenger.dni') %>:</b>
   <%= @passenger.dni %>
 </p>
 
 <p>
-  <b>Nombre:</b>
+  <b><%= t('activerecord.attributes.passenger.name') %>:</b>
   <%= @passenger.name %>
 </p>
 
 <p>
-  <b>Apellido:</b>
+  <b><%= t('activerecord.attributes.passenger.lastname') %>:</b>
   <%= @passenger.lastname %>
 </p>
 
 <p>
-  <b>Nacionalidad:</b>
+  <b><%= t('activerecord.attributes.passenger.nationality') %>:</b>
   <%= @passenger.nationality %>
 </p>
 
 <p>
-  <b>Fecha de nacimiento:</b>
+  <b><%= t('activerecord.attributes.passenger.birthdate') %>:</b>
   <%= @passenger.birthdate %>
 </p>
 
 <p>
-  <b>Direcci&oacute;n:</b>
+  <b><%= t('activerecord.attributes.passenger.address') %>:</b>
   <%= @passenger.address %>
 </p>
 
 <p>
-  <b>Localidad:</b>
+  <b><%= t('activerecord.attributes.passenger.city') %>:</b>
   <%= @passenger.city %>
 </p>
 
 <p>
-  <b>Pa&iacute;:</b>
+  <b><%= t('activerecord.attributes.passenger.country') %>:</b>
   <%= @passenger.country %>
 </p>
 
 <p>
-  <b>Profesi&oacute;n:</b>
+  <b><%= t('activerecord.attributes.passenger.proffesion') %>:</b>
   <%= @passenger.proffesion %>
 </p>
 
 <p>
-  <b>Estado civil:</b>
+  <b><%= t('activerecord.attributes.passenger.civil_status') %>:</b>
   <%= @passenger.civil_status %>
 </p>
 
-
-<%= link_to 'Editar', edit_passenger_path(@passenger) %> |
-<%= link_to 'Atras', passengers_path %>
+<div class="form-actions">
+  <%= link_to 'Editar', edit_passenger_path(@passenger), { class: 'btn btn-primary' } %>
+  <%= link_to 'Atras', passengers_path, { class: 'btn' } %>
+</div>
