@@ -9,7 +9,8 @@
 
 #footer {
   height: 60px;
-  background-color: black; /* FIXME */
+  /*background-color: #1B1B1B;*/
+  background-image: linear-gradient(to bottom, #222222, #111111);
 }
 
 .credit {
@@ -30,7 +31,8 @@ html, body {
   /* Negative indent footer by its height */
   margin: 0 auto -60px; 
   /* Pad bottom by footer height */
-  padding: 0 0 120px 0; /* 60 footer + 60 wrap */
+  /*padding: 0 0 120px 0;  60 footer + 60 wrap */
+  padding: 0; /* 60 footer + 60 wrap */
 }
 
 .reserva {
