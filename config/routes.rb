@@ -1,5 +1,13 @@
 Euskadi::Application.routes.draw do
   
+  resources :enterprises
+
+  resources :users
+
+  resources :room_types
+
+  resources :rooms
+
   resources :passengers
 
 

@@ -1,0 +1,40 @@
+<%= form_for @enterprise, html: {class: "form-horizontal"} do |f| %>
+  
+  <% if @enterprise.errors.any? %>
+    <div class="alert alert-error">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <h3>Se encontraron <%= @enterprise.errors.count %> errores:</h3>
+      <ul>
+      <% @enterprise.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if notice %>
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <p><%= notice %></p>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :cuil, { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :cuil %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :name, { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Guardar", { class: 'btn btn-primary' } %>
+    <%= link_to 'Atras', enterprises_path, { class: 'btn' } %>
+  </div>
+
+<% end %>

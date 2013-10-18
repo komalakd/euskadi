@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Denomination:</strong>
+  <%= @room_type.denomination %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @room_type.amount %>
+</p>
+
+<%= link_to 'Edit', edit_room_type_path(@room_type) %> |
+<%= link_to 'Back', room_types_path %>
