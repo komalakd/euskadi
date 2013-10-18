@@ -28,7 +28,7 @@ class EnterprisesController < ApplicationController
 
     respond_to do |format|
       if @enterprise.save
-        format.html { redirect_to @enterprise, notice: 'Enterprise was successfully created.' }
+        format.html { redirect_to @enterprise, notice: 'La empresa se ha registrado correctamente.' }
         format.json { render action: 'show', status: :created, location: @enterprise }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class EnterprisesController < ApplicationController
   def update
     respond_to do |format|
       if @enterprise.update(enterprise_params)
-        format.html { redirect_to @enterprise, notice: 'Enterprise was successfully updated.' }
+        format.html { redirect_to @enterprise, notice: 'Los datos de la empresa se han modificado correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
