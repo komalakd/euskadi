@@ -1,3 +1,5 @@
 class Room < ActiveRecord::Base
-    validates :number, :active, :presence => true
+    belongs_to :room_type
+    validates :number, :room_type_id, :presence => true
+    validates :active, :inclusion => {:in => [true, false]}
 end

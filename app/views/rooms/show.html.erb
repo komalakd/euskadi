@@ -17,6 +17,11 @@
   <%= @room.active %>
 </p>
 
+<p>
+  <strong><%= t('activerecord.attributes.room.room_type_id') %>:</strong>
+  <%= @room.room_type.denomination %>
+</p>
+
 <div class="form-actions">
   <%= link_to 'Editar', edit_room_path(@room), { class: 'btn btn-primary' } %>
   <%= link_to 'Atras', rooms_path, { class: 'btn' } %>

@@ -4,6 +4,15 @@ es-AR:
       passenger:
         one: "pasajero"
         other: "pasajeros"
+      enterprise:
+        one: "empresa"
+        other: "empresas"
+      room:
+        one: "habitación"
+        other: "habitaciones"
+      room_type:
+        one: "tipo de habitación"
+        other: "tipos de habitación"
     attributes:
       passenger:
         name: "Nombre"
@@ -17,7 +26,17 @@ es-AR:
         name: "Nombre"
         nationality: "Nacionalidad"
         proffesion: "Profesión"
-  
+      enterprise:
+        cuil: "CUIL"
+        name: "Razón social"
+      room:
+        number: "Número"
+        active: "Activa"
+        room_type_id: "Tipo de habitación"
+      room_type:
+        denomination: "Denominación"
+        amount: "Monto sugerido"
+
   will_paginate:
     next_label: siguiente →
     page_gap: ! '&hellip;'
