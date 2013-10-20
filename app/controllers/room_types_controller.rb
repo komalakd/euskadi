@@ -28,7 +28,7 @@ class RoomTypesController < ApplicationController
 
     respond_to do |format|
       if @room_type.save
-        format.html { redirect_to @room_type, notice: 'Room type was successfully created.' }
+        format.html { redirect_to @room_type, notice: 'El tipo de habitacion se ha registrado correctamente.' }
         format.json { render action: 'show', status: :created, location: @room_type }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class RoomTypesController < ApplicationController
   def update
     respond_to do |format|
       if @room_type.update(room_type_params)
-        format.html { redirect_to @room_type, notice: 'Room type was successfully updated.' }
+        format.html { redirect_to @room_type, notice: 'Los datos del tipo de habitacion se han registrado correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

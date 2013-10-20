@@ -1,14 +1,23 @@
-<p id="notice"><%= notice %></p>
+<h2>Detalle del Tipo de habitaci&oacute;n</h2>
+
+<% if notice %>
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <p><%= notice %></p>
+  </div>
+<% end %>
 
 <p>
-  <strong>Denomination:</strong>
+  <strong><%= t('activerecord.attributes.room_type.denomination') %>:</strong>
   <%= @room_type.denomination %>
 </p>
 
 <p>
-  <strong>Amount:</strong>
+  <strong><%= t('activerecord.attributes.room_type.amount') %>:</strong>
   <%= @room_type.amount %>
 </p>
 
-<%= link_to 'Edit', edit_room_type_path(@room_type) %> |
-<%= link_to 'Back', room_types_path %>
+<div class="form-actions">
+  <%= link_to 'Editar', edit_room_type_path(@room_type), { class: 'btn btn-primary' } %>
+  <%= link_to 'Atras', room_types_path, { class: 'btn' } %>
+</div>
