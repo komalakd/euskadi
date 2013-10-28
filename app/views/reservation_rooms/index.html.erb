@@ -1,0 +1,33 @@
+<h1>Listing reservation_rooms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Reservation</th>
+      <th>Amount</th>
+      <th>Since</th>
+      <th>Until</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservation_rooms.each do |reservation_room| %>
+      <tr>
+        <td><%= reservation_room.reservation_id %></td>
+        <td><%= reservation_room.amount %></td>
+        <td><%= reservation_room.since %></td>
+        <td><%= reservation_room.until %></td>
+        <td><%= link_to 'Show', reservation_room %></td>
+        <td><%= link_to 'Edit', edit_reservation_room_path(reservation_room) %></td>
+        <td><%= link_to 'Destroy', reservation_room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reservation room', new_reservation_room_path %>

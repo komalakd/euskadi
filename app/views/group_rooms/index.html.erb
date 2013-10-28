@@ -1,0 +1,29 @@
+<h1>Listing group_rooms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Room</th>
+      <th>Group</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @group_rooms.each do |group_room| %>
+      <tr>
+        <td><%= group_room.room_id %></td>
+        <td><%= group_room.group_id %></td>
+        <td><%= link_to 'Show', group_room %></td>
+        <td><%= link_to 'Edit', edit_group_room_path(group_room) %></td>
+        <td><%= link_to 'Destroy', group_room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Group room', new_group_room_path %>

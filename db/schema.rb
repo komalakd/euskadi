@@ -11,11 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131018120215) do
+ActiveRecord::Schema.define(version: 20131028204325) do
 
   create_table "enterprises", force: true do |t|
     t.string   "cuil"
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "group_rooms", force: true do |t|
+    t.integer  "room_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups", force: true do |t|
+    t.decimal  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -31,6 +44,23 @@ ActiveRecord::Schema.define(version: 20131018120215) do
     t.string   "country"
     t.string   "proffesion"
     t.string   "civil_status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reservation_rooms", force: true do |t|
+    t.integer  "reservation_id"
+    t.decimal  "amount"
+    t.date     "since"
+    t.date     "until"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reservations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "enterprise_id"
+    t.decimal  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
