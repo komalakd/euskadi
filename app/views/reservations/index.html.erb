@@ -15,7 +15,7 @@
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= reservation.user_id %></td>
+        <td><%= reservation.passenger_id %></td>
         <td><%= reservation.enterprise_id %></td>
         <td><%= reservation.amount %></td>
         <td><%= link_to 'Show', reservation %></td>

@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 20131028204325) do
 
   create_table "reservation_rooms", force: true do |t|
     t.integer  "reservation_id"
+    t.integer  "reservation_item_id"
+    t.string   "reservation_item_type"
     t.decimal  "amount"
     t.date     "since"
     t.date     "until"
@@ -58,7 +60,7 @@ ActiveRecord::Schema.define(version: 20131028204325) do
   end
 
   create_table "reservations", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "passenger_id"
     t.integer  "enterprise_id"
     t.decimal  "amount"
     t.datetime "created_at"
