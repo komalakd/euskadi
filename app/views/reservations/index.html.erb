@@ -1,31 +1,45 @@
-<h1>Listing reservations</h1>
+<h2>Listado de Reservas</h2>
 
-<table>
-  <thead>
+<% if notice %>
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <p><%= notice %></p>
+  </div>
+<% end %>
+
+<% if @reservations.size <= 0 %>
+
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <p>No hay reservas registradas</p>
+  </div>
+
+<% else %>
+
+  <table class="table table-hover table-condensed table-striped table-bordered">
     <tr>
-      <th>User</th>
-      <th>Enterprise</th>
-      <th>Amount</th>
+      <th><%= t('activerecord.attributes.reservation.passenger_id') %></th>
+      <th><%= t('activerecord.attributes.reservation.enterprise_id') %></th>
+      <th><%= t('activerecord.attributes.reservation.amount') %></th>
       <th></th>
       <th></th>
       <th></th>
     </tr>
-  </thead>
 
-  <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
         <td><%= reservation.passenger_id %></td>
         <td><%= reservation.enterprise_id %></td>
         <td><%= reservation.amount %></td>
-        <td><%= link_to 'Show', reservation %></td>
-        <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
-        <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Detalle', reservation %></td>
+        <td><%= link_to 'Editar', edit_reservation_path(reservation) %></td>
+        <td><%= link_to 'Eliminar', reservation, method: :delete, data: { confirm: 'Esta seguro que desea eliminar la reserva?' } %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+  </table>
+
+<% end %>
 
 <br>
 
-<%= link_to 'New Reservation', new_reservation_path %>
+<%= link_to 'Nueva Reserva', new_reservation_path, { class: 'btn btn-primary' } %>

@@ -1,8 +1,9 @@
-<%= form_for(@reservation) do |f| %>
-  <% if @reservation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+<%= form_for @reservation, html: {class: "form-horizontal"} do |f| %>
 
+  <% if @reservation.errors.any? %>
+    <div class="alert alert-error">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <h3>Se encontraron <%= @reservation.errors.count %> errores:</h3>
       <ul>
       <% @reservation.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,19 +12,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :passenger_id %><br>
-    <%= f.number_field :passenger_id %>
+  <% if notice %>
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <p><%= notice %></p>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :passenger_id, { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :passenger_id %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :enterprise_id %><br>
-    <%= f.number_field :enterprise_id %>
+  <div class="control-group">
+    <%= f.label :enterprise_id, { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :enterprise_id %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :amount %><br>
-    <%= f.text_field :amount %>
+  <div class="control-group">
+    <%= f.label :amount, { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :amount %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="form-actions">
+    <%= f.submit "Guardar", { class: 'btn btn-primary' } %>
+    <%= link_to 'Atras', reservations_path, { class: 'btn' } %>
   </div>
+
 <% end %>
