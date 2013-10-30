@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20131028204325) do
   end
 
   create_table "groups", force: true do |t|
+    t.string   "name"
     t.decimal  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"

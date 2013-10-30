@@ -29,7 +29,7 @@
     <% @rooms.each do |room| %>
       <tr>
         <td><%= room.number %></td>
-        <td><%= room.active %></td>
+        <td><%= room.active == '1' ? 'Activa' : 'Desactiva' %></td>
         <td><%= room.room_type.denomination %></td>
         <td><%= link_to 'Detalle', room %></td>
         <td><%= link_to 'Editar', edit_room_path(room) %></td>
