@@ -3,7 +3,9 @@ class CreateRooms < ActiveRecord::Migration
     create_table :rooms do |t|
       t.integer :number
       t.boolean :active
+      t.decimal :amount
       t.integer :room_type_id
+      t.integer :group_id
 
       t.timestamps
     end

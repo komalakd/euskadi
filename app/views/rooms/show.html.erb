@@ -14,7 +14,7 @@
 
 <p>
   <strong><%= t('activerecord.attributes.room.active') %>:</strong>
-  <%= @room.active == '1' ? 'Activa' : 'Desactiva' %>
+  <%= @room.active ? 'Activa' : 'Desactiva' %>
 </p>
 
 <p>

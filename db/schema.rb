@@ -78,7 +78,9 @@ ActiveRecord::Schema.define(version: 20131028204325) do
   create_table "rooms", force: true do |t|
     t.integer  "number"
     t.boolean  "active"
+    t.decimal  "amount"
     t.integer  "room_type_id"
+    t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
