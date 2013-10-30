@@ -21,6 +21,7 @@
       <th><%= t('activerecord.attributes.room.number') %></th>
       <th><%= t('activerecord.attributes.room.active') %></th>
       <th><%= t('activerecord.attributes.room.room_type_id') %></th>
+      <th><%= t('activerecord.attributes.room.group_id') %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -31,6 +32,7 @@
         <td><%= room.number %></td>
         <td><%= room.active ? 'Activa' : 'Desactiva' %></td>
         <td><%= room.room_type.denomination %></td>
+        <td><%= room.group ? room.group.name : '-' %></td>
         <td><%= link_to 'Detalle', room %></td>
         <td><%= link_to 'Editar', edit_room_path(room) %></td>
         <td><%= link_to 'Eliminar', room, method: :delete, data: { confirm: 'Esta seguro que desea eliminar la habitacion?' } %></td>
