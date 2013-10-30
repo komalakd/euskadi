@@ -1,33 +1,47 @@
-<h1>Listing reservation_rooms</h1>
+<h2>Listado de Empresas</h2>
 
-<table>
-  <thead>
+<% if notice %>
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <p><%= notice %></p>
+  </div>
+<% end %>
+
+<% if @enterprises.size <= 0 %>
+
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <p>No hay empresas registradas</p>
+  </div>
+
+<% else %>
+
+  <table class="table table-hover table-condensed table-striped table-bordered">
     <tr>
-      <th>Reservation</th>
-      <th>Amount</th>
-      <th>Since</th>
-      <th>Until</th>
+      <th><%= t('activerecord.attributes.reservation_room.reservation_id') %></th>
+      <th><%= t('activerecord.attributes.reservation_room.amount') %></th>
+      <th><%= t('activerecord.attributes.reservation_room.since') %></th>
+      <th><%= t('activerecord.attributes.reservation_room.until') %></th>
       <th></th>
       <th></th>
       <th></th>
     </tr>
-  </thead>
 
-  <tbody>
     <% @reservation_rooms.each do |reservation_room| %>
       <tr>
         <td><%= reservation_room.reservation_id %></td>
         <td><%= reservation_room.amount %></td>
         <td><%= reservation_room.since %></td>
         <td><%= reservation_room.until %></td>
-        <td><%= link_to 'Show', reservation_room %></td>
-        <td><%= link_to 'Edit', edit_reservation_room_path(reservation_room) %></td>
-        <td><%= link_to 'Destroy', reservation_room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Detalle', reservation_room %></td>
+        <td><%= link_to 'Editar', edit_reservation_room_path(reservation_room) %></td>
+        <td><%= link_to 'Eliminar', reservation_room, method: :delete, data: { confirm: 'Esta seguro que desea eliminar la reserva de la habitacion?' } %></td>
       </tr>
     <% end %>
-  </tbody>
 </table>
+
+<% end %>
 
 <br>
 
-<%= link_to 'New Reservation room', new_reservation_room_path %>
+<%= link_to 'New Reservation room', new_reservation_room_path, { class: 'btn btn-primary' } %>

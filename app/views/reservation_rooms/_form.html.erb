@@ -1,8 +1,9 @@
-<%= form_for(@reservation_room) do |f| %>
-  <% if @reservation_room.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@reservation_room.errors.count, "error") %> prohibited this reservation_room from being saved:</h2>
+<%= form_for @reservation_room, html: {class: "form-horizontal"} do |f| %>
 
+  <% if @enterprise.errors.any? %>
+    <div class="alert alert-error">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <h3>Se encontraron <%= @reservation_room.errors.count %> errores:</h3>
       <ul>
       <% @reservation_room.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,23 +12,41 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :reservation_id %><br>
-    <%= f.number_field :reservation_id %>
+  <% if notice %>
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <p><%= notice %></p>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :reservation_id, { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :reservation_id %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :amount %><br>
-    <%= f.text_field :amount %>
+  <div class="control-group">
+    <%= f.label :amount, { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :amount %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :since %><br>
-    <%= f.date_select :since %>
+  <div class="control-group">
+    <%= f.label :since, { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :since %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :until %><br>
-    <%= f.date_select :until %>
+  <div class="control-group">
+    <%= f.label :until, { class: 'control-label' } %>
+    <div class="controls">
+      <%= f.text_field :until %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="form-actions">
+    <%= f.submit "Guardar", { class: 'btn btn-primary' } %>
+    <%= link_to 'Atras', reservation_rooms_path, { class: 'btn' } %>
   </div>
+
 <% end %>
