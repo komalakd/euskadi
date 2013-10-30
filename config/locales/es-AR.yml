@@ -13,29 +13,53 @@ es-AR:
       room_type:
         one: "tipo de habitación"
         other: "tipos de habitación"
+      group:
+        one: "grupo"
+        other: "grupos"
+      reservation:
+        one: "reserva"
+        other: "reservas"
+      reservation_room:
+        one: "reserva de habitación"
+        other: "reservas de habitación"
     attributes:
       passenger:
-        name: "Nombre"
-        address: "Domicilio"
-        birthdate: "Fecha de nacimiento"
-        city: "Ciudad"
-        civil_status: "Estado civil"
-        country: "País"
         dni: "DNI"
-        lastname: "Apellido"
         name: "Nombre"
+        lastname: "Apellido"
         nationality: "Nacionalidad"
+        birthdate: "Fecha de nacimiento"
+        country: "País"
+        city: "Ciudad"
+        address: "Domicilio"
         proffesion: "Profesión"
+        civil_status: "Estado civil"
       enterprise:
         cuil: "CUIL"
         name: "Razón social"
       room:
         number: "Número"
         active: "Activa"
+        amount: "Monto"
         room_type_id: "Tipo de habitación"
+        group_id: "Grupo"
       room_type:
         denomination: "Denominación"
-        amount: "Monto sugerido"
+        amount: "Monto"
+      group:
+        name: "Denominación"
+        amount: "Monto"
+      reservation:
+        passenger_id: "Pasajero"
+        enterprise_id: "Empresa"
+        amount: "Monto"
+      reservation_room:
+        reservation_id: "Reserva"
+        reservation_item_id: "Item"
+        reservation_item_type: "Tipo item"
+        amount: "Monto"
+        since: "Fecha desde"
+        until: "Fecha hasta"
 
   will_paginate:
     next_label: siguiente →
