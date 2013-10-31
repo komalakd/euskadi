@@ -22,12 +22,16 @@ class ReservationsController < ApplicationController
     end
     @reservation = Reservation.new
     @enterprises = Enterprise.all
+    @rooms = Room.all
+    @groups = Group.all
   end
 
   # GET /reservations/1/edit
   def edit
     @passengers = Passenger.all
     @enterprises = Enterprise.all
+    @rooms = Room.all
+    @groups = Group.all
   end
 
   # POST /reservations
@@ -36,6 +40,8 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @passengers = Passenger.all
     @enterprises = Enterprise.all
+    @rooms = Room.all
+    @groups = Group.all
 
     respond_to do |format|
       if @reservation.save

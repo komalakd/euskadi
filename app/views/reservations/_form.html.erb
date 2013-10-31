@@ -36,6 +36,36 @@
   <% end %>
 
   <div class="control-group">
+    <label class="control-label">Habitaciones</label>
+  </div>
+
+  <% @rooms.each do |room| %>
+    <div class="control-group">
+      <%= label_tag room.id, room.number, class: 'control-label' %>
+      <div class="controls">
+        <% chk_room_id = 'chk_room_' + room.id.to_s %>
+        <%= check_box_tag chk_room_id, room.id, false, class: 'room_selection' %>
+        <% datepicker_id_1 = chk_room_id + '_dp1' %>
+        <% datepicker_id_2 = chk_room_id + '_dp2' %>
+        <%= text_field_tag datepicker_id_1, nil, class: 'dp_room hide' %>
+        <%= text_field_tag datepicker_id_2, nil, class: 'dp_room hide' %>
+      </div>
+    </div>
+  <% end %>
+
+  <% @groups.each do |group| %>
+    <div class="control-group">
+      <%= label_tag group.id, group.name, class: 'control-label' %>
+      <div class="controls">
+        <% chk_group_id = 'chk_group_' + group.id.to_s %>
+        <%= check_box_tag chk_group_id, group.id, false, class: 'room_selection' %>
+        <% datepicker_id = chk_group_id + '_dp' %>
+        <%= text_field_tag datepicker_id, nil, class: 'dp_group hide' %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
     <%= f.label :amount, { class: 'control-label' } %>
     <div class="controls">
       <%= f.text_field :amount %>

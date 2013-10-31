@@ -48,3 +48,7 @@ html, body {
 .noFijo {
   background-color: #B0E0E6;  
 }
+
+.dp_room, .dp_group {
+  /*display: none !important;*/
+}
