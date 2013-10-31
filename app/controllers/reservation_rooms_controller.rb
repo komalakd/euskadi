@@ -28,7 +28,7 @@ class ReservationRoomsController < ApplicationController
 
     respond_to do |format|
       if @reservation_room.save
-        format.html { redirect_to @reservation_room, notice: 'Reservation room was successfully created.' }
+        format.html { redirect_to @reservation_room, notice: 'La habitacion se ha asignado a la reserva correctamente.' }
         format.json { render action: 'show', status: :created, location: @reservation_room }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class ReservationRoomsController < ApplicationController
   def update
     respond_to do |format|
       if @reservation_room.update(reservation_room_params)
-        format.html { redirect_to @reservation_room, notice: 'Reservation room was successfully updated.' }
+        format.html { redirect_to @reservation_room, notice: 'Los datos de la reserva de la habitacion se han modificado correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

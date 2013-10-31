@@ -1,4 +1,4 @@
-<h2>Listado de Empresas</h2>
+<h2>Listado de Habitaciones de la Reserva</h2>
 
 <% if notice %>
   <div class="alert alert-success">
@@ -7,11 +7,11 @@
   </div>
 <% end %>
 
-<% if @enterprises.size <= 0 %>
+<% if @reservation_rooms.size <= 0 %>
 
   <div class="alert alert-success">
     <button type="button" class="close" data-dismiss="alert">×</button>
-    <p>No hay empresas registradas</p>
+    <p>No hay habitaciones registradas para la reserva</p>
   </div>
 
 <% else %>
@@ -35,7 +35,7 @@
         <td><%= reservation_room.until %></td>
         <td><%= link_to 'Detalle', reservation_room %></td>
         <td><%= link_to 'Editar', edit_reservation_room_path(reservation_room) %></td>
-        <td><%= link_to 'Eliminar', reservation_room, method: :delete, data: { confirm: 'Esta seguro que desea eliminar la reserva de la habitacion?' } %></td>
+        <td><%= link_to 'Eliminar', reservation_room, method: :delete, data: { confirm: 'Esta seguro que desea eliminar la habitacion de la reserva?' } %></td>
       </tr>
     <% end %>
 </table>
@@ -44,4 +44,4 @@
 
 <br>
 
-<%= link_to 'New Reservation room', new_reservation_room_path, { class: 'btn btn-primary' } %>
+<%= link_to 'Agregar '+t('activerecord.models.room.one').to_s, new_reservation_room_path, { class: 'btn btn-primary' } %>
