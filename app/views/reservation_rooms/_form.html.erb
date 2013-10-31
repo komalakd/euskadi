@@ -22,7 +22,7 @@
   <div class="control-group">
     <%= f.label :reservation_id, { class: 'control-label' } %>
     <div class="controls">
-      <%= f.text_field :reservation_id %>
+      <%= select("reservation_room", "reservation_id", @reservations.collect{ |p| [p.id, p.id] }, { include_blank: true } ) %>
     </div>
   </div>
   <div class="control-group">

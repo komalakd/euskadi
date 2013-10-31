@@ -15,17 +15,20 @@ class ReservationRoomsController < ApplicationController
   # GET /reservation_rooms/new
   def new
     @reservation_room = ReservationRoom.new
+    @reservations = Reservation.all
   end
 
   # GET /reservation_rooms/1/edit
   def edit
+    @reservations = Reservation.all
   end
 
   # POST /reservation_rooms
   # POST /reservation_rooms.json
   def create
     @reservation_room = ReservationRoom.new(reservation_room_params)
-
+    @reservations = Reservation.all
+    
     respond_to do |format|
       if @reservation_room.save
         format.html { redirect_to @reservation_room, notice: 'La habitacion se ha asignado a la reserva correctamente.' }
