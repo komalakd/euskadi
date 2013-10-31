@@ -14,17 +14,28 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/new
   def new
+    @passengers = Passenger.all
+    if !(@passengers.size > 0)
+      respond_to do |format|
+        format.html { redirect_to reservations_path, notice: 'Debe cargar al menos un pasajero para poder cargar una reserva.' }
+      end
+    end
     @reservation = Reservation.new
+    @enterprises = Enterprise.all
   end
 
   # GET /reservations/1/edit
   def edit
+    @passengers = Passenger.all
+    @enterprises = Enterprise.all
   end
 
   # POST /reservations
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
+    @passengers = Passenger.all
+    @enterprises = Enterprise.all
 
     respond_to do |format|
       if @reservation.save

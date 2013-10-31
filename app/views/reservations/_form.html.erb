@@ -22,15 +22,19 @@
   <div class="control-group">
     <%= f.label :passenger_id, { class: 'control-label' } %>
     <div class="controls">
-      <%= f.text_field :passenger_id %>
+      <%= select("reservation", "passenger_id", @passengers.collect{ |p| [p.name+' '+p.lastname, p.id] } ) %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :enterprise_id, { class: 'control-label' } %>
-    <div class="controls">
-      <%= f.text_field :enterprise_id %>
+    
+  <% if @enterprises.size > 0 %>
+    <div class="control-group">
+      <%= f.label :enterprise_id, { class: 'control-label' } %>
+      <div class="controls">
+        <%= select("reservation", "enterprise_id", @enterprises.collect{ |p| [p.name, p.id] }, { include_blank: true } ) %>
+      </div>
     </div>
-  </div>
+  <% end %>
+
   <div class="control-group">
     <%= f.label :amount, { class: 'control-label' } %>
     <div class="controls">
