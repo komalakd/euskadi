@@ -26,7 +26,13 @@ $(function() {
         var datepicker1 = $( '#'+this.id+'_dp1' );
         var datepicker2 = $( '#'+this.id+'_dp2' );
         
-        datepicker1.datepicker();
+        // $.datepicker.setDefaults($.datepicker.regional["es"]);
+
+        datepicker1.datepicker({
+            onSelect: function () {
+                console.log('onSelect');
+            }
+        });
         datepicker2.datepicker();
 
         if ( $(this).is(':checked') ){
