@@ -22,7 +22,7 @@
   <div class="control-group">
     <%= f.label :passenger_id, { class: 'control-label' } %>
     <div class="controls">
-      <%= select("reservation", "passenger_id", @passengers.collect{ |p| [p.name+' '+p.lastname, p.id] } ) %>
+      <%= select("reservation", "passenger_id", @passengers.collect{ |p| [p.name+' '+p.lastname, p.id] }, { include_blank: true } ) %>
     </div>
   </div>
     
