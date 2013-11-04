@@ -44,11 +44,10 @@
       <%= label_tag room.id, room.number, class: 'control-label' %>
       <div class="controls">
         <% room_id = 'reservation_room[' + room.id.to_s + ']' %>
-        <input id="<%= room_id %>" class="room_selection" type="checkbox" value="<%= room.id.to_s %>" name="chk_reservation_room">
-        <input id="<%= room_id %>[since]" class="dp_room hide" type="text" name="<%= room_id %>[since]">
-        <input id="<%= room_id %>[until]" class="dp_room hide" type="text" name="<%= room_id %>[until]">
-
-
+        <input id="<%= room_id %>" class="room_selection" type="checkbox" value="1" name="chk_<%= room_id %>">
+        <!-- FIXME - agregar hide class -->
+        <input id="<%= room_id %>[since]" class="dp_room" type="text" name="<%= room_id %>[since]">
+        <input id="<%= room_id %>[until]" class="dp_room" type="text" name="<%= room_id %>[until]">
 
 
       </div>

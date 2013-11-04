@@ -38,6 +38,24 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
+
+
+    reservation_rooms = reservation_room_params
+
+    reservation_rooms.keys.each do |room_id|
+      logger.debug "----------------------------------------------------"
+      logger.debug room_id.inspect
+      # logger.debug (reservation_room_params.slice( *chk_reservation_room_params.keys )).inspect
+
+
+
+      @reservation.reservation_rooms.build(
+        since: reservation_rooms[room_id]["since"],
+        until: reservation_rooms[room_id]["until"],
+        reservation_item: Room.find(room_id)
+      )
+    end
+
     @passengers = Passenger.all
     @enterprises = Enterprise.all
     @rooms = Room.all
@@ -88,4 +106,14 @@ class ReservationsController < ApplicationController
     def reservation_params
       params.require(:reservation).permit(:passenger_id, :enterprise_id, :amount)
     end
+
+    def reservation_room_params
+      asd = chk_reservation_room_params
+      params.require(:reservation_room).slice( *asd.keys )
+    end
+
+    def chk_reservation_room_params
+      params.require(:chk_reservation_room)
+    end
+
 end
