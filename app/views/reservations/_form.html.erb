@@ -8,6 +8,12 @@
       <% @reservation.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
+      <% @reservation.reservation_rooms.each do |rr| %>
+        <% rr.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      <% end %>
+
       </ul>
     </div>
   <% end %>
@@ -43,11 +49,12 @@
     <div class="control-group">
       <%= label_tag room.id, room.number, class: 'control-label' %>
       <div class="controls">
-        <% room_id = 'reservation_room[' + room.id.to_s + ']' %>
-        <input id="<%= room_id %>" class="room_selection" type="checkbox" value="1" name="chk_<%= room_id %>">
+        <% room_id = 'reservation_room_' + room.id.to_s %>
+        <% room_name = 'reservation_room[' + room.id.to_s + ']' %>
+        <input id="<%= room_id %>" class="room_selection" type="checkbox" value="1" name="chk_<%= room_name %>">
         <!-- FIXME - agregar hide class -->
-        <input id="<%= room_id %>[since]" class="dp_room" type="text" name="<%= room_id %>[since]">
-        <input id="<%= room_id %>[until]" class="dp_room" type="text" name="<%= room_id %>[until]">
+        <input id="<%= room_id %>_since" class="room_selection hide" type="text" name="<%= room_name %>[since]">
+        <input id="<%= room_id %>_until" class="room_selection hide" type="text" name="<%= room_name %>[until]until">
 
 
       </div>

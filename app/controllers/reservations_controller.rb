@@ -43,18 +43,31 @@ class ReservationsController < ApplicationController
     reservation_rooms = reservation_room_params
 
     reservation_rooms.keys.each do |room_id|
-      logger.debug "----------------------------------------------------"
-      logger.debug room_id.inspect
-      # logger.debug (reservation_room_params.slice( *chk_reservation_room_params.keys )).inspect
+      
+      # OPCION 1
+      # rr = ReservationRoom.new(
+      #   # reservation: @reservation,
+      #   since: reservation_rooms[room_id]["since"],
+      #   until: reservation_rooms[room_id]["until"],
+      #   reservation_item: Room.find(room_id)
+      # )
+      # @reservation.reservation_rooms << rr
 
-
-
+      # OPCION 2      
       @reservation.reservation_rooms.build(
-        since: reservation_rooms[room_id]["since"],
-        until: reservation_rooms[room_id]["until"],
+        # reservation: @reservation,
+        # since: reservation_rooms[room_id]["since"],
+        # until: reservation_rooms[room_id]["until"],
+        since: Date.current,
+        until: Date.current,
         reservation_item: Room.find(room_id)
       )
+
     end
+      
+    logger.debug "----------------------------------------------------"
+    logger.debug @reservation.inspect
+    logger.debug @reservation.reservation_rooms.inspect
 
     @passengers = Passenger.all
     @enterprises = Enterprise.all
