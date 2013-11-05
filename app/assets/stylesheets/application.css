@@ -52,3 +52,7 @@ html, body {
 .dp_room, .dp_group {
   /*display: none !important;*/
 }
+
+#new_reservation div.control-group {
+  margin-bottom: 10px;
+}

@@ -52,9 +52,8 @@
         <% room_id = 'reservation_room_' + room.id.to_s %>
         <% room_name = 'reservation_room[' + room.id.to_s + ']' %>
         <input id="<%= room_id %>" class="room_selection" type="checkbox" value="1" name="chk_<%= room_name %>">
-        <!-- FIXME - agregar hide class -->
         <input id="<%= room_id %>_since" class="room_selection hide" type="text" name="<%= room_name %>[since]">
-        <input id="<%= room_id %>_until" class="room_selection hide" type="text" name="<%= room_name %>[until]until">
+        <input id="<%= room_id %>_until" class="room_selection hide" type="text" name="<%= room_name %>[until]">
 
 
       </div>
@@ -65,10 +64,11 @@
     <div class="control-group">
       <%= label_tag group.id, group.name, class: 'control-label' %>
       <div class="controls">
-        <% chk_group_id = 'chk_group_' + group.id.to_s %>
-        <%= check_box_tag chk_group_id, group.id, false, class: 'room_selection' %>
-        <% datepicker_id = chk_group_id + '_dp' %>
-        <%= text_field_tag datepicker_id, nil, class: 'dp_group hide' %>
+        <% group_id = 'reservation_group_' + group.id.to_s %>
+        <% group_name = 'reservation_group[' + group.id.to_s + ']' %>
+        <input id="<%= group_id %>" class="room_selection" type="checkbox" value="1" name="chk_<%= group_name %>">
+        <input id="<%= group_id %>_since" class="room_selection hide" type="text" name="<%= group_name %>[since]">
+        <input id="<%= group_id %>_until" class="room_selection hide" type="text" name="<%= group_name %>[until]">
       </div>
     </div>
   <% end %>
