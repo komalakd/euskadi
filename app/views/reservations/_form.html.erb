@@ -1,4 +1,4 @@
-<%= form_for @reservation, html: {class: "form-horizontal"} do |f| %>
+<%= form_for @reservation, html: {class: "form-horizontal reservation_form"} do |f| %>
 
   <% if @reservation.errors.any? %>
     <div class="alert alert-error">
@@ -88,6 +88,7 @@
   <script type="text/javascript">
   $(function() {
     var rooms = <%= raw(rooms_as_json(@rooms)) %>;
+    var groups = <%= raw(groups_as_json(@groups)) %>;
   });
   </script>
 

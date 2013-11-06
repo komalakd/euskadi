@@ -53,6 +53,14 @@ html, body {
   /*display: none !important;*/
 }
 
-#new_reservation div.control-group {
-  margin-bottom: 10px;
+.reservation_form div.control-group {
+  margin-bottom: 0px;
+}
+
+.reservation_form input[type="text"] {
+  height: 14px;
+}
+
+.room_selection {
+  width: 80px;
 }
