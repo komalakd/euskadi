@@ -71,15 +71,15 @@ class PassengersController < ApplicationController
 
   # DELETE /passengers/1
   # DELETE /passengers/1.json
-  def destroy
-    @passenger = Passenger.find(params[:id])
-    @passenger.destroy
+  # def destroy
+  #   @passenger = Passenger.find(params[:id])
+  #   @passenger.destroy
 
-    respond_to do |format|
-      format.html { redirect_to passengers_url }
-      format.json { head :no_content }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html { redirect_to passengers_url }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
 

@@ -22,7 +22,7 @@
       <th><%= t('activerecord.attributes.room_type.amount') %></th>
       <th></th>
       <th></th>
-      <th></th>
+      <!-- <th></th> -->
     </tr>
 
     <% @room_types.each do |room_type| %>
@@ -31,7 +31,10 @@
         <td><%= room_type.amount %></td>
         <td><%= link_to 'Detalle', room_type %></td>
         <td><%= link_to 'Editar', edit_room_type_path(room_type) %></td>
+        
+        <!--
         <td><%= link_to 'Eliminar', room_type, method: :delete, data: { confirm: 'Esta seguro que desea eliminar el tipo de habitacion?' } %></td>
+        -->
       </tr>
     <% end %>
   </table>
@@ -40,4 +43,6 @@
 
 <br>
 
+<!--
 <%= link_to 'Nuevo Tipo de habitacion', new_room_type_path, { class: 'btn btn-primary' } %>
+-->

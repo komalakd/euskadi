@@ -1,36 +1,26 @@
 Euskadi::Application.routes.draw do
   
-  resources :reservation_rooms
+  resources :passengers
+  resources :enterprises
 
   resources :reservations
-
-  resources :group_rooms
+  resources :reservation_rooms
 
   resources :groups
-
-  resources :enterprises
+  resources :room_types
+  resources :rooms
 
   resources :users
 
-  resources :room_types
+  root to: 'passengers#index'
 
-  resources :rooms
-
-  resources :passengers
-
-
-  # root :to => 'reservations#index' #RAILS 3
-
-  root :to => 'passengers#index' #RAILS 3
-
-  resources :users,                only: [:index, :new, :create, :show, :edit, :update, :destroy]
-  resources :musicians,            only: [:index, :new, :create, :show, :edit, :update]
-  resources :bands,                only: [:index, :new, :create, :edit, :update]
-  resources :rooms,                only: [:index, :edit, :update]
-  resources :room_prices,          only: [:index, :new, :create, :show, :edit, :update, :destroy]
-  resources :reservation_types,    only: [:index]
-  resources :reservations,         only: [:index, :new, :create, :show, :edit, :update]
-  resources :cancellations,        only: [:new, :create]
+  resources :passengers,        only: [:index, :new, :create, :show, :edit, :update] # :destroy
+  resources :enterprises,       only: [:index, :new, :create, :show, :edit, :update] # :destroy
+  resources :reservations,      only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  resources :groups,            only: [:index, :show ,:edit, :update] # :new, :create, :destroy
+  resources :room_types,        only: [:index, :show, :edit, :update] # :new, :create, :destroy
+  resources :rooms,             only: [:index, :show, :edit, :update] # :new, :create, :destroy
+  resources :users,             only: [:index, :new, :create, :show, :edit, :update, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

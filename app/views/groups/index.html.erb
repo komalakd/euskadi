@@ -21,8 +21,10 @@
       <th><%= t('activerecord.attributes.group.name') %></th>
       <th><%= t('activerecord.attributes.group.amount') %></th>
       <th></th>
+      <!--
       <th></th>
       <th></th>
+      -->
     </tr>
 
     <% @groups.each do |group| %>
@@ -30,8 +32,11 @@
         <td><%= group.name %></td>
         <td><%= group.amount %></td>
         <td><%= link_to 'Detalle', group %></td>
+        
+        <!--
         <td><%= link_to 'Editar', edit_group_path(group) %></td>
         <td><%= link_to 'Eliminar', group, method: :delete, data: { confirm: 'Esta seguro que desea eliminar el grupo?' } %></td>
+        -->
       </tr>
     <% end %>
   
@@ -41,4 +46,6 @@
 
 <br>
 
+<!--
 <%= link_to 'Nuevo Grupo', new_group_path, { class: 'btn btn-primary' } %>
+-->

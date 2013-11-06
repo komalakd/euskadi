@@ -13,9 +13,9 @@ class RoomsController < ApplicationController
   end
 
   # GET /rooms/new
-  def new
-    @room = Room.new
-  end
+  # def new
+  #   @room = Room.new
+  # end
 
   # GET /rooms/1/edit
   def edit
@@ -23,19 +23,19 @@ class RoomsController < ApplicationController
 
   # POST /rooms
   # POST /rooms.json
-  def create
-    @room = Room.new(room_params)
+  # def create
+  #   @room = Room.new(room_params)
 
-    respond_to do |format|
-      if @room.save
-        format.html { redirect_to @room, notice: 'La habitacion se registro correctamente.' }
-        format.json { render action: 'show', status: :created, location: @room }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @room.save
+  #       format.html { redirect_to @room, notice: 'La habitacion se registro correctamente.' }
+  #       format.json { render action: 'show', status: :created, location: @room }
+  #     else
+  #       format.html { render action: 'new' }
+  #       format.json { render json: @room.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /rooms/1
   # PATCH/PUT /rooms/1.json
@@ -53,13 +53,13 @@ class RoomsController < ApplicationController
 
   # DELETE /rooms/1
   # DELETE /rooms/1.json
-  def destroy
-    @room.destroy
-    respond_to do |format|
-      format.html { redirect_to rooms_url }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   @room.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to rooms_url }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

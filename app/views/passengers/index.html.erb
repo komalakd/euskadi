@@ -24,7 +24,7 @@
     <th><%= t('activerecord.attributes.passenger.nationality') %></th>
     <th></th>
     <th></th>
-    <th></th>
+    <!-- <th></th> -->
   </tr>
 
 <% @passengers.each do |passenger| %>
@@ -35,7 +35,9 @@
     <td><%= passenger.nationality %></td>
     <td><%= link_to 'Detalle', passenger %></td>
     <td><%= link_to 'Editar', edit_passenger_path(passenger) %></td>
+    <!--
     <td><%= link_to 'Eliminar', passenger, method: :delete, data: { confirm: 'Esta seguro que desea eliminar el pasajero?' } %></td>
+    -->
   </tr>
 <% end %>
 </table>
