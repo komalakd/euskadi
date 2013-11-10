@@ -21,10 +21,11 @@
     <th><%= t('activerecord.attributes.passenger.dni') %></th>
     <th><%= t('activerecord.attributes.passenger.name') %></th>
     <th><%= t('activerecord.attributes.passenger.lastname') %></th>
-    <th><%= t('activerecord.attributes.passenger.nationality') %></th>
     <th></th>
     <th></th>
-    <!-- <th></th> -->
+    <!-- 
+    <th></th> 
+    -->
   </tr>
 
 <% @passengers.each do |passenger| %>
@@ -32,7 +33,6 @@
     <td><%= passenger.dni %></td>
     <td><%= passenger.name %></td>
     <td><%= passenger.lastname %></td>
-    <td><%= passenger.nationality %></td>
     <td><%= link_to 'Detalle', passenger %></td>
     <td><%= link_to 'Editar', edit_passenger_path(passenger) %></td>
     <!--

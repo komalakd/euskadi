@@ -21,17 +21,18 @@
       <th><%= t('activerecord.attributes.enterprise.cuil') %></th>
       <th><%= t('activerecord.attributes.enterprise.name') %></th>
       <th></th>
+      <!-- 
       <th></th>
-      <!-- <th></th> -->
+      <th></th> -->
     </tr>
 
     <% @enterprises.each do |enterprise| %>
       <tr>
         <td><%= enterprise.cuil %></td>
         <td><%= enterprise.name %></td>
-        <td><%= link_to 'Detalle', enterprise %></td>
         <td><%= link_to 'Editar', edit_enterprise_path(enterprise) %></td>
         <!--
+        <td><%= link_to 'Detalle', enterprise %></td>
         <td><%= link_to 'Eliminar', enterprise, method: :delete, data: { confirm: 'Esta seguro que desea eliminar la empresa?' } %></td>
         -->
       </tr>
