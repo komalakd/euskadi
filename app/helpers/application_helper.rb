@@ -5,16 +5,22 @@ module ApplicationHelper
             {
                 room_id: r.id,
                 group_id: r.group_id,
-                # recursive: r.fecha_hasta,
-                # hour_since: r.since.strftime('%H'),
-                # hour_until: r.until.strftime('%H'),
-                # minutes_since: r.since.strftime('%M'),
-                # minutes_until: r.until.strftime('%M'),
-                # musician: r.musician.name + ' ' + r.musician.lastname,
-                # band: (r.band ? r.band.name : nil),
-                # room: r.room_id
             }
         end.to_json
+    end
+
+    def reservation_as_json(r)
+        {
+            id: r.id,
+            items: r.reservation_rooms.collect do |rr|
+                {
+                    id: rr.reservation_item_id,
+                    type: rr.reservation_item_type,
+                    since: rr.since.strftime("%d/%m/%Y"),
+                    until: rr.until.strftime("%d/%m/%Y"),
+                }
+            end
+        }.to_json
     end
 
     def groups_as_json(groups)

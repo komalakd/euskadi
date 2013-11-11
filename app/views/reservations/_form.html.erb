@@ -1,3 +1,14 @@
+<script type="text/javascript">
+$(function() {
+  reservation = <%= raw(reservation_as_json( @reservation )) %>;
+  rooms       = <%= raw(rooms_as_json( @rooms )) %>;
+  groups      = <%= raw(groups_as_json( @groups )) %>;
+
+  load_form();
+
+});
+</script>
+
 <%= form_for @reservation, html: {class: "form-horizontal reservation_form"} do |f| %>
 
   <% if @reservation.errors.any? %>
@@ -84,12 +95,5 @@
     <%= f.submit "Guardar", { class: 'btn btn-primary' } %>
     <%= link_to 'Atras', reservations_path, { class: 'btn' } %>
   </div>
-
-  <script type="text/javascript">
-  $(function() {
-    var rooms = <%= raw(rooms_as_json(@rooms)) %>;
-    var groups = <%= raw(groups_as_json(@groups)) %>;
-  });
-  </script>
 
 <% end %>

@@ -40,36 +40,16 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
 
-
     reservation_rooms = reservation_room_params
 
     reservation_rooms.keys.each do |room_id|
-      
-      # OPCION 1
-      # rr = ReservationRoom.new(
-      #   # reservation: @reservation,
-      #   since: reservation_rooms[room_id]["since"],
-      #   until: reservation_rooms[room_id]["until"],
-      #   reservation_item: Room.find(room_id)
-      # )
-      # @reservation.reservation_rooms << rr
-
-      # OPCION 2      
       @reservation.reservation_rooms.build(
-        # reservation: @reservation,
-        # since: reservation_rooms[room_id]["since"],
-        # until: reservation_rooms[room_id]["until"],
         since: Date.current,
         until: Date.current,
         reservation_item: Room.find(room_id)
       )
-
     end
       
-    logger.debug "----------------------------------------------------"
-    logger.debug @reservation.inspect
-    logger.debug @reservation.reservation_rooms.inspect
-
     @passengers = Passenger.all
     @enterprises = Enterprise.all
     @rooms = Room.all
@@ -89,8 +69,19 @@ class ReservationsController < ApplicationController
   # PATCH/PUT /reservations/1
   # PATCH/PUT /reservations/1.json
   def update
+
+    reservation_rooms = reservation_room_params
+
+    reservation_rooms.keys.each do |room_id|
+      @reservation.reservation_rooms.build(
+        since: Date.parse(reservation_rooms[room_id][:since]),
+        until: Date.parse(reservation_rooms[room_id][:until]),
+        reservation_item: Room.find(room_id)
+      )
+    end
+
     respond_to do |format|
-      if @reservation.update(reservation_params)
+      if @reservation.save
         format.html { redirect_to @reservation, notice: 'Los datos de la reserva ha sido modificados correctamente.' }
         format.json { head :no_content }
       else
