@@ -1,59 +1,35 @@
 class Reservation < ActiveRecord::Base
-    belongs_to :passenger
-    belongs_to :enterprise
-    has_many :reservation_rooms
-    validates :passenger_id, :amount, presence: true
+  belongs_to :passenger
+  belongs_to :enterprise
+  has_many :reservation_rooms
+  validates :passenger_id, :amount, presence: true
 
-    # private
-    #     #params [ reservation_item ]
-    #     def update_instance(reservation_rooms)
+    def update_instance(new_reservation_rooms) # Array [ReservationRoom]
 
-    #         # current reservation_items
-    #         current_rr = ReservationRoom.where( reservation: self )
+      Room.all.each do |room|
 
-    #         new_ri     = new_rr.collect{ |rr| rr.reservation_item }
-    #         current_ri = new_rr.collect{ |rr| rr.reservation_item }
+        old = self.reservation_rooms.where( reservation_item: room ).first
+        new = new_reservation_rooms.find { |rr| rr.reservation_item_id == room.id } 
 
-    #         create  = new_ri - current_ri
-    #         update  = new_ri & current_ri
-    #         destroy = current_ri - new_ri
+        logger.debug( "-------------------------------" )
+        logger.debug( old.inspect )
+        logger.debug( new.inspect )
 
-    #         create.each do |rr|
-    #             self.reservation_rooms.build(
-    #                 since: Date.strptime(rr.since, "%d/%m/%Y"),
-    #                 until: Date.strptime(rr.until, "%d/%m/%Y"),
-    #                 reservation_item: rr.reservation_item
-    #             )
-    #         end
+        if( old && new ) # update
+          old.since = new.since
+          old.until = new.until
+        elsif( old && !new ) #destroy
+          old.destroy
+        elsif( !old && new ) # create 
+          # self.reservation_rooms << new
+          self.reservation_rooms.build( 
+            since: new.since,
+            until: new.until,
+            reservation_item: new.reservation_item
+          )
+        end
 
-
-
-
-    #         new_reservation_rooms = []
-    #         # new reservation_items
-    #         reservation_rooms.each do |rr|
-                
-    #             obj = ReservationRoom.where( reservation: self, reservation_item: rr.reservation_item )
-    #             # si no existe lo creo
-    #             if ( !obj ){
-    #                 self.reservation_rooms.build(
-    #                     since: Date.strptime(rr.since, "%d/%m/%Y"),
-    #                     until: Date.strptime(rr.until, "%d/%m/%Y"),
-    #                     reservation_item: rr.reservation_item
-    #                 )
-
-    #             # si existe en base y no viene como parametro lo borro
-    #             }elsif( current_rr.find( reservation_item: rr.reservation_item ) ){
-    #                 self.reservation_items.where( reservation_item: rr.reservation_item ).destroy
-
-    #             # si existe en base y viene como parametro
-    #             }else{
-
-    #             }
-
-
-    #         end
-
-    #     end
+      end
+    end
 
 end

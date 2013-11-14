@@ -40,16 +40,17 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
 
-    reservation_rooms = reservation_room_params
-
-    reservation_rooms.keys.each do |room_id|
-      @reservation.reservation_rooms.build(
-        since: Date.strptime(reservation_rooms[room_id]["since"],"%d/%m/%Y"),
-        until: Date.strptime(reservation_rooms[room_id]["until"],"%d/%m/%Y"),
+    new_reservation_rooms = []
+    reservation_room_params.keys.each do |room_id|
+      new_reservation_rooms << ReservationRoom.new(
+        since: Date.strptime(reservation_room_params[room_id]["since"],"%d/%m/%Y"),
+        until: Date.strptime(reservation_room_params[room_id]["until"],"%d/%m/%Y"),
         reservation_item: Room.find(room_id)
       )
     end
-      
+    
+    @reservation.update_instance( new_reservation_rooms )
+
     @passengers = Passenger.all
     @enterprises = Enterprise.all
     @rooms = Room.all
@@ -70,15 +71,16 @@ class ReservationsController < ApplicationController
   # PATCH/PUT /reservations/1.json
   def update
 
-    reservation_rooms = reservation_room_params
-
-    reservation_rooms.keys.each do |room_id|
-      @reservation.reservation_rooms.build(
-        since: Date.strptime(reservation_rooms[room_id]["since"],"%d/%m/%Y"),
-        until: Date.strptime(reservation_rooms[room_id]["until"],"%d/%m/%Y"),
+    new_reservation_rooms = []
+    reservation_room_params.keys.each do |room_id|
+      new_reservation_rooms << ReservationRoom.new(
+        since: Date.strptime(reservation_room_params[room_id]["since"],"%d/%m/%Y"),
+        until: Date.strptime(reservation_room_params[room_id]["until"],"%d/%m/%Y"),
         reservation_item: Room.find(room_id)
       )
     end
+    
+    @reservation.update_instance( new_reservation_rooms )
 
     respond_to do |format|
       if @reservation.save
