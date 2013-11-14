@@ -62,8 +62,8 @@ function load_datepickers(){
         var datepicker1 = $( '#'+this.id+'_since' );
         var datepicker2 = $( '#'+this.id+'_until' );
         
-        datepicker1.datepicker();
-        datepicker2.datepicker();
+        datepicker1.datepicker( {format: "dd/mm/yyyy", language: "fr"} );
+        datepicker2.datepicker( {format: "dd/mm/yyyy", language: "fr"} );
 
         if ( $(this).is(':checked') ){
             datepicker1.show();
