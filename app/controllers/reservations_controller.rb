@@ -44,8 +44,8 @@ class ReservationsController < ApplicationController
 
     reservation_rooms.keys.each do |room_id|
       @reservation.reservation_rooms.build(
-        since: Date.current,
-        until: Date.current,
+        since: Date.strptime(reservation_rooms[room_id]["since"],"%d/%m/%Y"),
+        until: Date.strptime(reservation_rooms[room_id]["until"],"%d/%m/%Y"),
         reservation_item: Room.find(room_id)
       )
     end
@@ -74,8 +74,8 @@ class ReservationsController < ApplicationController
 
     reservation_rooms.keys.each do |room_id|
       @reservation.reservation_rooms.build(
-        since: Date.parse(reservation_rooms[room_id][:since]),
-        until: Date.parse(reservation_rooms[room_id][:until]),
+        since: Date.strptime(reservation_rooms[room_id]["since"],"%d/%m/%Y"),
+        until: Date.strptime(reservation_rooms[room_id]["until"],"%d/%m/%Y"),
         reservation_item: Room.find(room_id)
       )
     end
