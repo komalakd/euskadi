@@ -35,7 +35,7 @@ es-AR:
         proffesion: "Profesión"
         civil_status: "Estado civil"
       enterprise:
-        cuil: "CUIL"
+        cuit: "CUIT"
         name: "Razón social"
       room:
         number: "Número"

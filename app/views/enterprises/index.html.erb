@@ -18,7 +18,7 @@
 
   <table class="table table-hover table-condensed table-striped table-bordered">
     <tr>
-      <th><%= t('activerecord.attributes.enterprise.cuil') %></th>
+      <th><%= t('activerecord.attributes.enterprise.cuit') %></th>
       <th><%= t('activerecord.attributes.enterprise.name') %></th>
       <th></th>
       <!-- 
@@ -28,7 +28,7 @@
 
     <% @enterprises.each do |enterprise| %>
       <tr>
-        <td><%= enterprise.cuil %></td>
+        <td><%= enterprise.cuit %></td>
         <td><%= enterprise.name %></td>
         <td><%= link_to 'Editar', edit_enterprise_path(enterprise) %></td>
         <!--

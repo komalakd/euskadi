@@ -1,4 +1,4 @@
 class Enterprise < ActiveRecord::Base
     has_many :reservations
-    validates :cuil, :name, presence: true
+    validates :cuit, :name, presence: true
 end

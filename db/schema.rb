@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20131028204325) do
 
   create_table "enterprises", force: true do |t|
-    t.string   "cuil"
+    t.string   "cuit"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"

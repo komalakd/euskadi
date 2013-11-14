@@ -18,7 +18,7 @@ class EnterprisesControllerTest < ActionController::TestCase
 
   test "should create enterprise" do
     assert_difference('Enterprise.count') do
-      post :create, enterprise: { cuil: @enterprise.cuil, name: @enterprise.name }
+      post :create, enterprise: { cuit: @enterprise.cuit, name: @enterprise.name }
     end
 
     assert_redirected_to enterprise_path(assigns(:enterprise))
@@ -35,7 +35,7 @@ class EnterprisesControllerTest < ActionController::TestCase
   end
 
   test "should update enterprise" do
-    patch :update, id: @enterprise, enterprise: { cuil: @enterprise.cuil, name: @enterprise.name }
+    patch :update, id: @enterprise, enterprise: { cuit: @enterprise.cuit, name: @enterprise.name }
     assert_redirected_to enterprise_path(assigns(:enterprise))
   end
 

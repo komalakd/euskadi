@@ -1,7 +1,7 @@
 class CreateEnterprises < ActiveRecord::Migration
   def change
     create_table :enterprises do |t|
-      t.string :cuil
+      t.string :cuit
       t.string :name
 
       t.timestamps
