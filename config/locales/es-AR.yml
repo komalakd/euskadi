@@ -37,6 +37,7 @@ es-AR:
       enterprise:
         cuit: "CUIT"
         name: "Razón social"
+        address: "Dirección fiscal"
       room:
         number: "Número"
         active: "Activa"
