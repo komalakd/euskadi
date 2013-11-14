@@ -26,7 +26,7 @@ Room.create( number: 114, amount: 0, active: true, room_type_id: 2 )
 
 Room.create( number: 121, amount: 0, active: true, room_type_id: 1 )
 Room.create( number: 122, amount: 0, active: true, room_type_id: 1 )
-Room.create( number: 123, amount: 0, active: true, room_type_id: 1, group_id: 1 )
+Room.create( number: 123, amount: 0, active: true, room_type_id: 2, group_id: 1 )
 Room.create( number: 124, amount: 0, active: true, room_type_id: 2, group_id: 1 )
 
 Room.create( number: 131, amount: 0, active: true, room_type_id: 1 )
