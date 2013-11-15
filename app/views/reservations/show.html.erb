@@ -9,17 +9,31 @@
 
 <p>
   <b><%= t('activerecord.attributes.reservation.passenger_id') %>:</b>
-  <%= @reservation.passenger_id %>
+  <% p = @reservation.passenger %>
+  <%= p.name + ' ' + p.lastname %>
 </p>
 
+<% if e = @reservation.enterprise %>
 <p>
   <b><%= t('activerecord.attributes.reservation.enterprise_id') %>:</b>
-  <%= @reservation.enterprise_id %>
+  <%= e.name %>
 </p>
+<% end %>
 
 <p>
   <b><%= t('activerecord.attributes.reservation.amount') %>:</b>
   <%= @reservation.amount %>
+</p>
+
+<ul>
+  <% @reservation.reservation_rooms.each do |rr| %>
+  <li><%= rr.reservation_item.number.to_s + ' desde el ' + rr.since.to_s + ' hasta el ' + rr.until.to_s %></li>
+  <% end %>
+</ul>
+
+<p>
+  <b>Fecha de reserva:</b>
+  <%= @reservation.updated_at %>
 </p>
 
 <div class="form-actions">
