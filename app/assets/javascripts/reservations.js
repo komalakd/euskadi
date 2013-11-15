@@ -52,8 +52,8 @@ function load_datepickers(){
 
         if ( $(this).is(':checked') ){
         
-            datepicker1.datepicker( {format: "dd/mm/yyyy", language: "fr"} );
-            datepicker2.datepicker( {format: "dd/mm/yyyy", language: "fr"} );
+            datepicker1.datepicker( {format: "dd/mm/yyyy", language: "es"} );
+            datepicker2.datepicker( {format: "dd/mm/yyyy", language: "es"} );
 
             datepicker1.show();
             datepicker2.show();

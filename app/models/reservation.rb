@@ -16,12 +16,10 @@ class Reservation < ActiveRecord::Base
         logger.debug( new.inspect )
 
         if( old && new ) # update
-          old.since = new.since
-          old.until = new.until
+          old.update_attributes( since: new.since, until: new.until )
         elsif( old && !new ) #destroy
           old.destroy
         elsif( !old && new ) # create 
-          # self.reservation_rooms << new
           self.reservation_rooms.build( 
             since: new.since,
             until: new.until,
