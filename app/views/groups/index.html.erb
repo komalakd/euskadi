@@ -1,4 +1,4 @@
-<h2>Listado de grupos</h2>
+<h2>Listado de Combinadas</h2>
 
 <% if notice %>
   <div class="alert alert-success">
@@ -19,7 +19,7 @@
   <table class="table table-hover table-condensed table-striped table-bordered">
     <tr>
       <th><%= t('activerecord.attributes.group.name') %></th>
-      <th><%= t('activerecord.models.room.other') %></th>
+      <th><%= t('activerecord.models.room.other').capitalize %></th>
       <th><%= t('activerecord.attributes.group.amount') %></th>
       <th></th>
       <!--
@@ -31,7 +31,7 @@
     <% @groups.each do |group| %>
       <tr>
         <td><%= group.name %></td>
-        <td><%= group.rooms.map{|room| room.number }.join(',') %></td>
+        <td><%= group.rooms.map{|room| room.number }.join(' - ') %></td>
         <td><%= group.amount %></td>
         <td><%= link_to 'Editar', edit_group_path(group) %></td>
         
