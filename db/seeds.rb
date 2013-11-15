@@ -12,10 +12,10 @@ RoomType.create( id: 2, denomination: "Twin", amount: 0 )
 
 
 #Group
-Group.create( id: 1, name: "Combinada I", amount: 0 )
-Group.create( id: 2, name: "Combinada II", amount: 0 )
-Group.create( id: 3, name: "Combinada III", amount: 0 )
-Group.create( id: 4, name: "Combinada IV", amount: 0 )
+Group.create( id: 1, name: "Combinada 123-124", amount: 0 )
+Group.create( id: 2, name: "Combinada 141-142", amount: 0 )
+Group.create( id: 3, name: "Combinada 211-212", amount: 0 )
+Group.create( id: 4, name: "Combinada 233-234", amount: 0 )
 
 
 # Room
