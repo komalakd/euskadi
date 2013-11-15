@@ -6,28 +6,22 @@
       <a class="brand" href="#">Hotel Euskadi</a>
       
       <ul class="nav">
-        <li class="divider-vertical active" ><%= link_to 'Reservas', reservations_path %></li>
-        <li class="divider-vertical" ><%= link_to 'Pasajeros', passengers_path %></li>
-        <li class="divider-vertical" ><%= link_to 'Empresas', enterprises_path %></li>
-        <!--
-        <li class="divider-vertical" ><%= link_to 'Habitaciones', rooms_path %></li>
-        <li class="divider-vertical" ><%= link_to 'Tipos de Habitacion', room_types_path %></li>
-        <li class="divider-vertical" ><%= link_to 'Usuarios', users_path %></li> 
-        -->
-        
+        <li id="reservations_nav" class="divider-vertical" ><%= link_to 'Reservas', reservations_path %></li>
+        <li id="passengers_nav" class="divider-vertical" ><%= link_to 'Pasajeros', passengers_path %></li>
+        <li id="enterprises_nav" class="divider-vertical" ><%= link_to 'Empresas', enterprises_path %></li>
+        <li id="rooms_nav" class="dropdown divider-vertical">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Habitaciones<b class="caret"></b></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+            <li><%= link_to 'Listado', rooms_path, tabindex: -1 %></li>
+            <li><%= link_to 'Combinadas', groups_path, tabindex: -1 %></li>
+            <li><%= link_to 'Tipos de habitación', room_types_path, tabindex: -1 %></li>
+          </ul>
+        </li>
       </ul>
     
-      <ul class="nav pull-right">
+      <ul id="users_nav" class="nav pull-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Andr&eacute;s Valle
-            <b class="caret"></b>
-          </a>
-          <!-- <ul class="dropdown-menu">
-            <li class="navbar-text"><p>opcion 1</p></li>
-            <li class="navbar-text"><p>opcion 2</p></li>
-            <li class="navbar-text"><p>opcion 3</p></li>
-          </ul> -->
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Andr&eacute;s Valle<b class="caret"></b></a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
             <li><a tabindex="-1" href="#">Datos personales</a></li>
             <li><a tabindex="-1" href="#">Configuraci&oacute;n</a></li>

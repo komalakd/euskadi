@@ -14,55 +14,53 @@
     <p>No hay reservas registradas</p>
   </div>
 
-<% else %>
-  
-  <!-- Mapa de reservas -->
-  <table id="mapa" class="table table-hover table-condensed table-striped table-bordered">
-  
-    <tr>
-      <th></th>
-      <% dates = Date.today..(Date.today + 14) %>
-      <% dates.each do |date| %>
-      <th><%= date.strftime("%d/%m") %></th>
-      <% end %>
-    </tr>
-
-    <% @rooms.each do |room| %>
-    <tr>
-      <td><%= room.number %></td>
-      <% dates.each do |date| %>
-      <td></td>
-      <% end %>
-    </tr>
-    <% end %>
-
-  </table>
-
-
-  <!-- Listado de reservas -->
-  <table class="table table-hover table-condensed table-striped table-bordered">
-    <tr>
-      <th><%= t('activerecord.attributes.reservation.passenger_id') %></th>
-      <th><%= t('activerecord.attributes.reservation.enterprise_id') %></th>
-      <th><%= t('activerecord.attributes.reservation.amount') %></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-
-    <% @reservations.each do |reservation| %>
-      <tr>
-        <td><%= reservation.passenger_id %></td>
-        <td><%= reservation.enterprise_id %></td>
-        <td><%= reservation.amount %></td>
-        <td><%= link_to 'Detalle', reservation %></td>
-        <td><%= link_to 'Editar', edit_reservation_path(reservation) %></td>
-        <td><%= link_to 'Eliminar', reservation, method: :delete, data: { confirm: 'Esta seguro que desea eliminar la reserva?' } %></td>
-      </tr>
-    <% end %>
-  </table>
-
 <% end %>
+  
+<!-- Mapa de reservas -->
+<table id="mapa" class="table table-hover table-condensed table-striped table-bordered">
+
+  <tr>
+    <th></th>
+    <% dates = Date.today..(Date.today + 14) %>
+    <% dates.each do |date| %>
+    <th><%= date.strftime("%d/%m") %></th>
+    <% end %>
+  </tr>
+
+  <% @rooms.each do |room| %>
+  <tr>
+    <td><%= room.number %></td>
+    <% dates.each do |date| %>
+    <td></td>
+    <% end %>
+  </tr>
+  <% end %>
+
+</table>
+
+
+<!-- Listado de reservas - FIXME - borrar! -->
+<table class="table table-hover table-condensed table-striped table-bordered">
+  <tr>
+    <th><%= t('activerecord.attributes.reservation.passenger_id') %></th>
+    <th><%= t('activerecord.attributes.reservation.enterprise_id') %></th>
+    <th><%= t('activerecord.attributes.reservation.amount') %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @reservations.each do |reservation| %>
+    <tr>
+      <td><%= reservation.passenger_id %></td>
+      <td><%= reservation.enterprise_id %></td>
+      <td><%= reservation.amount %></td>
+      <td><%= link_to 'Detalle', reservation %></td>
+      <td><%= link_to 'Editar', edit_reservation_path(reservation) %></td>
+      <td><%= link_to 'Eliminar', reservation, method: :delete, data: { confirm: 'Esta seguro que desea eliminar la reserva?' } %></td>
+    </tr>
+  <% end %>
+</table>
 
 <%= link_to 'Nueva Reserva', new_reservation_path, { class: 'btn btn-primary' } %>
 <br />
