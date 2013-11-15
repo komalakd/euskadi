@@ -15,8 +15,8 @@
   </div>
 
 <% else %>
-
   
+  <!-- Mapa de reservas -->
   <table id="mapa" class="table table-hover table-condensed table-striped table-bordered">
   
     <tr>
@@ -35,17 +35,11 @@
       <% end %>
     </tr>
     <% end %>
-  
-
 
   </table>
 
 
-
-  <%= link_to 'Nueva Reserva', new_reservation_path, { class: 'btn btn-primary' } %>
-  <br />
-  <br />
-
+  <!-- Listado de reservas -->
   <table class="table table-hover table-condensed table-striped table-bordered">
     <tr>
       <th><%= t('activerecord.attributes.reservation.passenger_id') %></th>
@@ -70,7 +64,6 @@
 
 <% end %>
 
-
-<br>
-
-
+<%= link_to 'Nueva Reserva', new_reservation_path, { class: 'btn btn-primary' } %>
+<br />
+<br />
