@@ -71,6 +71,11 @@ class ReservationsController < ApplicationController
   # PATCH/PUT /reservations/1.json
   def update
 
+    @rooms = Room.all
+    @groups = Group.all
+    @passengers = Passenger.all
+    @enterprises = Enterprise.all
+
     # new_reservation_rooms = []
     # reservation_room_params.keys.each do |room_id|
     #   new_reservation_rooms << ReservationRoom.new(
