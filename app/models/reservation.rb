@@ -3,6 +3,7 @@ class Reservation < ActiveRecord::Base
   belongs_to :enterprise
   has_many :reservation_rooms
   validates :passenger_id, :amount, presence: true
+  validates_presence_of :reservation_rooms, { message: 'Debe seleccionar al menos una.' }
 
   def update_instance(new_reservation_rooms) # Array [ReservationRoom]
 
