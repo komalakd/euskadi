@@ -106,3 +106,19 @@ html, body {
 .table-hover tbody tr:hover > td.info {
   background-color: #c4e3f3 !important;
 }
+
+/* MAPA DE RESERVAS */
+.circle {
+  /*height: 10px;*/
+  /*-moz-border-radius: 10px;*/
+  /*-webkit-border-radius: 10px;*/
+  background-color: blue !important;
+}
+
+.circle_left {
+  border-radius: 10px 0px 0px 10px;
+}
+
+.circle_rigth {
+  border-radius: 0px 10px 10px 0px;
+}
