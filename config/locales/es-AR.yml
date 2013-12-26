@@ -14,8 +14,8 @@ es-AR:
         one: "tipo de habitación"
         other: "tipos de habitación"
       group:
-        one: "grupo"
-        other: "grupos"
+        one: "combinada"
+        other: "combinadas"
       reservation:
         one: "reserva"
         other: "reservas"
