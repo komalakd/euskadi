@@ -56,22 +56,13 @@ $(function() {
     <label class="control-label">Habitaciones</label>
   </div>
 
+  <% group_count = {}%>
   <% @rooms.each do |room| %>
-    <div class="control-group">
-      <%= label_tag room.id, room.number, class: 'control-label' %>
-      <div class="controls">
-        <% room_id = 'reservation_room_' + room.id.to_s %>
-        <% room_name = 'reservation_room[' + room.id.to_s + ']' %>
-        <input id="<%= room_id %>" class="room_selection" type="checkbox" value="1" name="chk_<%= room_name %>">
-        <input id="<%= room_id %>_since" class="room_selection hide" type="text" name="<%= room_name %>[since]">
-        <input id="<%= room_id %>_until" class="room_selection hide" type="text" name="<%= room_name %>[until]">
-
-
-      </div>
-    </div>
-  <% end %>
-
-  <% @groups.each do |group| %>
+    
+    <% group = room.group  %>
+    <% if( !group.nil? && !group_count[group.id] ) %>
+    <% group_count[group.id] = 1 %>
+    
     <div class="control-group">
       <%= label_tag group.id, group.name, class: 'control-label' %>
       <div class="controls">
@@ -80,6 +71,18 @@ $(function() {
         <input id="<%= group_id %>" class="room_selection" type="checkbox" value="1" name="chk_<%= group_name %>">
         <input id="<%= group_id %>_since" class="room_selection hide" type="text" name="<%= group_name %>[since]">
         <input id="<%= group_id %>_until" class="room_selection hide" type="text" name="<%= group_name %>[until]">
+      </div>
+    </div>
+    <% end %>
+
+    <div class="control-group">
+      <%= label_tag room.id, room.number, class: 'control-label' %>
+      <div class="controls">
+        <% room_id = 'reservation_room_' + room.id.to_s %>
+        <% room_name = 'reservation_room[' + room.id.to_s + ']' %>
+        <input id="<%= room_id %>" class="room_selection" type="checkbox" value="1" name="chk_<%= room_name %>">
+        <input id="<%= room_id %>_since" class="room_selection hide" type="text" name="<%= room_name %>[since]">
+        <input id="<%= room_id %>_until" class="room_selection hide" type="text" name="<%= room_name %>[until]">
       </div>
     </div>
   <% end %>
