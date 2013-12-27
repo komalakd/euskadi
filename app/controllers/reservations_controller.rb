@@ -39,15 +39,6 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
-
-    # new_reservation_rooms = []
-    # reservation_room_params.keys.each do |room_id|
-    #   new_reservation_rooms << ReservationRoom.new(
-    #     since: Date.strptime(reservation_room_params[room_id]["since"],"%d/%m/%Y"),
-    #     until: Date.strptime(reservation_room_params[room_id]["until"],"%d/%m/%Y"),
-    #     reservation_item: Room.find(room_id)
-    #   )
-    # end
     
     @reservation.update_instance( new_reservation_rooms )
 
@@ -76,14 +67,6 @@ class ReservationsController < ApplicationController
     @passengers = Passenger.all
     @enterprises = Enterprise.all
 
-    # new_reservation_rooms = []
-    # reservation_room_params.keys.each do |room_id|
-    #   new_reservation_rooms << ReservationRoom.new(
-    #     since: Date.strptime(reservation_room_params[room_id]["since"],"%d/%m/%Y"),
-    #     until: Date.strptime(reservation_room_params[room_id]["until"],"%d/%m/%Y"),
-    #     reservation_item: Room.find(room_id)
-    #   )
-    # end
     @reservation.update_attributes( reservation_params )
     @reservation.update_instance( new_reservation_rooms )
 
@@ -120,28 +103,39 @@ class ReservationsController < ApplicationController
     end
 
     def reservation_room_params
-      
       room_checkboxes = params.require(:chk_reservation_room) if params[:chk_reservation_room]
-
-      # asd = chk_reservation_room_params
       return {} unless room_checkboxes
       params.require(:reservation_room).slice( *room_checkboxes.keys )
     end
 
-    # def chk_reservation_room_params
-    #   params.require(:chk_reservation_room) if params[:chk_reservation_room]
-    # end
+    def reservation_group_params
+      group_checkboxes = params.require(:chk_reservation_group) if params[:chk_reservation_group]
+      return {} unless group_checkboxes
+      params.require(:reservation_group).slice( *group_checkboxes.keys )
+    end
 
     def new_reservation_rooms
+      
       new_reservation_rooms = []
-        reservation_room_params.keys.each do |room_id|
-          new_reservation_rooms << ReservationRoom.new(
-            since: Date.strptime(reservation_room_params[room_id]["since"],"%d/%m/%Y"),
-            until: Date.strptime(reservation_room_params[room_id]["until"],"%d/%m/%Y"),
-            reservation_item: Room.find(room_id)
-          )
+      reservation_room_params.keys.each do |room_id|
+        new_reservation_rooms << ReservationRoom.new(
+          since: Date.strptime(reservation_room_params[room_id]["since"],"%d/%m/%Y"),
+          until: Date.strptime(reservation_room_params[room_id]["until"],"%d/%m/%Y"),
+          reservation_item: Room.find(room_id)
+        )
       end
-      return new_reservation_rooms
+
+      new_reservation_groups = []
+      reservation_group_params.keys.each do |group_id|
+        new_reservation_groups << ReservationRoom.new(
+          since: Date.strptime(reservation_group_params[group_id]["since"],"%d/%m/%Y"),
+          until: Date.strptime(reservation_group_params[group_id]["until"],"%d/%m/%Y"),
+          reservation_item: Group.find(group_id)
+        )
+      end
+
+      return { rooms: new_reservation_rooms, groups: new_reservation_groups }
+
     end
 
 end

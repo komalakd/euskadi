@@ -5,3 +5,8 @@ class Room < ActiveRecord::Base
     validates :number, :room_type_id, presence: true
     validates :active, inclusion: { in: [true, false] }
 end
+
+public
+def common_denomination
+    self.number.to_s
+end

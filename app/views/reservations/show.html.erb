@@ -27,7 +27,7 @@
 
 <ul>
   <% @reservation.reservation_rooms.each do |rr| %>
-  <li><%= rr.reservation_item.number.to_s + ' desde el ' + rr.since.to_s + ' hasta el ' + rr.until.to_s %></li>
+  <li><%= rr.reservation_item.common_denomination + ' desde el ' + rr.since.to_s + ' hasta el ' + rr.until.to_s %></li>
   <% end %>
 </ul>
 
