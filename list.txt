@@ -1,0 +1,31 @@
+PANTALLA RESERVA
+[ ]Agregar formulario de nuevo pasajero.
+[ ]Modificar los campos obligatorios de un pasajero (dejar solo nombre, apellido y telefono)
+[X]Ordenar las combinadas antes de las habitaciones
+[ ]Al hacer click en una combinada bloquear las respectivas habitaciones
+[?]Separar habitaciones x piso
+
+PRECIOS
+[ ]agregar campo modificable monto_por_dia a c/habitación del listado. El default se toma de cada tipo_habitacion.
+[ ]Agregar subtotales (monto_por_dia * cant_dias).
+[ ]Agregar un campo fijo monto_total que sea la sumatoria de los subtotales.
+
+DETALLE RESERVA
+[ ]Cambiar formato hora
+[ ]Agregar símbolo $
+
+RAILS
+[ ]Rutas inválidas
+[ ]Mensajes de error personalizados
+
+MODIFICAR RESERVA
+[?]Imposibilitar el cambio del responsable de una reserva
+
+ERRORES
+[ ]Al crear una reserva: Seleccionando una habitación y sin ingresar fechas.
+[X]Error al modificar reserva ingresando monto vacio.
+[X]Validar que una reserva tenga al menos una habitacion.
+
+DISEÑO
+[-]dia desde y hasta puede coincidir? -> NO PUEDE COINCIDIR
+[-]Los precios de las combinadas son todos iguales?
