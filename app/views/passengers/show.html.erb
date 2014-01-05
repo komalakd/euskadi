@@ -57,6 +57,29 @@
   <%= @passenger.civil_status %>
 </p>
 
+<h2>Historial de Reservas</h2>
+
+<% passenger_reservations = @passenger.reservations %>
+
+<% if passenger_reservations.size == 0 %>
+  <p>El pasajero no tiene reservadas registradas.</p>
+<% else %>
+  
+  <% passenger_reservations.order("created_at DESC").each do |reservation| %>
+  <p>Reserva realizada el dia <strong><%= reservation.created_at.strftime("%d/%m/%Y") %></strong>:</p>
+  <ul>
+    <% reservation.reservation_rooms.each do |rr| %>
+      <% if rr.reservation_item_type == 'Room' %>
+        <li><%= rr.reservation_item.number.to_s + ' desde el ' + rr.since.to_s + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %></li>
+      <% else %>
+        <li><%= rr.reservation_item.name.to_s + ' desde el ' + rr.since.to_s + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <% end %>
+  
+<% end %>
+
 <div class="form-actions">
   <%= link_to 'Editar', edit_passenger_path(@passenger), { class: 'btn btn-primary' } %>
   <%= link_to 'Atras', passengers_path, { class: 'btn' } %>
