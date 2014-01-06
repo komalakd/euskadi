@@ -119,6 +119,7 @@ class ReservationsController < ApplicationController
       new_reservation_rooms = []
       reservation_room_params.keys.each do |room_id|
         new_reservation_rooms << ReservationRoom.new(
+          amount: reservation_room_params[room_id]["amount"],
           since: Date.strptime(reservation_room_params[room_id]["since"],"%d/%m/%Y"),
           until: Date.strptime(reservation_room_params[room_id]["until"],"%d/%m/%Y"),
           reservation_item: Room.find(room_id)
@@ -128,6 +129,7 @@ class ReservationsController < ApplicationController
       new_reservation_groups = []
       reservation_group_params.keys.each do |group_id|
         new_reservation_groups << ReservationRoom.new(
+          amount: reservation_group_params[group_id]["amount"],
           since: Date.strptime(reservation_group_params[group_id]["since"],"%d/%m/%Y"),
           until: Date.strptime(reservation_group_params[group_id]["until"],"%d/%m/%Y"),
           reservation_item: Group.find(group_id)

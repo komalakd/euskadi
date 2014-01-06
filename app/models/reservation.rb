@@ -23,13 +23,14 @@ class Reservation < ActiveRecord::Base
       # logger.debug( new.inspect )
 
       if( old && new ) # update
-        old.update_attributes( since: new.since, until: new.until )
+        old.update_attributes( since: new.since, until: new.until, amount: new.amount )
       elsif( old && !new ) #destroy
         old.destroy
       elsif( !old && new ) # create 
         self.reservation_rooms.build( 
           since: new.since,
           until: new.until,
+          amount: new.amount,
           reservation_item: new.reservation_item
         )
       end
@@ -46,13 +47,14 @@ class Reservation < ActiveRecord::Base
       # logger.debug( new.inspect )
 
       if( old && new ) # update
-        old.update_attributes( since: new.since, until: new.until )
+        old.update_attributes( since: new.since, until: new.until, amount: new.amount )
       elsif( old && !new ) #destroy
         old.destroy
       elsif( !old && new ) # create 
         self.reservation_rooms.build( 
           since: new.since,
           until: new.until,
+          amount: new.amount,
           reservation_item: new.reservation_item
         )
       end

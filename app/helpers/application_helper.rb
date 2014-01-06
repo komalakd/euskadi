@@ -18,6 +18,7 @@ module ApplicationHelper
                     type: rr.reservation_item_type,
                     since: rr.since.strftime("%d/%m/%Y"),
                     until: rr.until.strftime("%d/%m/%Y"),
+                    amount: rr.amount,
                 }
             end
         }.to_json

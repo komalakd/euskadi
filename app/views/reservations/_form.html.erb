@@ -71,6 +71,8 @@ $(function() {
         <input id="<%= group_id %>" class="room_selection" type="checkbox" value="1" name="chk_<%= group_name %>">
         <input id="<%= group_id %>_since" class="room_selection hide" type="text" name="<%= group_name %>[since]">
         <input id="<%= group_id %>_until" class="room_selection hide" type="text" name="<%= group_name %>[until]">
+        <input id="<%= group_id %>_amount" class="room_selection hide" type="text" name="<%= group_name %>[amount]">
+        <input id="<%= group_id %>_total" class="room_selection hide" type="text" name="<%= group_name %>[total]" disabled="disabled">
       </div>
     </div>
     <% end %>
@@ -83,6 +85,8 @@ $(function() {
         <input id="<%= room_id %>" class="room_selection" type="checkbox" value="1" name="chk_<%= room_name %>">
         <input id="<%= room_id %>_since" class="room_selection hide" type="text" name="<%= room_name %>[since]">
         <input id="<%= room_id %>_until" class="room_selection hide" type="text" name="<%= room_name %>[until]">
+        <input id="<%= room_id %>_amount" class="room_selection hide" type="text" name="<%= room_name %>[amount]">
+        <input id="<%= room_id %>_total" class="room_selection hide" type="text" name="<%= room_name %>[total]" disabled="disabled">
       </div>
     </div>
   <% end %>
