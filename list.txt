@@ -11,7 +11,7 @@ PRECIOS
 [ ]Agregar un campo fijo monto_total que sea la sumatoria de los subtotales.
 
 DETALLE RESERVA
-[ ]Cambiar formato hora
+[X]Cambiar formato hora
 [ ]Agregar símbolo $
 
 RAILS

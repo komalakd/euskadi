@@ -3,6 +3,7 @@ $(function() {
   reservation = <%= raw(reservation_as_json( @reservation )) %>;
   rooms       = <%= raw(rooms_as_json( @rooms )) %>;
   groups      = <%= raw(groups_as_json( @groups )) %>;
+  room_types  = <%= raw(room_types_as_json( @room_types )) %>;
 
   load_form();
 
@@ -36,8 +37,10 @@ $(function() {
     </div>
   <% end %>
 
+  <h3>Datos pasajero</h3>
+
   <div class="control-group">
-    <%= f.label :passenger_id, { class: 'control-label' } %>
+    <%= f.label :passenger_id, 'Nombre', { class: 'control-label' } %>
     <div class="controls">
       <%= select("reservation", "passenger_id", @passengers.collect{ |p| [p.name+' '+p.lastname, p.id] }, { include_blank: true } ) %>
     </div>
@@ -52,9 +55,11 @@ $(function() {
     </div>
   <% end %>
 
-  <div class="control-group">
+  <h3>Habitaciones</h3>
+
+  <!-- <div class="control-group">
     <label class="control-label">Habitaciones</label>
-  </div>
+  </div> -->
 
   <% group_count = {}%>
   <% @rooms.each do |room| %>

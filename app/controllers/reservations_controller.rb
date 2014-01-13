@@ -24,6 +24,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new
     @enterprises = Enterprise.all
     @rooms = Room.all
+    @room_types = RoomType.all
     @groups = Group.all
   end
 
@@ -32,6 +33,7 @@ class ReservationsController < ApplicationController
     @passengers = Passenger.all
     @enterprises = Enterprise.all
     @rooms = Room.all
+    @room_types = RoomType.all
     @groups = Group.all
   end
 
