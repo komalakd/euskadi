@@ -68,11 +68,14 @@
   <% passenger_reservations.order("created_at DESC").each do |reservation| %>
   <p>Reserva realizada el dia <strong><%= reservation.created_at.strftime("%d/%m/%Y") %></strong>:</p>
   <ul>
+    <% if reservation.reservation_rooms.size == 0 %>
+      <li><i>Reserva sin habitaciones</i></li>
+    <% end %>
     <% reservation.reservation_rooms.each do |rr| %>
       <% if rr.reservation_item_type == 'Room' %>
-        <li><%= rr.reservation_item.number.to_s + ' desde el ' + rr.since.to_s + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %></li>
+        <li><strong><%= rr.reservation_item.number.to_s %></strong><%=' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %></li>
       <% else %>
-        <li><%= rr.reservation_item.name.to_s + ' desde el ' + rr.since.to_s + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %></li>
+        <li><strong><%= rr.reservation_item.name.to_s %></strong><%= ' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %></li>
       <% end %>
     <% end %>
   </ul>
