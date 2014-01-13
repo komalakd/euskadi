@@ -44,7 +44,7 @@ es-AR:
         status: "Estado"
         amount: "Monto"
         room_type_id: "Tipo de habitación"
-        group_id: "Grupo"
+        group_id: "Combinada"
       room_type:
         denomination: "Denominación"
         amount: "Monto"
