@@ -31,16 +31,16 @@
   <% #rr.reservation_item.common_denomination %>
 
   <% if rr.reservation_item_type == 'Room' %>
-  <li><%= rr.reservation_item.number.to_s + ' desde el ' + rr.since.to_s + ' hasta el ' + rr.until.to_s %></li>
+  <li><strong><%= rr.reservation_item.number.to_s %></strong><%= ' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %></li>
   <% else %>
-  <li><%= rr.reservation_item.name.to_s + ' desde el ' + rr.since.to_s + ' hasta el ' + rr.until.to_s %></li>
+  <li><strong><%= rr.reservation_item.name.to_s %></strong><%= ' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %></li>
   <% end %>
   <% end %>
 </ul>
 
 <p>
   <b>Fecha de reserva:</b>
-  <%= @reservation.updated_at %>
+  <%= @reservation.updated_at.strftime("%d/%m/%Y - %H:%M hs") %>
 </p>
 
 <div class="form-actions">

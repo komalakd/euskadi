@@ -40,7 +40,8 @@ es-AR:
         address: "Dirección fiscal"
       room:
         number: "Número"
-        active: "Activa"
+        active: "Disponible"
+        status: "Estado"
         amount: "Monto"
         room_type_id: "Tipo de habitación"
         group_id: "Grupo"
