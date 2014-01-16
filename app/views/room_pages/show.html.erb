@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Page:</strong>
+  <%= @room_page.page_id %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @room_page.order %>
+</p>
+
+<%= link_to 'Edit', edit_room_page_path(@room_page) %> |
+<%= link_to 'Back', room_pages_path %>
