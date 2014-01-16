@@ -4,6 +4,7 @@ class CreateReservations < ActiveRecord::Migration
       t.integer :passenger_id
       t.integer :enterprise_id
       t.decimal :amount
+      t.text :observation
 
       t.timestamps
     end

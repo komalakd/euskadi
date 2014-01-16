@@ -55,7 +55,8 @@ es-AR:
         passenger_id: "Pasajero"
         enterprise_id: "Empresa"
         amount: "Monto"
-        reservation_rooms: "Habitaciones:"
+        observation: "Observación"
+        reservation_rooms: "Habitaciones"
       reservation_room:
         reservation_id: "Reserva"
         reservation_item_id: "Item"

@@ -48,6 +48,7 @@ class ReservationsController < ApplicationController
     @enterprises = Enterprise.all
     @rooms = Room.all
     @groups = Group.all
+    @room_types = RoomType.all
 
     respond_to do |format|
       if @reservation.save

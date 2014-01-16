@@ -25,6 +25,13 @@
   <%= @reservation.amount %>
 </p>
 
+<% if obs = @reservation.observation %>
+<p>
+  <b><%= t('activerecord.attributes.reservation.observation') %>:</b>
+  <%= obs %>
+</p>
+<% end %>
+
 <ul>
   <% @reservation.reservation_rooms.each do |rr| %>
   

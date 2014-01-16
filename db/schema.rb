@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20131028204325) do
     t.integer  "passenger_id"
     t.integer  "enterprise_id"
     t.decimal  "amount"
+    t.text     "observation"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
