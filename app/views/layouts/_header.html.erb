@@ -6,8 +6,15 @@
       <a class="brand" href="#">Hotel Euskadi</a>
       
       <ul class="nav">
-        <li id="reservations_nav" class="divider-vertical" ><%= link_to 'Reservas', reservations_path %></li>
+        <li id="rooms_nav" class="dropdown divider-vertical">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reservas<b class="caret"></b></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+            <li><%= link_to 'Mapa de reservas', reservations_path, tabindex: -1 %></li>
+            <li><%= link_to 'Nueva reserva', new_reservation_path, tabindex: -1 %></li>
+          </ul>
+        </li>
         <li id="passengers_nav" class="divider-vertical" ><%= link_to 'Pasajeros', passengers_path %></li>
+
         <li id="enterprises_nav" class="divider-vertical" ><%= link_to 'Empresas', enterprises_path %></li>
         <li id="rooms_nav" class="dropdown divider-vertical">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Habitaciones<b class="caret"></b></a>
