@@ -27,7 +27,7 @@
 <% enterprise_reservations = @enterprise.reservations %>
 
 <% if enterprise_reservations.size == 0 %>
-  <p>El pasajero no tiene reservadas registradas.</p>
+  <p>La empresa no tiene reservadas registradas.</p>
 <% else %>
   
   <% enterprise_reservations.order("created_at DESC").each do |reservation| %>
