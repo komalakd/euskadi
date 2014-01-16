@@ -6,7 +6,7 @@ $(function() {
   room_types  = <%= raw(room_types_as_json( @room_types )) %>;
 
   load_form();
-
+  load_pages();
 });
 </script>
 
@@ -62,37 +62,51 @@ $(function() {
   </div> -->
 
   <% group_count = {}%>
-  <% @rooms.each do |room| %>
-    
-    <% group = room.group  %>
-    <% if( !group.nil? && !group_count[group.id] ) %>
-    <% group_count[group.id] = 1 %>
-    
-    <div class="control-group">
-      <%= label_tag group.id, group.name, class: 'control-label' %>
-      <div class="controls">
-        <% group_id = 'reservation_group_' + group.id.to_s %>
-        <% group_name = 'reservation_group[' + group.id.to_s + ']' %>
-        <input id="<%= group_id %>" class="room_selection" type="checkbox" value="1" name="chk_<%= group_name %>">
-        <input id="<%= group_id %>_since" class="room_selection hide" type="text" name="<%= group_name %>[since]">
-        <input id="<%= group_id %>_until" class="room_selection hide" type="text" name="<%= group_name %>[until]">
-        <input id="<%= group_id %>_amount" class="room_selection hide" type="text" name="<%= group_name %>[amount]">
-        <input id="<%= group_id %>_total" class="room_selection hide" type="text" name="<%= group_name %>[total]" disabled="disabled">
-      </div>
-    </div>
-    <% end %>
+  
 
-    <div class="control-group">
-      <%= label_tag room.id, room.number, class: 'control-label' %>
-      <div class="controls">
-        <% room_id = 'reservation_room_' + room.id.to_s %>
-        <% room_name = 'reservation_room[' + room.id.to_s + ']' %>
-        <input id="<%= room_id %>" class="room_selection" type="checkbox" value="1" name="chk_<%= room_name %>">
-        <input id="<%= room_id %>_since" class="room_selection hide" type="text" name="<%= room_name %>[since]">
-        <input id="<%= room_id %>_until" class="room_selection hide" type="text" name="<%= room_name %>[until]">
-        <input id="<%= room_id %>_amount" class="room_selection hide" type="text" name="<%= room_name %>[amount]">
-        <input id="<%= room_id %>_total" class="room_selection hide" type="text" name="<%= room_name %>[total]" disabled="disabled">
-      </div>
+  <ul class="nav nav-tabs" id="myTab">
+    <% Page.all.each do |page| %>
+    <li><a href="#page_<%= page.id %>"><%= page.name %></a></li>
+    <% end %>
+  </ul>
+
+
+  <div class="tab-content">
+
+  <% Page.all.each do |page| %>
+    <div class="tab-pane active" id="page_<%= page.id %>">
+      <% page.rooms.each do |room| %>
+        
+        <% group = room.group  %>
+        <% if( !group.nil? && !group_count[group.id] ) %>
+        <% group_count[group.id] = 1 %>
+        <div class="control-group">
+          <%= label_tag group.id, group.name, class: 'control-label' %>
+          <div class="controls">
+            <% group_id = 'reservation_group_' + group.id.to_s %>
+            <% group_name = 'reservation_group[' + group.id.to_s + ']' %>
+            <input id="<%= group_id %>" class="room_selection" type="checkbox" value="1" name="chk_<%= group_name %>">
+            <input id="<%= group_id %>_since" class="room_selection hide" type="text" name="<%= group_name %>[since]">
+            <input id="<%= group_id %>_until" class="room_selection hide" type="text" name="<%= group_name %>[until]">
+            <input id="<%= group_id %>_amount" class="room_selection hide" type="text" name="<%= group_name %>[amount]">
+            <input id="<%= group_id %>_total" class="room_selection hide" type="text" name="<%= group_name %>[total]" disabled="disabled">
+          </div>
+        </div>
+        <% end %>
+
+        <div class="control-group">
+          <%= label_tag room.id, room.number, class: 'control-label' %>
+          <div class="controls">
+            <% room_id = 'reservation_room_' + room.id.to_s %>
+            <% room_name = 'reservation_room[' + room.id.to_s + ']' %>
+            <input id="<%= room_id %>" class="room_selection" type="checkbox" value="1" name="chk_<%= room_name %>">
+            <input id="<%= room_id %>_since" class="room_selection hide" type="text" name="<%= room_name %>[since]">
+            <input id="<%= room_id %>_until" class="room_selection hide" type="text" name="<%= room_name %>[until]">
+            <input id="<%= room_id %>_amount" class="room_selection hide" type="text" name="<%= room_name %>[amount]">
+            <input id="<%= room_id %>_total" class="room_selection hide" type="text" name="<%= room_name %>[total]" disabled="disabled">
+          </div>
+        </div>
+      <% end %>
     </div>
   <% end %>
 

@@ -6,6 +6,7 @@ class CreateRooms < ActiveRecord::Migration
       t.decimal :amount
       t.integer :room_type_id
       t.integer :group_id
+      t.integer :page_id
 
       t.timestamps
     end

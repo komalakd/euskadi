@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20140116033058) do
     t.decimal  "amount"
     t.integer  "room_type_id"
     t.integer  "group_id"
+    t.integer  "page_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
