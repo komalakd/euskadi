@@ -117,11 +117,21 @@ html, body {
 }
 
 /* MAPA DE RESERVAS */
+
+.reserved {
+  background-color: red !important
+}
+.paid {
+  background-color: green !important
+}
+.busy {
+  background-color: orange !important
+}
+
 .circle {
   /*height: 10px;*/
   /*-moz-border-radius: 10px;*/
   /*-webkit-border-radius: 10px;*/
-  background-color: blue !important;
 }
 
 .circle_left {
