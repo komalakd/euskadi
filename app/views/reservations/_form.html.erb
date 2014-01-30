@@ -39,18 +39,20 @@ $(function() {
 
   <h3>Datos pasajero</h3>
 
-  <div class="control-group">
+  <div class="control-group select">
     <%= f.label :passenger_id, 'Nombre', { class: 'control-label' } %>
     <div class="controls">
       <%= select("reservation", "passenger_id", @passengers.collect{ |p| [p.name+' '+p.lastname, p.id] }, { include_blank: true } ) %>
+      <%= link_to '+ Nuevo Pasajero', new_passenger_path, { class: 'btn' } %>
     </div>
   </div>
     
   <% if @enterprises.size > 0 %>
-    <div class="control-group">
+    <div class="control-group select">
       <%= f.label :enterprise_id, { class: 'control-label' } %>
       <div class="controls">
         <%= select("reservation", "enterprise_id", @enterprises.collect{ |p| [p.name, p.id] }, { include_blank: true } ) %>
+        <%= link_to '+ Nueva Empresa', new_enterprise_path, { class: 'btn' } %>
       </div>
     </div>
   <% end %>
@@ -61,7 +63,7 @@ $(function() {
     <label class="control-label">Habitaciones</label>
   </div> -->
 
-  <% group_count = {}%>
+  <% group_count = {} %>
   
 
   <ul class="nav nav-tabs" id="myTab">

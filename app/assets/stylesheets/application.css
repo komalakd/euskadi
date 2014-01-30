@@ -61,6 +61,15 @@ html, body {
   margin-bottom: 0px;
 }
 
+.reservation_form div.select {
+  padding-top: 3px;
+}
+
+.reservation_form div.select a {
+  width: 120px;
+  text-align: center;
+}
+
 .reservation_form input[type="text"] {
   height: 14px;
 }
