@@ -1,0 +1,46 @@
+TODO
+
+POPUPS
+[ ] Nuevo pasajero (factorizar html de nuevo pasajero)
+[ ] Nueva empresa
+
+Al dar de alta el objeto (via ajax) se cierra el popup y vuelve a la pantalla de nueva reserva.
+
+[?] Check-in
+
+[?] Libro de pasajeros.
+Datos de entrada.
+Datos de salida.
+
+[?] Exportar reportes.
+
+[?] Envío de emails
+
+[?] Usuarios 
+(modificación de datos personales)
+(modificar clave)
+
+[ ] Sesión
+
+[ ] Validaciones del objeto reserva
+
+[ ] Validaciones del objeto pasajero (obligatorios: nombre, apellido y algun telefono)
+
+MAPA DE RESERVAS
+[ ] Mostrar los días de reservas con colores (LIBRE, RESERVADO, CHECK-IN, PAGADO) resaltando día desde y día hasta.
+[ ] Agregar links desde el mapa a c/u de las reservas.  
+[ ] Agregar, por día, cantidad de habitaciones.
+
+[?] Reservas sin límite de tiempo.
+
+CONTROLES DE NUEVA RESERVA
+[ ] Mostrar el costo x dia de c/u de las habitaciones (default).
+[ ] Al querer modificarse el costo x día de una habitación se debe recalcular el monto total.
+[ ]Al hacer click en una combinada bloquear las respectivas habitaciones
+
+RAILS
+[ ]Rutas inválidas
+[ ]Mensajes de error personalizados
+
+ERRORES
+[ ]Al crear una reserva: Seleccionando una habitación y sin ingresar fechas.
