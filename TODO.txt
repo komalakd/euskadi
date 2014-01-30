@@ -1,42 +1,59 @@
-TODO
+TODO - LIST
 
-POPUPS
-[ ] Nuevo pasajero (factorizar html de nuevo pasajero)
-[ ] Nueva empresa
+CHECK-IN
+[ ] Botón realizar check-in al editar o ver detalle de una reserva.
+[ ] Pantalla de check-in
 
-Al dar de alta el objeto (via ajax) se cierra el popup y vuelve a la pantalla de nueva reserva.
+PAGOS
+[ ] Botón registrar pago editar o ver detalle de una reserva.
+[ ] Validación del registro de pago (pago <= monto_total - pagado)
 
-[?] Check-in
+RESERVAS
+[ ] Agregar estado de la reserva al ver detalle de una reserva.
 
-[?] Libro de pasajeros.
-Datos de entrada.
-Datos de salida.
+LIBRO DE PASAJEROS
+[ ] Datos de entrada.
+[ ] Datos de salida.
 
+INVESTIGAR
 [?] Exportar reportes.
-
 [?] Envío de emails
 
-[?] Usuarios 
-(modificación de datos personales)
-(modificar clave)
+USUARIOS
+[ ] modificación de datos personales
+[ ] modificar clave
 
-[ ] Sesión
-
-[ ] Validaciones del objeto reserva
-
-[ ] Validaciones del objeto pasajero (obligatorios: nombre, apellido y algun telefono)
+SESIÓN
+[ ] Iniciar sesión.
+[ ] Validar sesión iniciada.
+[ ] Cerrar sesión.
 
 MAPA DE RESERVAS
 [ ] Mostrar los días de reservas con colores (LIBRE, RESERVADO, CHECK-IN, PAGADO) resaltando día desde y día hasta.
 [ ] Agregar links desde el mapa a c/u de las reservas.  
-[ ] Agregar, por día, cantidad de habitaciones.
+[ ] Agregar, por día, por tipo de habitación, cantidad de habitaciones libres y ocupadas (no tener en cuenta combinadas).
+[ ] Mostrar el botón "Nueva reserva" arriba y debajo del mapa.
+[ ] Agregar 
 
+PASAJEROS
+[ ] Agregar buscador de pasajeros (DNI, nombre, apellido, algún teléfono).
+[ ] Validaciones del objeto pasajero (obligatorios: nombre, apellido y algun telefono)
+
+ANALIZAR
 [?] Reservas sin límite de tiempo.
 
 CONTROLES DE NUEVA RESERVA
 [ ] Mostrar el costo x dia de c/u de las habitaciones (default).
 [ ] Al querer modificarse el costo x día de una habitación se debe recalcular el monto total.
-[ ]Al hacer click en una combinada bloquear las respectivas habitaciones
+[ ] Al hacer click en una combinada bloquear las respectivas habitaciones
+[ ] Validaciones del objeto reserva
+[ ] Agregar buscador de pasajero (DNI).
+[ ] Agregar buscador de empresa (razón social).
+
+POPUPS NUEVA RESERVA
+[ ] Nuevo pasajero (factorizar html de nuevo pasajero)
+[ ] Nueva empresa
+Al dar de alta el objeto (via ajax) se cierra el popup y vuelve a la pantalla de nueva reserva.
 
 RAILS
 [ ]Rutas inválidas
@@ -44,3 +61,9 @@ RAILS
 
 ERRORES
 [ ]Al crear una reserva: Seleccionando una habitación y sin ingresar fechas.
+
+SERVICIOS
+[ ] Crear objetos Service & Room Service
+[ ] Agregar botón "Agregar servicio" a una habitación de una reserva.
+[ ] Mostrar los servicios de una habitación de una reserva.
+[ ] Eliminar los servicios de una habitación de una reserva.
