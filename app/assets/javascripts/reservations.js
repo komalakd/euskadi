@@ -120,4 +120,4 @@ function load_map(){ // TODO
 //       }
 //     }
 //   }
-// }
+}
