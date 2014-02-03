@@ -49,4 +49,21 @@ module ApplicationHelper
     return hash.to_json
   end
 
+  # { 1: 10, 2: 20 }
+  def reservation_rooms_as_json(items)
+    hash = {}
+    items.each do |ri|
+      logger.debug( Date.today )
+      logger.debug( ri.since )
+      logger.debug( ri.until )
+      dates = ( (ri.since)..(ri.until) ).each{ |date| date.strftime("%Y_%m_%d") }
+      hash[ri.id] = {
+        reservation: ri.reservation_id,
+        rooms: ri.get_rooms,
+        dates: dates
+      }
+    end
+    return hash.to_json
+  end
+
 end

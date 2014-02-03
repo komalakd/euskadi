@@ -6,6 +6,16 @@ class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.all
     @rooms = Room.all
+    since_date = Date.today - 3
+    until_date = Date.today + 11
+    
+    @reservation_rooms = ReservationRoom.all
+    # @reservation_rooms = ReservationRoom.get_rooms( since: since_date, until: until_date )
+    # @reservations = ReservationRoom.where( "since >= ? AND until <= ?" )
+
+    logger.debug( @reservation_rooms )
+    @debugs << @reservation_rooms
+
   end
 
   # GET /reservations/1

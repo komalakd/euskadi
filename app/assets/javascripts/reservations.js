@@ -108,3 +108,16 @@ function load_pages(){
     $(this).tab('show');
   });
 }
+
+function load_map(){ // TODO
+//   jQuery.each( reservation_rooms, function( rr_id, rr ){ //each rr
+//     reservation_id = rr.reservation;
+//     jQuery.each( rr, function( room ){ //each room
+//       rr.dates
+//       jQuery.each( room.dates, function( date ){ //each date
+//         cell_id = date + 'room'
+//         $('#'+room).addClass( "myClass yourClass" );
+//       }
+//     }
+//   }
+// }

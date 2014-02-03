@@ -1,3 +1,11 @@
+<script type="text/javascript">
+$(function() {
+  reservation_rooms = <%= raw(reservation_rooms_as_json( @reservation_rooms )) %>;
+
+  load_map();
+});
+</script>
+
 <h2>Mapa de Reservas</h2>
 
 <% if notice %>
@@ -21,7 +29,7 @@
 
   <tr>
     <th></th>
-    <% dates = Date.today..(Date.today + 14) %>
+    <% dates = (Date.today - 3 )..(Date.today + 11) %>
     <% dates.each do |date| %>
     <th><%= date.strftime("%d/%m") %></th>
     <% end %>
@@ -31,7 +39,7 @@
   <tr>
     <td><%= room.number %></td>
     <% dates.each do |date| %>
-    <td></td>
+    <td id="<%= date.strftime("%Y_%m_%d_") + room.id.to_s %>"></td>
     <% end %>
   </tr>
   <% end %>
