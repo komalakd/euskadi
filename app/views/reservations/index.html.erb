@@ -2,8 +2,18 @@
 $(function() {
   reservation_rooms = <%= raw(reservation_rooms_as_json( @reservation_rooms )) %>;
 
+  // TODO - factorizar !
   var datepicker = $( '#'+'datepicker' );
   datepicker.datepicker({
+    format: "dd/mm/yyyy", 
+    language: "es",
+  }).on('changeDate', function(){
+    console.log(this.value);
+    window.location.href = "/reservations?date=" + this.value;
+  });
+
+  var datepicker2 = $( '#'+'datepicker2' );
+  datepicker2.datepicker({
     format: "dd/mm/yyyy", 
     language: "es",
   }).on('changeDate', function(){
@@ -17,6 +27,7 @@ $(function() {
 
 <h2>Mapa de Reservas</h2>
 <input id="datepicker" class="" type="text" name="" placeholder="Mostrar desde...">
+<%= link_to '+ Nueva Reserva', new_reservation_path, { class: 'btn btn-primary pull-right' } %>
 
 <% if notice %>
   <div class="alert alert-success">
@@ -55,6 +66,8 @@ $(function() {
 
 </table>
 
+<input id="datepicker2" class="" type="text" name="" placeholder="Mostrar desde...">
+<%= link_to '+ Nueva Reserva', new_reservation_path, { class: 'btn btn-primary pull-right' } %>
 
 <!-- Listado de reservas - FIXME - borrar! -->
 <table class="table table-hover table-condensed table-striped table-bordered">
@@ -79,6 +92,6 @@ $(function() {
   <% end %>
 </table>
 
-<%= link_to 'Nueva Reserva', new_reservation_path, { class: 'btn btn-primary' } %>
+
 <br />
 <br />
