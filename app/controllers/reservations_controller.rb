@@ -157,7 +157,7 @@ class ReservationsController < ApplicationController
     end
 
     def date_param
-      return params[:date] ? Date.strptime( params[:date], "%Y_%m_%d" ) : nil
+      return params[:date] ? Date.strptime( params[:date], "%d/%m/%Y" ) : nil
     end
 
 end
