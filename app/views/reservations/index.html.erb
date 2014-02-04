@@ -7,6 +7,7 @@ $(function() {
   datepicker.datepicker({
     format: "dd/mm/yyyy", 
     language: "es",
+    autoclose: true
   }).on('changeDate', function(){
     console.log(this.value);
     window.location.href = "/reservations?date=" + this.value;
