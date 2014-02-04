@@ -17,7 +17,7 @@ class ReservationRoom < ActiveRecord::Base
         if self.reservation_item_type == 'Room'
             return [ self.reservation_item_id ]
         else
-            return self.reservation_item.rooms.each{ |room| room.id }
+            return self.reservation_item.rooms.collect{ |room| room.id }
         end
     end
 
