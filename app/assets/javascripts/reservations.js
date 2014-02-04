@@ -110,14 +110,35 @@ function load_pages(){
 }
 
 function load_map(){ // TODO
-//   jQuery.each( reservation_rooms, function( rr_id, rr ){ //each rr
-//     reservation_id = rr.reservation;
-//     jQuery.each( rr, function( room ){ //each room
-//       rr.dates
-//       jQuery.each( room.dates, function( date ){ //each date
-//         cell_id = date + 'room'
-//         $('#'+room).addClass( "myClass yourClass" );
-//       }
-//     }
-//   }
+  console.log( reservation_rooms );
+
+  $.each( reservation_rooms, function( rr_id, rr ){ //each rr
+    reservation_id = rr.reservation;
+    
+    // double loop
+    $.each( rr.rooms, function( room ){ //each room
+      
+      cell_ids = new Array();
+
+      $.each( rr.dates, function( date ){ //each date
+
+        cell_id = rr.dates[date] + '_' + rr.rooms[room];
+        console.log( cell_id );
+
+        cell_ids.push( cell_id );
+
+        $('#'+cell_id).addClass( "reserved" ); // FIXME - pasar estado de la reserva
+        $('#'+cell_id).click(function(){
+          window.location.href = "/reservations/" + reservation_id;
+        });
+      });
+
+      console.log( cell_ids );
+      $( '#' + cell_ids[0] ).addClass( "circle_left" );
+      $( '#' + cell_ids[cell_ids.length-1] ).addClass( "circle_rigth" );
+      
+
+    });
+  });
+
 }
