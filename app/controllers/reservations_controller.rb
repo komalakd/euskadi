@@ -6,8 +6,11 @@ class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.all
     @rooms = Room.all
-    since_date = Date.today - 3
-    until_date = Date.today + 11
+
+
+    since_date = date_param || Date.today - 3
+    until_date = since_date + 14
+    @dates = ( since_date )..( until_date )
     
     @reservation_rooms = ReservationRoom.all
     # @reservation_rooms = ReservationRoom.get_rooms( since: since_date, until: until_date )
@@ -151,6 +154,10 @@ class ReservationsController < ApplicationController
 
       return { rooms: new_reservation_rooms, groups: new_reservation_groups }
 
+    end
+
+    def date_param
+      return params[:date] ? Date.strptime( params[:date], "%Y_%m_%d" ) : nil
     end
 
 end

@@ -29,8 +29,7 @@ $(function() {
 
   <tr>
     <th></th>
-    <% dates = (Date.today - 3 )..(Date.today + 11) %>
-    <% dates.each do |date| %>
+    <% @dates.each do |date| %>
     <th><%= date.strftime("%d/%m") %></th>
     <% end %>
   </tr>
@@ -38,7 +37,7 @@ $(function() {
   <% @rooms.each do |room| %>
   <tr>
     <td><%= room.number %></td>
-    <% dates.each do |date| %>
+    <% @dates.each do |date| %>
     <td id="<%= date.strftime("%Y_%m_%d_") + room.id.to_s %>"></td>
     <% end %>
   </tr>
