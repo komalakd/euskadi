@@ -6,10 +6,10 @@ class ReservationRoom < ActiveRecord::Base
 
     # Retorna todas las habitaciones reservadas en un periodo de tiempo.
     def self.Get_rooms(args)
-        # since = args.since
-        # until = args.until
 
-        return ReservationRoom.all.each{ |rr| rr.reservation_item }
+        return ReservationRoom.where( "since >= ? AND until <= ?", args.since, args.until )
+
+        # return ReservationRoom.all.each{ |rr| rr.reservation_item }
     end
 
     # Retorna el/los ids de las habitaciones asociadas

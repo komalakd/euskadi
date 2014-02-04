@@ -7,18 +7,11 @@ class ReservationsController < ApplicationController
     @reservations = Reservation.all
     @rooms = Room.all
 
-
     since_date = date_param || Date.today - 3
     until_date = since_date + 14
     @dates = ( since_date )..( until_date )
     
-    @reservation_rooms = ReservationRoom.all
-    # @reservation_rooms = ReservationRoom.get_rooms( since: since_date, until: until_date )
-    # @reservations = ReservationRoom.where( "since >= ? AND until <= ?" )
-
-    logger.debug( @reservation_rooms )
-    @debugs << @reservation_rooms
-
+    @reservation_rooms = ReservationRoom.where( "since >= ? AND until <= ?", since_date, until_date )
   end
 
   # GET /reservations/1
