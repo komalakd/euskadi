@@ -4,11 +4,16 @@ $(function() {
   rooms       = <%= raw(rooms_as_json( @rooms )) %>;
   groups      = <%= raw(groups_as_json( @groups )) %>;
   room_types  = <%= raw(room_types_as_json( @room_types )) %>;
+  passengers  = <%= raw(passengers_as_json( @passengers )) %>;
 
   load_form();
   load_pages();
 
-  $('#search').typeahead({ // http://tatiyants.com/how-to-use-json-objects-with-twitter-bootstrap-typeahead/
+  if( reservation.passenger ){ 
+    $('#passenger_search').val( reservation.passenger.dni );
+  }
+
+  $('#passenger_search').typeahead({ // http://tatiyants.com/how-to-use-json-objects-with-twitter-bootstrap-typeahead/
     
     source: function (query, process) {
         // $.ajax({
@@ -29,25 +34,26 @@ $(function() {
       states = [];
       map = {};
    
-      var data = [
-        {"stateCode": "CA", "stateName": "California"},
-        {"stateCode": "AZ", "stateName": "Arizona"},
-        {"stateCode": "NY", "stateName": "New York"},
-        {"stateCode": "NV", "stateName": "Nevada"},
-        {"stateCode": "OH", "stateName": "Ohio"}
-      ];
+      // var data = [
+      //   {"passenger_id": "CA", "dni": "California"},
+      //   {"passenger_id": "AZ", "dni": "Arizona"},
+      //   {"passenger_id": "NY", "dni": "New York"},
+      //   {"passenger_id": "NV", "dni": "Nevada"},
+      //   {"passenger_id": "OH", "dni": "Ohio"}
+      // ];
    
-      $.each(data, function (i, state) {
-        map[state.stateName] = state;
-        states.push(state.stateName);
+      $.each(passengers, function (i, state) {
+        map[state.dni] = state;
+        states.push(state.dni);
       });
    
       process(states);
     },
     
     updater: function (item) {
-      selectedState = map[item].stateCode;
+      selectedState = map[item].passenger_id;
       alert( selectedState );
+      $('#reservation_passenger_id').val( selectedState );
       return item;
     },
     
@@ -105,7 +111,8 @@ $(function() {
   <div class="control-group select">
     <%= f.label :passenger_id, 'Nombre', { class: 'control-label' } %>
     <div class="controls">
-      <input id="search" placeholder="Ingrese DNI..." class="" type="text" name="">
+      <input id="passenger_search" placeholder="Ingrese DNI..." class="" type="text" name="">
+      <%= f.hidden_field :passenger_id  %>
       <%= link_to '+ Nuevo Pasajero', new_passenger_path, { class: 'btn' } %>
     </div>
   </div>
@@ -122,13 +129,8 @@ $(function() {
 
   <h3>Habitaciones</h3>
 
-  <!-- <div class="control-group">
-    <label class="control-label">Habitaciones</label>
-  </div> -->
-
   <% group_count = {} %>
   
-
   <ul class="nav nav-tabs" id="myTab">
     <% Page.all.each do |page| %>
     <li><a href="#page_<%= page.id %>"><%= page.name %></a></li>

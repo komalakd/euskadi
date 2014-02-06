@@ -4,6 +4,7 @@ module ApplicationHelper
   def reservation_as_json(r)
     {
       id: r.id,
+      passenger: r.passenger ? { id: r.passenger_id, dni: r.passenger.dni } : nil,
       items: r.reservation_rooms.collect do |rr|
         {
           id: rr.reservation_item_id,
@@ -62,6 +63,11 @@ module ApplicationHelper
       @debugs << { hash: dates }
     end
     return hash.to_json
+  end
+
+  # [ { id: 4, dni: 12345678, full_name: 'pepe argento' ]
+  def passengers_as_json(passengers)
+    passengers.map{ |p| { passenger_id: p.id, dni: p.dni, name: p.name + ' ' + p.lastname } }.to_json
   end
 
 end
