@@ -31,7 +31,7 @@ $(function() {
         //   }
         // });
 
-      states = [];
+      matches = [];
       map = {};
    
       // var data = [
@@ -42,12 +42,13 @@ $(function() {
       //   {"passenger_id": "OH", "dni": "Ohio"}
       // ];
    
-      $.each(passengers, function (i, state) {
-        map[state.dni] = state;
-        states.push(state.dni);
+      $.each(passengers, function (i, passenger) {
+        // var passenger_denomination = passenger.dni + ' (' + passenger.name + ')';
+        map[passenger.passenger_denomination] = passenger;
+        matches.push(passenger.passenger_denomination);
       });
    
-      process(states);
+      process(matches);
     },
     
     updater: function (item) {
@@ -108,8 +109,8 @@ $(function() {
   <h3>Datos pasajero</h3>
 
 
-  <div class="control-group select">
-    <%= f.label :passenger_id, 'Nombre', { class: 'control-label' } %>
+  <div class="control-group">
+    <%= f.label :passenger_id, 'Pasajero', { class: 'control-label' } %>
     <div class="controls">
       <input id="passenger_search" placeholder="Ingrese DNI..." class="" type="text" name="">
       <%= f.hidden_field :passenger_id  %>

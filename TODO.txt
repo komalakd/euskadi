@@ -29,15 +29,15 @@ SESIÓN
 [ ] Cerrar sesión.
 
 MAPA DE RESERVAS
-[ ] Mostrar los días de reservas con colores (LIBRE, RESERVADO, CHECK-IN, PAGADO) resaltando día desde y día hasta.
-[ ] Agregar links desde el mapa a c/u de las reservas.  
+[X] Mostrar los días de reservas con colores (LIBRE, RESERVADO, CHECK-IN, PAGADO) resaltando día desde y día hasta.
+[X] Agregar links desde el mapa a c/u de las reservas.
 [ ] Agregar, por día, por tipo de habitación, cantidad de habitaciones libres y ocupadas (no tener en cuenta combinadas).
-[ ] Mostrar el botón "Nueva reserva" arriba y debajo del mapa.
-[ ] Agregar 
+[X] Mostrar el botón "Nueva reserva" arriba y debajo del mapa.
+[ ] Agregar datepicker para el cambio de día.
 
 PASAJEROS
 [ ] Agregar buscador de pasajeros (DNI, nombre, apellido, algún teléfono).
-[ ] Validaciones del objeto pasajero (obligatorios: nombre, apellido y algun telefono)
+[ ] Validaciones del objeto pasajero (obligatorios: dni, nombre, apellido y algun telefono)
 
 ANALIZAR
 [?] Reservas sin límite de tiempo.
@@ -47,13 +47,14 @@ CONTROLES DE NUEVA RESERVA
 [ ] Al querer modificarse el costo x día de una habitación se debe recalcular el monto total.
 [ ] Al hacer click en una combinada bloquear las respectivas habitaciones
 [ ] Validaciones del objeto reserva
-[ ] Agregar buscador de pasajero (DNI).
-[ ] Agregar buscador de empresa (razón social).
+[X] Agregar buscador de pasajero (DNI).
+[-] Agregar buscador de empresa (razón social). -> por ahora sigue el select.
+[ ] Cerrar datepicker al seleccionar una fecha.
 
 POPUPS NUEVA RESERVA
 [ ] Nuevo pasajero (factorizar html de nuevo pasajero)
 [ ] Nueva empresa
-Al dar de alta el objeto (via ajax) se cierra el popup y vuelve a la pantalla de nueva reserva.
+Al dar de alta el objeto (via ajax) se cierra el popup y se carga el nuevo objeto en el campo correspondiente.
 
 RAILS
 [ ]Rutas inválidas

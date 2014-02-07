@@ -67,7 +67,7 @@ module ApplicationHelper
 
   # [ { id: 4, dni: 12345678, full_name: 'pepe argento' ]
   def passengers_as_json(passengers)
-    passengers.map{ |p| { passenger_id: p.id, dni: p.dni, name: p.name + ' ' + p.lastname } }.to_json
+    passengers.map{ |p| { passenger_id: p.id, dni: p.dni, passenger_denomination: p.dni + ' (' + p.name + ' ' + p.lastname + ')' } }.to_json
   end
 
 end

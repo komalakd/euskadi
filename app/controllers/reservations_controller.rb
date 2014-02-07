@@ -28,7 +28,7 @@ class ReservationsController < ApplicationController
       end
     end
     @reservation = Reservation.new
-    @enterprises = Enterprise.all
+    @enterprises = Enterprise.all.order(:name)
     @rooms = Room.all
     @room_types = RoomType.all
     @groups = Group.all
@@ -37,7 +37,7 @@ class ReservationsController < ApplicationController
   # GET /reservations/1/edit
   def edit
     @passengers = Passenger.all
-    @enterprises = Enterprise.all
+    @enterprises = Enterprise.all.order(:name)
     @rooms = Room.all
     @room_types = RoomType.all
     @groups = Group.all
