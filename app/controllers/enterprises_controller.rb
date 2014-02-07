@@ -1,4 +1,5 @@
 class EnterprisesController < ApplicationController
+
   before_action :set_enterprise, only: [:show, :edit, :update, :destroy]
 
   # GET /enterprises
@@ -64,11 +65,16 @@ class EnterprisesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_enterprise
-      @enterprise = Enterprise.find(params[:id])
+      begin
+        @enterprise = Enterprise.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => e
+        redirect_to action: 'index'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def enterprise_params
       params.require(:enterprise).permit(:cuit, :name, :address)
     end
+
 end

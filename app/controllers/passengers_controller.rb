@@ -1,4 +1,7 @@
 class PassengersController < ApplicationController
+
+  before_action :set_passenger, only: [:show, :edit, :update]
+
   # GET /passengers
   # GET /passengers.json
   def index
@@ -13,7 +16,6 @@ class PassengersController < ApplicationController
   # GET /passengers/1
   # GET /passengers/1.json
   def show
-    @passenger = Passenger.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -85,6 +87,14 @@ class PassengersController < ApplicationController
 
     def passenger_params
       params.require(:passenger).permit(:address, :birthdate, :city, :civil_status, :country, :dni, :lastname, :name, :nationality, :proffesion, :phone_number, :province)
+    end
+
+    def set_passenger
+      begin
+        @passenger = Passenger.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => e
+        redirect_to action: 'index'
+      end
     end
   
 end

@@ -33,11 +33,11 @@ MAPA DE RESERVAS
 [X] Agregar links desde el mapa a c/u de las reservas.
 [ ] Agregar, por día, por tipo de habitación, cantidad de habitaciones libres y ocupadas (no tener en cuenta combinadas).
 [X] Mostrar el botón "Nueva reserva" arriba y debajo del mapa.
-[ ] Agregar datepicker para el cambio de día.
+[X] Agregar datepicker para el cambio de día.
 
 PASAJEROS
-[ ] Agregar buscador de pasajeros (DNI, nombre, apellido, algún teléfono).
-[ ] Validaciones del objeto pasajero (obligatorios: dni, nombre, apellido y algun telefono)
+[ ] Agregar buscador de pasajeros (DNI, nombre, apellido y teléfono).
+[X] Validaciones del objeto pasajero (obligatorios: dni, nombre, apellido y telefono)
 
 ANALIZAR
 [?] Reservas sin límite de tiempo.
@@ -61,7 +61,8 @@ RAILS
 [ ]Mensajes de error personalizados
 
 ERRORES
-[ ]Al crear una reserva: Seleccionando una habitación y sin ingresar fechas.
+[X] Manejar las peticiones con fechas invalidas.
+[X] Manejar las peticiones con ids invalidos (redireccionar a los index).
 
 SERVICIOS
 [ ] Crear objetos Service & Room Service

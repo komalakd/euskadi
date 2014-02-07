@@ -64,7 +64,11 @@ class RoomsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_room
-      @room = Room.find(params[:id])
+      begin
+        @room = Room.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => e
+        redirect_to action: 'index'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
