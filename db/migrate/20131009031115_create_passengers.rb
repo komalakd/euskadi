@@ -4,11 +4,13 @@ class CreatePassengers < ActiveRecord::Migration
       t.string :dni
       t.string :name
       t.string :lastname
+      t.string :phone_number
       t.string :nationality
       t.string :birthdate
-      t.string :address
-      t.string :city
       t.string :country
+      t.string :province
+      t.string :city
+      t.string :address
       t.string :proffesion
       t.string :civil_status
 

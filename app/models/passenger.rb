@@ -1,4 +1,4 @@
 class Passenger < ActiveRecord::Base
   has_many :reservations
-  validates :address, :birthdate, :city, :country, :dni, :lastname, :name, :nationality, presence: true
+  validates :dni, :lastname, :name, :phone_number, presence: true
 end

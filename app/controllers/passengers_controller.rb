@@ -84,7 +84,7 @@ class PassengersController < ApplicationController
   private
 
     def passenger_params
-      params.require(:passenger).permit(:address, :birthdate, :city, :civil_status, :country, :dni, :lastname, :name, :nationality, :proffesion)
+      params.require(:passenger).permit(:address, :birthdate, :city, :civil_status, :country, :dni, :lastname, :name, :nationality, :proffesion, :phone_number, :province)
     end
   
 end
