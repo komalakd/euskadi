@@ -5,7 +5,17 @@ class PassengersController < ApplicationController
   # GET /passengers
   # GET /passengers.json
   def index
-    @passengers = Passenger.all
+    dni = params[:passenger_dni]
+    @search_value = dni
+    if dni
+      @passengers = Passenger.where( "dni LIKE '%#{dni}%' " )
+      if @passengers.size == 0 
+        @warning = 'No se encontraron usuarios.'
+        @passengers = Passenger.all
+      end
+    else
+      @passengers = Passenger.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
