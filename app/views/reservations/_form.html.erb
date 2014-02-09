@@ -52,9 +52,8 @@ $(function() {
     },
     
     updater: function (item) {
-      selectedState = map[item].passenger_id;
-      alert( selectedState );
-      $('#reservation_passenger_id').val( selectedState );
+      selected = map[item].passenger_id;
+      $('#reservation_passenger_id').val( selected );
       return item;
     },
     
