@@ -45,7 +45,10 @@ module ApplicationHelper
   def room_types_as_json(room_types)
     hash = {}
     room_types.each do |rt|
-      hash[rt.id] = rt.amount
+      hash[rt.id] = {
+        rooms: rt.rooms.collect{ |room| room.id },
+        amount: rt.amount
+      }
     end
     return hash.to_json
   end

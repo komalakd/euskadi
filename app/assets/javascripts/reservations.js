@@ -17,18 +17,29 @@ function load_form(){
 
   console.log( reservation );
 
+  // monto por cada combinada
+  jQuery.each(groups, function(group_id, group){
+    $('#reservation_group_'+group_id+'_amount').val(this.amount);
+  });
+
+  // monto por cada tipo_habitacion
+  jQuery.each(room_types, function(room_type_id, room_type){
+    jQuery.each(room_type.rooms, function(room_id){
+      $('#reservation_room_'+room_id+'_amount').val(room_type.amount);
+    });
+  });
+
   jQuery.each(reservation.items, function(){
-  console.log( this );
+
     var checkbox_id;
-    var since_id;
-    var until_id;
+    var amount;
     if ( this.type == 'Room' ){
       checkbox_id = 'reservation_room_'+this.id;
     }else{
       checkbox_id = 'reservation_group_'+this.id;
     }
-    since_id = checkbox_id+'_since';
-    until_id = checkbox_id+'_until';
+    var since_id = checkbox_id+'_since';
+    var until_id = checkbox_id+'_until';
     amount_id = checkbox_id+'_amount';
     total_id = checkbox_id+'_total';
 
