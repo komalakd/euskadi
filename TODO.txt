@@ -37,14 +37,14 @@ MAPA DE RESERVAS
 
 PASAJEROS
 [X] Agregar buscador de pasajeros (DNI, nombre, apellido y teléfono).
-[ ] Mejorar el filtro (case-insensitive) 
+[X] Mejorar el filtro (case-insensitive) 
 [X] Validaciones del objeto pasajero (obligatorios: dni, nombre, apellido y telefono)
 
 ANALIZAR
 [?] Reservas sin límite de tiempo.
 
 CONTROLES DE NUEVA RESERVA
-[ ] Mostrar el costo x dia de c/u de las habitaciones (default).
+[X] Mostrar el costo x dia de c/u de las habitaciones (default).
 [ ] Al querer modificarse el costo x día de una habitación se debe recalcular el monto total.
 [ ] Al hacer click en una combinada bloquear las respectivas habitaciones
 [ ] Validaciones del objeto reserva
@@ -58,8 +58,8 @@ POPUPS NUEVA RESERVA
 Al dar de alta el objeto (via ajax) se cierra el popup y se carga el nuevo objeto en el campo correspondiente.
 
 RAILS
-[ ]Rutas inválidas
-[ ]Mensajes de error personalizados
+[ ] Rutas inválidas
+[ ] Mensajes de error personalizados
 
 ERRORES
 [X] Manejar las peticiones con fechas invalidas.

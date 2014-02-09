@@ -131,7 +131,7 @@ $(function() {
 
   <% group_count = {} %>
   
-  <ul class="nav nav-tabs" id="myTab">
+  <ul class="nav nav-tabs" id="myTab" style="margin-bottom: 10px;">
     <% Page.all.each do |page| %>
     <li><a href="#page_<%= page.id %>"><%= page.name %></a></li>
     <% end %>
@@ -142,6 +142,22 @@ $(function() {
 
   <% Page.all.each do |page| %>
     <div class="tab-pane active" id="page_<%= page.id %>">
+
+
+
+      <div class="control-group" style="padding-bottom: 10px;">
+        <div class="controls" style="padding-left: 20px;">
+          <div style="display: inline-block; width: 90px; padding-left: 3px; text-align: center;">Desde:</div>
+          <div style="display: inline-block; width: 90px; padding-left: 3px; text-align: center;">Hasta:</div>
+          <div style="display: inline-block; width: 90px; padding-left: 3px; text-align: center;">Precio diario:</div>
+          <div style="display: inline-block; width: 90px; padding-left: 3px; text-align: center;">Precio total:</div>
+
+        </div>
+      </div>
+
+
+
+
       <% page.rooms.each do |room| %>
         
         <% group = room.group  %>
