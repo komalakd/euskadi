@@ -5,12 +5,17 @@ $(function() {
   groups      = <%= raw(groups_as_json( @groups )) %>;
   room_types  = <%= raw(room_types_as_json( @room_types )) %>;
   passengers  = <%= raw(passengers_as_json( @passengers )) %>;
+  enterprises  = <%= raw(enterprises_as_json( @enterprises )) %>;
 
   load_form();
   load_pages();
 
-  if( reservation.passenger ){ 
-    $('#passenger_search').val( reservation.passenger.dni );
+  if( reservation.passenger ){
+    $('#passenger_search').val( reservation.passenger.passenger_denomination );
+  }
+
+  if( reservation.enterprise ){ 
+    $('#enterprise_search').val( reservation.enterprise.enterprise_denomination );
   }
 
   $('#passenger_search').typeahead({ // http://tatiyants.com/how-to-use-json-objects-with-twitter-bootstrap-typeahead/
@@ -75,6 +80,45 @@ $(function() {
   });
 
 
+  $('#enterprise_search').typeahead({
+    
+    source: function (query, process) {
+
+      matches = [];
+      map = {};
+   
+      $.each(enterprises, function (i, enterprise) {
+        map[enterprise.enterprise_denomination] = enterprise;
+        matches.push(enterprise.enterprise_denomination);
+      });
+   
+      process(matches);
+    },
+    
+    updater: function (item) {
+      selected = map[item].enterprise_id;
+      $('#reservation_enterprise_id').val( selected );
+      return item;
+    },
+    
+    matcher: function (item) {
+      if (item.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
+        return true;
+      }
+    },
+    
+    sorter: function (items) {
+        return items.sort();
+    },
+    
+    highlighter: function (item) {
+      var regex = new RegExp( '(' + this.query + ')', 'gi' );
+      return item.replace( regex, "<strong>$1</strong>" );
+    },
+  
+  });
+
+
 });
 </script>
 
@@ -118,13 +162,16 @@ $(function() {
   </div>
     
   <% if @enterprises.size > 0 %>
-    <div class="control-group select">
+
+    <div class="control-group">
       <%= f.label :enterprise_id, { class: 'control-label' } %>
       <div class="controls">
-        <%= select("reservation", "enterprise_id", @enterprises.collect{ |p| [p.name, p.id] }, { include_blank: true } ) %>
-        <%= link_to '+ Nueva Empresa', new_enterprise_path, { class: 'btn' } %>
+        <input id="enterprise_search" placeholder="Buscar..." class="" type="text" name="">
+      <%= f.hidden_field :enterprise_id  %>
+      <%= link_to '+ Nueva Empresa', new_enterprise_path, { class: 'btn' } %>
       </div>
     </div>
+
   <% end %>
 
   <h3>Habitaciones</h3>
