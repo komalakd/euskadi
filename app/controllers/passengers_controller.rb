@@ -5,12 +5,15 @@ class PassengersController < ApplicationController
   # GET /passengers
   # GET /passengers.json
   def index
-    dni = params[:passenger_dni]
-    @search_value = dni
-    if dni
-      @passengers = Passenger.where( "dni LIKE '%#{dni}%' " )
+    
+    valid_fields = [ 'dni', 'name', 'lastname', 'phone_number' ]
+    @search_field = params[:passenger_field]
+    @search_value = params[:passenger_value]
+
+    if valid_fields.include?(@search_field) && @search_value
+      @passengers = Passenger.where( "#{@search_field} LIKE '%#{@search_value}%' " )
       if @passengers.size == 0 
-        @warning = 'No se encontraron usuarios.'
+        @warning = 'No se encontraron pasajeros.'
         @passengers = Passenger.all
       end
     else

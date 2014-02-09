@@ -36,7 +36,8 @@ MAPA DE RESERVAS
 [X] Agregar datepicker para el cambio de día.
 
 PASAJEROS
-[ ] Agregar buscador de pasajeros (DNI, nombre, apellido y teléfono).
+[X] Agregar buscador de pasajeros (DNI, nombre, apellido y teléfono).
+[ ] Mejorar el filtro (case-insensitive) 
 [X] Validaciones del objeto pasajero (obligatorios: dni, nombre, apellido y telefono)
 
 ANALIZAR

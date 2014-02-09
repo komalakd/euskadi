@@ -27,7 +27,14 @@
 
 <form action="?">
 <div class="input-append pull-right">
-  <input class="span3" id="passenger_dni" name="passenger_dni" type="text" placeholder="Ingrese DNI..." value="<%= @search_value %>">
+  <select class="select2" name="passenger_field">
+    <option>Buscar por...</option>
+    <option value="dni">DNI</option>
+    <option value="name">Nombre</option>
+    <option value="lastname">Apellido</option>
+    <option value="phone_number">Tel&eacute;fono</option>
+  </select>
+  <input class="span3" id="passenger_value" name="passenger_value" type="text" placeholder="Ingrese DNI..." value="<%= @search_value %>">
   <button id="search" class="btn" type="submit">Buscar</button>
 </div>
 </form>
