@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 20140210034955) do
     t.string   "email"
     t.string   "name"
     t.string   "lastname"
+    t.string   "remember_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

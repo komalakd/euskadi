@@ -3,14 +3,14 @@ class SessionsController < ApplicationController
 
   # GET /sessions
   # GET /sessions.json
-  def index
-    @sessions = Session.all
-  end
+  # def index
+  #   @sessions = Session.all
+  # end
 
   # GET /sessions/1
   # GET /sessions/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /sessions/new
   def new
@@ -18,47 +18,43 @@ class SessionsController < ApplicationController
   end
 
   # GET /sessions/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /sessions
   # POST /sessions.json
   def create
-    @session = Session.new(session_params)
-
-    respond_to do |format|
-      if @session.save
-        format.html { redirect_to @session, notice: 'Session was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @session }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @session.errors, status: :unprocessable_entity }
-      end
-    end
+  user = User.find_by_email(params[:email].downcase)
+  if user #&& user.authenticate(params[:password])
+    # Sign the user in and redirect to the user's show page.
+    sign_in user, permanent: params[:remember_me]
+    redirect_back_or root_url
+  else
+    # Create an error message and re-render the signin form.
+    @error = 'Los datos ingresados no son validos.'
+    render 'new'
   end
+end
 
   # PATCH/PUT /sessions/1
   # PATCH/PUT /sessions/1.json
-  def update
-    respond_to do |format|
-      if @session.update(session_params)
-        format.html { redirect_to @session, notice: 'Session was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @session.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @session.update(session_params)
+  #       format.html { redirect_to @session, notice: 'Session was successfully updated.' }
+  #       format.json { head :no_content }
+  #     else
+  #       format.html { render action: 'edit' }
+  #       format.json { render json: @session.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /sessions/1
   # DELETE /sessions/1.json
   def destroy
-    @session.destroy
-    respond_to do |format|
-      format.html { redirect_to sessions_url }
-      format.json { head :no_content }
-    end
+    sign_out
+    redirect_to root_url
   end
 
   private
