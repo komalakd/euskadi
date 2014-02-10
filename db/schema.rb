@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140116033058) do
+ActiveRecord::Schema.define(version: 20140210034955) do
 
   create_table "enterprises", force: true do |t|
     t.string   "cuit"
@@ -100,6 +100,11 @@ ActiveRecord::Schema.define(version: 20140116033058) do
     t.integer  "room_type_id"
     t.integer  "group_id"
     t.integer  "page_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sessions", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end

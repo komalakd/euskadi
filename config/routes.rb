@@ -1,5 +1,6 @@
 Euskadi::Application.routes.draw do
   
+  # get "session/new"
   resources :room_pages
 
   resources :pages
@@ -15,6 +16,7 @@ Euskadi::Application.routes.draw do
   resources :rooms
 
   resources :users
+  resources :sessions
 
   root to: 'passengers#index'
 
@@ -25,6 +27,7 @@ Euskadi::Application.routes.draw do
   resources :room_types,        only: [:index, :show, :edit, :update] # :new, :create, :destroy
   resources :rooms,             only: [:index, :show, :edit, :update] # :new, :create, :destroy
   resources :users,             only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  resources :sessions,          only: [:new, :create, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

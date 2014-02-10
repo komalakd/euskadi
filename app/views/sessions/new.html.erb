@@ -1,0 +1,28 @@
+<h1>New session</h1>
+
+<%= form_tag sessions_path do %>
+
+  <% if notice %>
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <p><%= notice %></p>
+  </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= label_tag :email, nil, { class: 'control-label' } %>
+    <div class="controls">
+      <%= text_field_tag :email %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag :password, nil, { class: 'control-label' } %>
+    <div class="controls">
+      <%= password_field_tag :password %>
+    </div>
+  </div>
+
+  <%= submit_tag 'Iniciar sesion', { class: "btn btn-large btn-primary" } %>
+
+<% end %>
