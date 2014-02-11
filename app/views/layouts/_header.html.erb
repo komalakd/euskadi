@@ -5,6 +5,8 @@
     
       <%= link_to 'Hotel Euskadi', reservations_path, tabindex: -1, class: 'brand' %>
       
+      <% if signed_in? %>
+
       <ul class="nav">
         <li id="rooms_nav" class="dropdown divider-vertical">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reservas<b class="caret"></b></a>
@@ -33,10 +35,12 @@
             <li><a tabindex="-1" href="#">Datos personales</a></li>
             <li><a tabindex="-1" href="#">Configuraci&oacute;n</a></li>
             <li class="divider"></li>
-            <li><a tabindex="-1" href="#">Cerrar sesi&oacute;n</a></li>
+            <li><%= link_to "Cerrar sesion", signout_path, method: "delete", tabindex: -1 %></li>
           </ul>
         </li>
       </ul>
+
+      <% end %>
 
     </div>
   </div>
