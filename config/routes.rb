@@ -1,33 +1,21 @@
 Euskadi::Application.routes.draw do
   
-  # get "session/new"
-  resources :room_pages
-
-  resources :pages
-
-  resources :passengers
-  resources :enterprises
-
-  resources :reservations
-  resources :reservation_rooms
-
-  resources :groups
-  resources :room_types
-  resources :rooms
-
-  resources :users
-  resources :sessions
-
   root to: 'passengers#index'
 
   resources :passengers,        only: [:index, :new, :create, :show, :edit, :update] # :destroy
   resources :enterprises,       only: [:index, :new, :create, :show, :edit, :update] # :destroy
   resources :reservations,      only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  resources :reservation_rooms
   resources :groups,            only: [:index, :show ,:edit, :update] # :new, :create, :destroy
   resources :room_types,        only: [:index, :show, :edit, :update] # :new, :create, :destroy
   resources :rooms,             only: [:index, :show, :edit, :update] # :new, :create, :destroy
   resources :users,             only: [:index, :new, :create, :show, :edit, :update, :destroy]
   resources :sessions,          only: [:new, :create, :destroy]
+
+  get '/signup',  to: 'users#new'
+  get '/signin',  to: 'sessions#new'
+  get '/signout', to: 'sessions#destroy', via: :delete
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
