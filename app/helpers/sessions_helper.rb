@@ -28,7 +28,7 @@ module SessionsHelper
   def signed_in_user
     unless signed_in?
       store_location
-      redirect_to signin_url, notice: 'Por favor logueate'
+      redirect_to signin_url, notice: 'Por favor logueate' # FIXME!
     end
   end
 
