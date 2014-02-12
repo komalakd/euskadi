@@ -1,18 +1,18 @@
 
 <%= form_tag sessions_path, { class: 'form-signin' } do %>
 
+  <h2 class="form-signin-heading">Iniciar sesi&oacute;n</h2>
+
+  <%= text_field_tag :email, nil, class: 'input-block-level', placeholder: 'Email' %>
+
+  <%= password_field_tag :password, nil, class: 'input-block-level', placeholder: 'Contraseña' %>
+
   <% if @error %>
     <div class="alert alert-error">
       <button type="button" class="close" data-dismiss="alert">×</button>
       <p><%= @error %></p>
     </div>
   <% end %>
-
-  <h2 class="form-signin-heading">Iniciar sesi&oacute;n</h2>
-
-  <%= text_field_tag :email, nil, class: 'input-block-level', placeholder: 'Email' %>
-
-  <%= password_field_tag :password, nil, class: 'input-block-level', placeholder: 'Contraseña' %>
 
   <label class="checkbox">
     <input type="checkbox" value="remember-me">Mantener sesi&oacute;n iniciada
