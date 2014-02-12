@@ -67,4 +67,4 @@ Page.create( id: 1, name: "Pagina 1" )
 Page.create( id: 2, name: "Pagina 2" )
 
 # User
-User.create( login: "avalle", password: "asd", email: "andresvalle.isi@gmail.com", name: "Andrés", lastname: "Valle" )
+User.create( login: "avalle", password: "asd", email: "andresvalle.isi@gmail.com", name: "Andres", lastname: "Valle" )

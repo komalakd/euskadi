@@ -1,4 +1,6 @@
 class ReservationRoomsController < ApplicationController
+
+  before_filter :signed_in_user
   before_action :set_reservation_room, only: [:show, :edit, :update, :destroy]
 
   # GET /reservation_rooms

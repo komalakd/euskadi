@@ -10,7 +10,6 @@ module SessionsHelper
   end
 
   def signed_in?
-    @debugs << current_user
     !current_user.nil?
   end
 
@@ -29,7 +28,7 @@ module SessionsHelper
   def signed_in_user
     unless signed_in?
       store_location
-      redirect_to signin_url, notice: t('please_sign_in')
+      redirect_to signin_url, notice: 'Por favor logueate'
     end
   end
 
@@ -43,9 +42,9 @@ module SessionsHelper
     session.delete(:return_to)
   end
 
-  # def store_location
-  #   session[:return_to] = request.url
-  # end
+  def store_location
+    session[:return_to] = request.url
+  end
 
   # def admin_user
   #   redirect_to(root_path) unless current_user && current_user.admin?

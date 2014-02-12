@@ -1,5 +1,6 @@
 class PassengersController < ApplicationController
 
+  before_filter :signed_in_user
   before_action :set_passenger, only: [:show, :edit, :update]
 
   # GET /passengers
