@@ -24,9 +24,10 @@ USUARIOS
 [ ] modificar clave
 
 SESIÓN
-[ ] Iniciar sesión.
-[ ] Validar sesión iniciada.
-[ ] Cerrar sesión.
+[X] Iniciar sesión.
+[X] Validar sesión iniciada.
+[X] Cerrar sesión.
+[ ] Validar contraseña al iniciar sesion
 
 MAPA DE RESERVAS
 [X] Mostrar los días de reservas con colores (LIBRE, RESERVADO, CHECK-IN, PAGADO) resaltando día desde y día hasta.

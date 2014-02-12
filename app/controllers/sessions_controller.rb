@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
   # POST /sessions.json
   def create
   user = User.find_by_email(params[:email].downcase)
-  if user #&& user.authenticate(params[:password])
+  if user && user.authenticate(params[:password])
     # Sign the user in and redirect to the user's show page.
     sign_in user, permanent: params[:remember_me]
     redirect_back_or root_url
