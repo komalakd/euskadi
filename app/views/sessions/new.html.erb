@@ -1,6 +1,5 @@
-<h1>New session</h1>
 
-<%= form_tag sessions_path do %>
+<%= form_tag sessions_path, { class: 'form-signin' } do %>
 
   <% if @error %>
     <div class="alert alert-error">
@@ -9,19 +8,15 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= label_tag :email, nil, { class: 'control-label' } %>
-    <div class="controls">
-      <%= text_field_tag :email %>
-    </div>
-  </div>
+  <h2 class="form-signin-heading">Iniciar sesi&oacute;n</h2>
 
-  <div class="control-group">
-    <%= label_tag :password, nil, { class: 'control-label' } %>
-    <div class="controls">
-      <%= password_field_tag :password %>
-    </div>
-  </div>
+  <%= text_field_tag :email, nil, class: 'input-block-level', placeholder: 'Email' %>
+
+  <%= password_field_tag :password, nil, class: 'input-block-level', placeholder: 'Contraseña' %>
+
+  <label class="checkbox">
+    <input type="checkbox" value="remember-me">Mantener sesi&oacute;n iniciada
+  </label>
 
   <%= submit_tag 'Iniciar sesion', { class: "btn btn-large btn-primary" } %>
 
