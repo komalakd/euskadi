@@ -27,7 +27,9 @@ SESIÓN
 [X] Iniciar sesión.
 [X] Validar sesión iniciada.
 [X] Cerrar sesión.
-[ ] Validar contraseña al iniciar sesion
+[X] Validar contraseña al iniciar sesion
+[ ] Mantener sesion iniciada
+[ ] Cambiar el layout de la sesion
 
 MAPA DE RESERVAS
 [X] Mostrar los días de reservas con colores (LIBRE, RESERVADO, CHECK-IN, PAGADO) resaltando día desde y día hasta.
@@ -59,7 +61,7 @@ POPUPS NUEVA RESERVA
 Al dar de alta el objeto (via ajax) se cierra el popup y se carga el nuevo objeto en el campo correspondiente.
 
 RAILS
-[ ] Rutas inválidas
+[ ] Rutas inválidas o inexistentes
 [ ] Mensajes de error personalizados
 
 ERRORES
@@ -74,4 +76,7 @@ SERVICIOS
 
 FECHAS
 [ ] Cambiar las fechas a UTC -3 
-[ ] Cambiar días y meses a español 
+[ ] Cambiar días y meses a español
+
+DATOS INCICIALES
+[ ] Mover el archivo seeds.rb a lib/tasks/NOMBRE_CLIENTE/datos_iniciales.rake
