@@ -5,6 +5,7 @@ module ApplicationHelper
     {
       id: r.id,
       passenger: r.passenger ? { id: r.passenger_id, dni: r.passenger.dni, passenger_denomination: r.passenger.name + ' ' + r.passenger.lastname + ' (' + r.passenger.dni + ')' } : nil,
+      enterprise: r.enterprise ? { id: r.enterprise_id, enterprise_denomination: r.enterprise.name + ' (' + r.enterprise.cuit + ')' } : nil,
       items: r.reservation_rooms.collect do |rr|
         {
           id: rr.reservation_item_id,
