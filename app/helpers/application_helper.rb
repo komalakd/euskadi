@@ -4,7 +4,7 @@ module ApplicationHelper
   def reservation_as_json(r)
     {
       id: r.id,
-      passenger: r.passenger ? { id: r.passenger_id, dni: r.passenger.dni } : nil,
+      passenger: r.passenger ? { id: r.passenger_id, dni: r.passenger.dni, passenger_denomination: r.passenger.name + ' ' + r.passenger.lastname + ' (' + r.passenger.dni + ')' } : nil,
       items: r.reservation_rooms.collect do |rr|
         {
           id: rr.reservation_item_id,

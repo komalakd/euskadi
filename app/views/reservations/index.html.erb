@@ -37,11 +37,18 @@ $(function() {
   </div>
 <% end %>
 
-<% if @reservations.size <= 0 %>
-
-  <div class="alert alert-success">
+<% if alert %>
+  <div class="alert alert-block">
     <button type="button" class="close" data-dismiss="alert">×</button>
-    <p>No hay reservas registradas, para agregar una haga click <%= link_to 'aquí', new_reservation_path %>.</p>
+    <p><%= alert %></p>
+  </div>
+<% end %>
+
+<% if Passenger.all.size == 0 %>
+
+  <div class="alert alert-info">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <p>No hay pasajeros registrados, para agregar uno haga click <%= link_to 'aquí', new_passenger_path %>.</p>
   </div>
 
 <% end %>
@@ -69,29 +76,6 @@ $(function() {
 
 <input id="datepicker2" class="" type="text" name="" placeholder="Mostrar desde...">
 <%= link_to '+ Nueva Reserva', new_reservation_path, { class: 'btn btn-primary pull-right' } %>
-
-<!-- Listado de reservas - FIXME - borrar! -->
-<table class="table table-hover table-condensed table-striped table-bordered">
-  <tr>
-    <th><%= t('activerecord.attributes.reservation.passenger_id') %></th>
-    <th><%= t('activerecord.attributes.reservation.enterprise_id') %></th>
-    <th><%= t('activerecord.attributes.reservation.amount') %></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-  <% @reservations.each do |reservation| %>
-    <tr>
-      <td><%= reservation.passenger_id %></td>
-      <td><%= reservation.enterprise_id %></td>
-      <td><%= reservation.amount %></td>
-      <td><%= link_to 'Detalle', reservation %></td>
-      <td><%= link_to 'Editar', edit_reservation_path(reservation) %></td>
-      <td><%= link_to 'Eliminar', reservation, method: :delete, data: { confirm: 'Esta seguro que desea eliminar la reserva?' } %></td>
-    </tr>
-  <% end %>
-</table>
 
 
 <br />

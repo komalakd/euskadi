@@ -4,5 +4,7 @@
   </div>
 </div>
 
+<% if Rails.env.development? %>
 <pre><%= debug(params) %></pre>
 <pre><%= @debugs.each{ |d| debug(d) } %></pre>
+<% end %>

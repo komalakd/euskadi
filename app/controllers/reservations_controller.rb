@@ -25,7 +25,7 @@ class ReservationsController < ApplicationController
     @passengers = Passenger.all
     if !(@passengers.size > 0)
       respond_to do |format|
-        format.html { redirect_to reservations_path, notice: 'Debe cargar al menos un pasajero para poder cargar una reserva.' }
+        format.html { redirect_to reservations_path, alert: 'Debe cargar al menos un pasajero para poder cargar una reserva.' }
       end
     end
     @reservation = Reservation.new
