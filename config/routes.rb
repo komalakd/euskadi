@@ -1,6 +1,8 @@
 Euskadi::Application.routes.draw do
   
-  root to: 'passengers#index'
+  get '*path' => redirect('/')
+
+  root to: 'reservations#index'
 
   resources :passengers,        only: [:index, :new, :create, :show, :edit, :update] # :destroy
   resources :enterprises,       only: [:index, :new, :create, :show, :edit, :update] # :destroy
