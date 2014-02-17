@@ -71,3 +71,7 @@ SERVICIOS
 [ ] Agregar botón "Agregar servicio" a una habitación de una reserva.
 [ ] Mostrar los servicios de una habitación de una reserva.
 [ ] Eliminar los servicios de una habitación de una reserva.
+
+FECHAS
+[ ] Cambiar las fechas a UTC -3 
+[ ] Cambiar días y meses a español 

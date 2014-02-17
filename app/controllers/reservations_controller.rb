@@ -11,8 +11,8 @@ class ReservationsController < ApplicationController
     since_date = date_param || Date.today - 3
     until_date = since_date + 14
     @dates = ( since_date )..( until_date )
-    
-    @reservation_rooms = ReservationRoom.where( "since >= ? AND until <= ?", since_date, until_date )
+
+    @reservation_rooms = ReservationRoom.where( "since <= ? OR until >= ?", until_date, since_date )
   end
 
   # GET /reservations/1
