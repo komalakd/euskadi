@@ -8,9 +8,9 @@
 <% end %>
 
 <p>
-  <b><%= t('activerecord.attributes.reservation.passenger_id') %>:</b>
   <% p = @reservation.passenger %>
-  <%= p.name + ' ' + p.lastname %>
+  <b><%= t('activerecord.attributes.reservation.passenger_id') %>:</b>
+  <%= link_to p.name + ' ' + p.lastname, passenger_path( @reservation.passenger ) %>
 </p>
 
 <% if e = @reservation.enterprise %>

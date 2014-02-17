@@ -59,7 +59,7 @@ class ReservationsController < ApplicationController
 
     respond_to do |format|
       if @reservation.save
-        format.html { redirect_to @reservation, notice: 'La reserva ha sido creada correctamente.' }
+        format.html { redirect_to @reservation, notice: 'La reserva se ha registrado correctamente.' }
         format.json { render action: 'show', status: :created, location: @reservation }
       else
         format.html { render action: 'new' }
