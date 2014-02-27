@@ -161,3 +161,7 @@ html, body {
 #mapa th {
   text-align: center;
 }
+
+.invalid_amount { 
+  background-color: #ff8888 !important; 
+}

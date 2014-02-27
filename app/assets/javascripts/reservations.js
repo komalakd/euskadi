@@ -153,3 +153,35 @@ function load_map(){ // TODO
   });
 
 }
+
+function calculate_total_amount(){
+  console.log("calculate_total_amount");
+  var total = 0;
+  $( "input[type=checkbox]" ).each(function() {
+      if( $(this).is(':checked')) {
+          console.log("checked");
+          // var since = $( '#'+this.id+'_since' );
+          // var until = $( '#'+this.id+'_until' );
+
+          var start = $( '#'+this.id+'_since' ).val();
+          var end   = $( '#'+this.id+'_until' ).val();
+
+          start = new Date( start.replace( /(\d{2})\/(\d{2})\/(\d{4})/, "$2/$1/$3") );
+          end = new Date( end.replace( /(\d{2})\/(\d{2})\/(\d{4})/, "$2/$1/$3") );
+
+          // end - start returns difference in milliseconds 
+          var day_difference = new Date(end - start);
+          day_difference = day_difference / 24 / 60 / 60 / 1000 ;
+
+          console.log( this.id );
+          var amount = $( '#'+this.id+'_amount' ).val();
+          console.log(amount);
+          var subtotal = amount * day_difference;
+          $( '#'+this.id+'_total' ).val(subtotal);
+          total += subtotal;
+      }
+  });
+
+  $('#reservation_amount').val(total);
+
+}

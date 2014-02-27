@@ -119,6 +119,20 @@ $(function() {
   });
 
 
+
+  $('.amount').bind('keyup', function(e) {
+    if (this.value.match(/^[0-9]{1,14}(\.[0-9]{0,2})?$/) === null) {
+      $(this).addClass('invalid_amount');
+    } else {
+      $(this).removeClass('invalid_amount');
+      calculate_total_amount();
+    }
+  });
+
+  $('.date').change(function(e) {
+    calculate_total_amount();
+  });
+
 });
 </script>
 
@@ -216,10 +230,10 @@ $(function() {
             <% group_id = 'reservation_group_' + group.id.to_s %>
             <% group_name = 'reservation_group[' + group.id.to_s + ']' %>
             <input id="<%= group_id %>" class="room_selection" type="checkbox" value="1" name="chk_<%= group_name %>">
-            <input id="<%= group_id %>_since" class="room_selection hide" type="text" name="<%= group_name %>[since]">
-            <input id="<%= group_id %>_until" class="room_selection hide" type="text" name="<%= group_name %>[until]">
-            <input id="<%= group_id %>_amount" class="room_selection hide" type="text" name="<%= group_name %>[amount]">
-            <input id="<%= group_id %>_total" class="room_selection hide" type="text" name="<%= group_name %>[total]" disabled="disabled">
+            <input id="<%= group_id %>_since" class="room_selection hide date" type="text" name="<%= group_name %>[since]">
+            <input id="<%= group_id %>_until" class="room_selection hide date" type="text" name="<%= group_name %>[until]">
+            <input id="<%= group_id %>_amount" class="room_selection hide amount" type="text" name="<%= group_name %>[amount]">
+            <input id="<%= group_id %>_total" class="room_selection hide" type="text" name="<%= group_name %>[total]" readonly="readonly">
           </div>
         </div>
         <% end %>
@@ -230,10 +244,10 @@ $(function() {
             <% room_id = 'reservation_room_' + room.id.to_s %>
             <% room_name = 'reservation_room[' + room.id.to_s + ']' %>
             <input id="<%= room_id %>" class="room_selection" type="checkbox" value="1" name="chk_<%= room_name %>">
-            <input id="<%= room_id %>_since" class="room_selection hide" type="text" name="<%= room_name %>[since]">
-            <input id="<%= room_id %>_until" class="room_selection hide" type="text" name="<%= room_name %>[until]">
-            <input id="<%= room_id %>_amount" class="room_selection hide" type="text" name="<%= room_name %>[amount]">
-            <input id="<%= room_id %>_total" class="room_selection hide" type="text" name="<%= room_name %>[total]" disabled="disabled">
+            <input id="<%= room_id %>_since date" class="room_selection hide" type="text" name="<%= room_name %>[since]">
+            <input id="<%= room_id %>_until date" class="room_selection hide" type="text" name="<%= room_name %>[until]">
+            <input id="<%= room_id %>_amount" class="room_selection hide amount" type="text" name="<%= room_name %>[amount]">
+            <input id="<%= room_id %>_total" class="room_selection hide" type="text" name="<%= room_name %>[total]" readonly="readonly">
           </div>
         </div>
       <% end %>
@@ -243,7 +257,7 @@ $(function() {
   <div class="control-group">
     <%= f.label :amount, { class: 'control-label' } %>
     <div class="controls">
-      <%= f.text_field :amount %>
+      <%= f.text_field :amount, { readonly: true } %>
     </div>
   </div>
 

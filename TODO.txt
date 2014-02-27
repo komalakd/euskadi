@@ -5,11 +5,17 @@ CHECK-IN
 [ ] Pantalla de check-in
 
 PAGOS
-[ ] Botón registrar pago editar o ver detalle de una reserva.
-[ ] Validación del registro de pago (pago <= monto_total - pagado)
+[ ] Botón "Registrar nuevo pago" editar o ver detalle de una reserva.
+[ ] Mostrar monto total pagado al editar o ver detalle de una reserva.
+[ ] Al punto anterior agregar link "Ver pagos realizados".
+[ ] Listado de pagos realizados para una reserva
+[ ] Validación del registro de pago (pago_a_registrar <= monto_total_reserva - suma_total_pagos)
 
 RESERVAS
 [ ] Agregar estado de la reserva al ver detalle de una reserva.
+[ ] Agregar botón "Cancelar reserva"
+[ ] Agregar listado de reservas canceladas.
+
 
 LIBRO DE PASAJEROS
 [ ] Datos de entrada.
@@ -69,7 +75,7 @@ ERRORES
 [X] Manejar las peticiones con ids invalidos (redireccionar a los index).
 
 SERVICIOS
-[ ] Crear objetos Service & Room Service
+[ ] Crear models Service & Room Service
 [ ] Agregar botón "Agregar servicio" a una habitación de una reserva.
 [ ] Mostrar los servicios de una habitación de una reserva.
 [ ] Eliminar los servicios de una habitación de una reserva.
