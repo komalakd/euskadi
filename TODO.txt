@@ -54,11 +54,12 @@ ANALIZAR
 
 CONTROLES DE NUEVA RESERVA
 [X] Mostrar el costo x dia de c/u de las habitaciones (default).
-[ ] Al querer modificarse el costo x día de una habitación se debe recalcular el monto total.
+[X] Al querer modificarse el costo x día de una habitación se debe recalcular el monto total.
+[X] Al querer modificarse alguna fecha   de una habitación se debe recalcular el monto total.
 [ ] Al hacer click en una combinada bloquear las respectivas habitaciones
 [ ] Validaciones del objeto reserva
 [X] Agregar buscador de pasajero (DNI).
-[-] Agregar buscador de empresa (razón social). -> por ahora sigue el select.
+[X] Agregar buscador de empresa (razón social). -> por ahora sigue el select.
 [ ] Cerrar datepicker al seleccionar una fecha.
 
 POPUPS NUEVA RESERVA
@@ -86,3 +87,6 @@ FECHAS
 
 DATOS INCICIALES
 [ ] Mover el archivo seeds.rb a lib/tasks/NOMBRE_CLIENTE/datos_iniciales.rake
+
+FUTURO
+[ ] Varios "hoteles" x app

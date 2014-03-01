@@ -1,4 +1,26 @@
+<script type="text/javascript">
+  $(function() {
+    var search_option_selected = "<%= @search_field %>";
+    
+    if( search_option_selected ){
+      $('#passenger_field').val( search_option_selected );
+    }
 
+    $('#search_form').on('submit', function(e){
+      if( !$('#passenger_field').val() ){
+        alert("Seleccione un campo para buscar.");
+        e.preventDefault();
+        return;
+      }
+      if( !$('#passenger_value').val() ){
+        alert("Seleccione texto a buscar.");
+        e.preventDefault();
+        return;
+      }
+    });
+
+  });
+</script>
 
 <h2>Listado de Pasajeros</h2>
 
@@ -25,16 +47,16 @@
 
 <% else %>
 
-<form action="?">
+<form action="?" id="search_form">
 <div class="input-append pull-right">
-  <select class="select2" name="passenger_field">
-    <option>Buscar por...</option>
+  <select id="passenger_field" name="passenger_field">
+    <option value="">Buscar por...</option>
     <option value="dni">DNI</option>
     <option value="name">Nombre</option>
     <option value="lastname">Apellido</option>
     <option value="phone_number">Tel&eacute;fono</option>
   </select>
-  <input class="span3" id="passenger_value" name="passenger_value" type="text" placeholder="Ingrese DNI..." value="<%= @search_value %>">
+  <input class="span3" id="passenger_value" name="passenger_value" type="text" placeholder="Ingrese texto a buscar..." value="<%= @search_value %>">
   <button id="search" class="btn" type="submit">Buscar</button>
 </div>
 </form>
