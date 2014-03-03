@@ -2,6 +2,7 @@
 $(function() {
   reservation = <%= raw(reservation_as_json( @reservation )) %>;
   rooms       = <%= raw(rooms_as_json( @rooms )) %>;
+  rooms2       = <%= raw(rooms_as_json( @rooms )) %>;
   groups      = <%= raw(groups_as_json( @groups )) %>;
   room_types  = <%= raw(room_types_as_json( @room_types )) %>;
   passengers  = <%= raw(passengers_as_json( @passengers )) %>;

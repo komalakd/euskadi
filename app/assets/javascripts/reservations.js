@@ -95,18 +95,18 @@ function add_events(){
     var item_id = this.id.substr(index+1);
 
     if( $('#'+check.target.id).hasClass('room_check') ){ // FIXME: rooms is undefined
-      // var group_id = rooms[item_id].group_id;
-      // if( group_id && $('reservation_group_'+group_id).is(':checked') ){
-      //   alert('No puedes seleccionar esta habitacion, ya has seleccionado la combinada.');
-      //   return;
-      // }
+      var group_id = rooms[item_id].group_id;
+      if( group_id && $('#reservation_group_'+group_id).is(':checked') ){
+        alert('No puedes seleccionar esta habitacion, ya has seleccionado la combinada.');
+        $('#'+check.target.id).attr('checked',false);
+        return;
+      }
     }else{ // groupcheck
-      var rooms = groups[item_id].rooms;
-      $.each( rooms, function( index, room_id ){
+      $.each( groups[item_id].rooms, function( index, room_id ){
         if( room_id && $('#reservation_room_'+room_id).is(':checked') ){
           alert('No puedes seleccionar esta combinada, ya has seleccionado una de las habitaciones.');
           $('#'+check.target.id).attr('checked',false);
-          return;
+          return false;
         }
       });
 
