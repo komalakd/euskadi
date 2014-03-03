@@ -11,9 +11,9 @@ PAGOS
 [X] Validación del registro de pago (pago_a_registrar <= monto_total_reserva - suma_total_pagos)
 
 RESERVAS
-[ ] Agregar estado de la reserva al ver detalle de una reserva.
-[ ] Agregar botón "Cancelar reserva"
-[ ] Agregar listado de reservas canceladas.
+[ ] Agregar estado de la reserva al ver detalle de una reserva. after_save( reservation, payment ) -> update_status( reservation )
+[ ] Agregar botón "Cancelar reserva". -> agregar filtro a consulta del mapa
+[ ] Agregar listado de reservas canceladas
 
 BUSQUEDA PASAJEROS
 [ ] Cambiar COLLATE
