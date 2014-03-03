@@ -2,6 +2,7 @@ class Reservation < ActiveRecord::Base
   belongs_to :passenger
   belongs_to :enterprise
   has_many :reservation_rooms
+  has_many :payments
   validates :passenger_id, :amount, presence: true
   validates_presence_of :reservation_rooms, { message: 'Debe seleccionar al menos una.' }
 
@@ -63,6 +64,13 @@ class Reservation < ActiveRecord::Base
 
 
 
+  end
+
+
+  def total_payment()
+    total = 0
+    self.payments.each{ |p| total += p.amount }
+    return total
   end
 
 end

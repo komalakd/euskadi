@@ -5,11 +5,10 @@ CHECK-IN
 [ ] Pantalla de check-in
 
 PAGOS
-[ ] Botón "Registrar nuevo pago" editar o ver detalle de una reserva.
+[X] Botón "Registrar nuevo pago" editar o ver detalle de una reserva.
 [ ] Mostrar monto total pagado al editar o ver detalle de una reserva.
-[ ] Al punto anterior agregar link "Ver pagos realizados".
-[ ] Listado de pagos realizados para una reserva
-[ ] Validación del registro de pago (pago_a_registrar <= monto_total_reserva - suma_total_pagos)
+[X] Listado de pagos realizados para una reserva
+[X] Validación del registro de pago (pago_a_registrar <= monto_total_reserva - suma_total_pagos)
 
 RESERVAS
 [ ] Agregar estado de la reserva al ver detalle de una reserva.

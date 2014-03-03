@@ -66,6 +66,9 @@ es-AR:
         amount: "Monto"
         since: "Fecha desde"
         until: "Fecha hasta"
+      payment:
+        reservation_id: "Reserva"
+        amount: "Monto"
 
   will_paginate:
     next_label: siguiente →

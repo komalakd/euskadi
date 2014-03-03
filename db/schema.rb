@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140210034955) do
+ActiveRecord::Schema.define(version: 20140303020709) do
 
   create_table "enterprises", force: true do |t|
     t.string   "cuit"
@@ -54,6 +54,13 @@ ActiveRecord::Schema.define(version: 20140210034955) do
     t.string   "address"
     t.string   "proffesion"
     t.string   "civil_status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payments", force: true do |t|
+    t.decimal  "amount"
+    t.string   "reservation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

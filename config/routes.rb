@@ -1,16 +1,18 @@
 Euskadi::Application.routes.draw do
   
+
   root to: 'reservations#index'
 
   resources :passengers,        only: [:index, :new, :create, :show, :edit, :update] # :destroy
   resources :enterprises,       only: [:index, :new, :create, :show, :edit, :update] # :destroy
   resources :reservations,      only: [:index, :new, :create, :show, :edit, :update, :destroy]
-  resources :reservation_rooms
+  resources :reservation_rooms # FIXME
   resources :groups,            only: [:index, :show ,:edit, :update] # :new, :create, :destroy
   resources :room_types,        only: [:index, :show, :edit, :update] # :new, :create, :destroy
   resources :rooms,             only: [:index, :show, :edit, :update] # :new, :create, :destroy
   resources :users,             only: [:index, :new, :create, :show, :edit, :update, :destroy]
   resources :sessions,          only: [:new, :create, :destroy]
+  resources :payments,          only: [:new, :create]
 
   get '/signup',  to: 'users#new'
   get '/signin',  to: 'sessions#new'

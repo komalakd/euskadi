@@ -21,17 +21,8 @@
 <% end %>
 
 <p>
-  <b><%= t('activerecord.attributes.reservation.amount') %>:</b>
-  <%= @reservation.amount %>
+  <b>Habitaciones:</b>
 </p>
-
-<% if obs = @reservation.observation %>
-<p>
-  <b><%= t('activerecord.attributes.reservation.observation') %>:</b>
-  <%= obs %>
-</p>
-<% end %>
-
 <ul>
   <% @reservation.reservation_rooms.each do |rr| %>
   
@@ -50,7 +41,42 @@
   <%= @reservation.updated_at.strftime("%d/%m/%Y - %H:%M hs") %>
 </p>
 
+<p>
+  <b><%= t('activerecord.attributes.reservation.amount') %>:</b>
+  $<%= @reservation.amount %>
+</p>
+
+<p>
+  <b>Pagos: </b>
+</p>
+
+<% if @reservation.payments.size == 0 %>
+  <p>No hay pagos registrados.</p>
+<% else %>
+
+<ul>
+  <% @reservation.payments.each do |pay| %>
+  <li><strong>$<%= pay.amount %></strong><%= ' el ' + pay.created_at.strftime("%d/%m/%Y a las %H:%M hs") %></li>
+  <% end %>
+</ul>
+
+<p>
+  <% total_payment = @reservation.total_payment %>
+  <b>Total pagado: </b>$<%= total_payment %> <i>(restan $<%= @reservation.amount - total_payment %> )</i>
+</p>
+
+<% end %>
+
+<% if obs = @reservation.observation %>
+<p>
+  <b><%= t('activerecord.attributes.reservation.observation') %>:</b>
+  <%= obs %>
+</p>
+<% end %>
+
+
 <div class="form-actions">
   <%= link_to 'Editar', edit_reservation_path(@reservation), { class: 'btn btn-primary' } %>
+  <%= link_to 'Registrar pago', new_payment_path(reservation_id: @reservation), { class: 'btn' } %>
   <%= link_to 'Atras', reservations_path, { class: 'btn' } %>
 </div>
