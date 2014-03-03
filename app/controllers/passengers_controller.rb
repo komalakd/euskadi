@@ -16,6 +16,8 @@ class PassengersController < ApplicationController
       if @passengers.size == 0 
         @warning = 'No se encontraron pasajeros.'
         @passengers = Passenger.all
+      else
+        @info = "Se encontraron #{@passengers.size} pasajeros."
       end
     else
       @passengers = Passenger.all

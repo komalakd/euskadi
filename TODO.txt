@@ -16,6 +16,9 @@ RESERVAS
 [ ] Agregar botón "Cancelar reserva"
 [ ] Agregar listado de reservas canceladas.
 
+BUSQUEDA PASAJEROS
+[ ] Cambiar COLLATE
+[X] Mostrar cartel "Se encontraron N coincidencias."
 
 LIBRO DE PASAJEROS
 [ ] Datos de entrada.
@@ -56,7 +59,8 @@ CONTROLES DE NUEVA RESERVA
 [X] Mostrar el costo x dia de c/u de las habitaciones (default).
 [X] Al querer modificarse el costo x día de una habitación se debe recalcular el monto total.
 [X] Al querer modificarse alguna fecha   de una habitación se debe recalcular el monto total.
-[ ] Al hacer click en una combinada bloquear las respectivas habitaciones
+[ ] Al hacer click en una combinada, si ya se selecciono una de sus habitaciones, alertar.
+[ ] Al hacer click en una habitacion, si ya se selecciono su combinada, alertar.
 [ ] Validaciones del objeto reserva
 [X] Agregar buscador de pasajero (DNI).
 [X] Agregar buscador de empresa (razón social). -> por ahora sigue el select.
@@ -65,7 +69,7 @@ CONTROLES DE NUEVA RESERVA
 POPUPS NUEVA RESERVA
 [ ] Nuevo pasajero (factorizar html de nuevo pasajero)
 [ ] Nueva empresa
-Al dar de alta el objeto (via ajax) se cierra el popup y se carga el nuevo objeto en el campo correspondiente.
+OBS: Al dar de alta el objeto (via ajax) se cierra el popup y se carga el nuevo objeto en el campo correspondiente.
 
 RAILS
 [ ] Rutas inválidas o inexistentes
