@@ -74,7 +74,7 @@ html, body {
   height: 14px;
 }
 
-.room_selection {
+form#new_reservation .controls input[type="text"]{
   width: 80px;
 }
 

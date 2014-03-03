@@ -22,8 +22,6 @@ function load_rooms(){
   //     ]
   // };
 
-  console.log( reservation );
-
   // monto por cada combinada
   jQuery.each(groups, function(group_id, group){
     $('#reservation_group_'+group_id+'_amount').val(this.amount);
@@ -65,7 +63,7 @@ function load_rooms(){
 
 function show_rooms(){
     
-  $('.room_selection').each(function(){
+  $('.room_check, .group_check').each(function(){
     var datepicker1 = $( '#'+this.id+'_since' );
     var datepicker2 = $( '#'+this.id+'_until' );
     var amount = $( '#'+this.id+'_amount' );
@@ -90,8 +88,29 @@ function show_rooms(){
 
 function add_events(){
 
-  $('.room_selection').change(function(){
-      
+
+  $('.room_check, .group_check').change(function(){
+
+    var index = this.id.lastIndexOf("_");
+    var item_id = this.id.substr(index+1);
+
+    if( $(this).hasClass('room_check') ){
+      var group_id = rooms[item_id].group_id;
+      if( group_id && $('reservation_group_'+group_id).is(':checked') ){
+        alert('No puedes seleccionar esta habitacion, ya has seleccionado la combinada.');
+        return;
+      }
+    }else{ // groupcheck
+      var rooms = groups[item_id].rooms;
+      $.each( rooms, function( room_id ){
+        if( room_id && $('reservation_room_'+room_id).is(':checked') ){
+          alert('No puedes seleccionar esta combinada, ya has seleccionado una de las habitaciones.');
+          return;
+        }
+      });
+
+    }
+
     var datepicker1 = $( '#'+this.id+'_since' );
     var datepicker2 = $( '#'+this.id+'_until' );
     var amount = $( '#'+this.id+'_amount' );
@@ -150,7 +169,7 @@ function load_map(){
       $.each( rr.dates, function( date ){ //each date
 
         cell_id = rr.dates[date] + '_' + rr.rooms[room];
-        console.log( cell_id );
+        // console.log( cell_id );
 
         cell_ids.push( cell_id );
 
@@ -160,7 +179,7 @@ function load_map(){
         });
       });
 
-      console.log( cell_ids );
+      // console.log( cell_ids );
       $( '#' + cell_ids[0] ).addClass( "circle_left" );
       $( '#' + cell_ids[cell_ids.length-1] ).addClass( "circle_rigth" );
       
@@ -173,12 +192,8 @@ function load_map(){
 function calculate_total_amount(){
   console.log("calculate_total_amount");
   var total = 0;
-  $( "input[type=checkbox]" ).each(function() {
+  $( "input[type=checkbox]" ).each(function() { // FIXME
       if( $(this).is(':checked')) {
-          console.log("checked");
-          // var since = $( '#'+this.id+'_since' );
-          // var until = $( '#'+this.id+'_until' );
-
           var start = $( '#'+this.id+'_since' ).val();
           var end   = $( '#'+this.id+'_until' ).val();
           var amount = $( '#'+this.id+'_amount' ).val();
