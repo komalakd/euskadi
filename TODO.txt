@@ -6,7 +6,7 @@ CHECK-IN
 
 PAGOS
 [X] Botón "Registrar nuevo pago" editar o ver detalle de una reserva.
-[ ] Mostrar monto total pagado al editar o ver detalle de una reserva.
+[X] Mostrar monto total pagado al editar o ver detalle de una reserva.
 [X] Listado de pagos realizados para una reserva
 [X] Validación del registro de pago (pago_a_registrar <= monto_total_reserva - suma_total_pagos)
 
@@ -60,7 +60,7 @@ CONTROLES DE NUEVA RESERVA
 [X] Al querer modificarse alguna fecha   de una habitación se debe recalcular el monto total.
 [X] Al hacer click en una combinada, si ya se selecciono una de sus habitaciones, alertar.
 [X] Al hacer click en una habitacion, si ya se selecciono su combinada, alertar.
-[ ] Validaciones del objeto reserva
+[X] Validaciones del objeto reserva
 [X] Agregar buscador de pasajero (DNI).
 [X] Agregar buscador de empresa (razón social). -> por ahora sigue el select.
 [ ] Cerrar datepicker al seleccionar una fecha.

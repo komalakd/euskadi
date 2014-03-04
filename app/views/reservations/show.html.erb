@@ -67,7 +67,8 @@
 
 <% end %>
 
-<% if obs = @reservation.observation %>
+<% obs = @reservation.observation %>
+<% unless obs.nil? || obs == "" %>
 <p>
   <b><%= t('activerecord.attributes.reservation.observation') %>:</b>
   <%= obs %>
