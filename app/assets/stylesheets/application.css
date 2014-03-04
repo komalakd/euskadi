@@ -84,7 +84,7 @@ html, body {
 
 
 /* ROW COLORS */
-.table tbody tr > td.success {
+/*.table tbody tr > td.success {
   background-color: #dff0d8 !important;
 }
 
@@ -114,9 +114,13 @@ html, body {
 
 .table-hover tbody tr:hover > td.info {
   background-color: #c4e3f3 !important;
-}
+}*/
 
 /* MAPA DE RESERVAS */
+
+.map_reservation {
+  cursor: pointer;
+}
 
 .reserved {
   background-color: red !important

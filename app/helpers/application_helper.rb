@@ -58,7 +58,7 @@ module ApplicationHelper
   def reservation_rooms_as_json(items)
     hash = {}
     items.each do |ri|
-      dates = ( (ri.since)..(ri.until) ).collect{ |date| date.strftime("%Y_%m_%d") }
+      dates = ( (ri.since)..(ri.until-1) ).collect{ |date| date.strftime("%Y_%m_%d") } # -1 => no marco el dia en que se va el pasajero
       hash[ri.id] = {
         reservation: ri.reservation_id,
         rooms: ri.get_rooms,

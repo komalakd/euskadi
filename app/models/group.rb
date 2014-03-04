@@ -5,6 +5,6 @@ class Group < ActiveRecord::Base
 end
 
 public
-def common_denomination
-    self.name.to_s
+def denomination
+    return self.group_id
 end

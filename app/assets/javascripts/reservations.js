@@ -160,7 +160,7 @@ function load_map(){
   console.log( reservation_rooms );
 
   $.each( reservation_rooms, function( rr_id, rr ){ //each rr
-    reservation_id = rr.reservation;
+    // reservation_id = rr.reservation;
     
     // double loop
     $.each( rr.rooms, function( room ){ //each room
@@ -174,9 +174,9 @@ function load_map(){
 
         cell_ids.push( cell_id );
 
-        $('#'+cell_id).addClass( "reserved" ); // FIXME - pasar estado de la reserva
+        $('#'+cell_id).addClass( "map_reservation reserved" ); // FIXME - pasar estado de la reserva
         $('#'+cell_id).click(function(){
-          window.location.href = "/reservations/" + reservation_id;
+          window.location.href = "/reservations/" + rr.reservation;
         });
       });
 

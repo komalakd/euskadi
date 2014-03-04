@@ -8,6 +8,6 @@ class Room < ActiveRecord::Base
 end
 
 public
-def common_denomination
-    self.number.to_s
+def denomination
+    return self.number.to_s
 end

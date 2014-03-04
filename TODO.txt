@@ -58,8 +58,8 @@ CONTROLES DE NUEVA RESERVA
 [X] Mostrar el costo x dia de c/u de las habitaciones (default).
 [X] Al querer modificarse el costo x día de una habitación se debe recalcular el monto total.
 [X] Al querer modificarse alguna fecha   de una habitación se debe recalcular el monto total.
-[ ] Al hacer click en una combinada, si ya se selecciono una de sus habitaciones, alertar.
-[ ] Al hacer click en una habitacion, si ya se selecciono su combinada, alertar.
+[X] Al hacer click en una combinada, si ya se selecciono una de sus habitaciones, alertar.
+[X] Al hacer click en una habitacion, si ya se selecciono su combinada, alertar.
 [ ] Validaciones del objeto reserva
 [X] Agregar buscador de pasajero (DNI).
 [X] Agregar buscador de empresa (razón social). -> por ahora sigue el select.

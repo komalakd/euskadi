@@ -76,6 +76,7 @@ class ReservationsController < ApplicationController
     @groups = Group.all
     @passengers = Passenger.all
     @enterprises = Enterprise.all
+    @room_types = RoomType.all
 
     @reservation.update_attributes( reservation_params )
     @reservation.update_instance( new_reservation_rooms )

@@ -68,3 +68,6 @@ Page.create( id: 2, name: "Pagina 2" )
 
 # User
 User.create( login: "avalle", password: "asd", password_confirmation: "asd", email: "andresvalle.isi@gmail.com", name: "Andres", lastname: "Valle" )
+
+# Passenger
+Passenger.create( dni: 34933298, name: "Andres", lastname: "Valle", phone_number: 123456 ) # FIXME - delete
