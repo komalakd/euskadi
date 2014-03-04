@@ -28,8 +28,8 @@ INVESTIGAR
 [?] Envío de emails
 
 USUARIOS
-[ ] modificación de datos personales
-[ ] modificar clave
+[X] modificación de datos personales
+[X] modificar clave
 
 SESIÓN
 [X] Iniciar sesión.
