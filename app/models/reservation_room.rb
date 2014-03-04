@@ -4,14 +4,15 @@ class ReservationRoom < ActiveRecord::Base
     # validates :reservation_id, presence: { message: "reservation_id no puede ser vacio" }
     validates :reservation_item_id, :reservation_item_type, :since, :until, :amount, presence: true #{ message: "sarasa" }
 
+    # devuelve true cuando se superpone con otra
     def validate_superposition
+        return false if self.changed? == false # nos ahorramos la consulta
+
+        self_condition = "AND id != #{self.id}" if ( self.id  ) # excluir de la consulta
         other_rr = ReservationRoom.where( 
-            "reservation_item_type = ? AND reservation_item_id = ? AND since < ? AND until > ?", 
+            "reservation_item_type = ? AND reservation_item_id = ? AND since < ? AND until > ? #{self_condition}", 
             self.reservation_item_type, self.reservation_item_id, self.until, self.since 
         ).first
-        logger.debug "---------validate_superposition------------"
-        logger.debug other_rr.inspect
-        logger.debug other_rr.nil?
         return other_rr.nil? ? false : true
     end
 
