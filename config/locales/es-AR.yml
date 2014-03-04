@@ -69,6 +69,13 @@ es-AR:
       payment:
         reservation_id: "Reserva"
         amount: "Monto"
+      user:
+        login: "Usuario"
+        email: "E-mail"
+        name: "Nombre"
+        lastname: "Apellido"
+        password: "Contraseña"
+        password_confirmation: "Confirmación"
 
   will_paginate:
     next_label: siguiente →

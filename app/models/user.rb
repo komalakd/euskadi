@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
-  validates :login, :lastname, :name, :email, :password, presence: true
-  has_secure_password
+  validates :login, :lastname, :name, :email, presence: true
   before_save :create_remember_token
+
+  has_secure_password
+  validates_presence_of :password, :on => :create
 
 
   def create_remember_token
