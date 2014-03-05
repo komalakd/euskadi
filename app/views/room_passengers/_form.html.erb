@@ -1,3 +1,49 @@
+<script type="text/javascript">
+$(function() {
+
+  passengers  = <%= raw(passengers_as_json( @passengers )) %>;
+
+  $('#passenger_search').typeahead({
+    
+    source: function (query, process) {
+      matches = [];
+      map = {};
+   
+      $.each(passengers, function (i, passenger) {
+        // var passenger_denomination = passenger.dni + ' (' + passenger.name + ')';
+        map[passenger.passenger_denomination] = passenger;
+        matches.push(passenger.passenger_denomination);
+      });
+   
+      process(matches);
+    },
+    
+    updater: function (item) {
+      selected = map[item].passenger_id;
+      $('#reservation_passenger_id').val( selected );
+      $('#room_passenger_passenger_dni').val( map[item].dni );
+      return item;
+    },
+    
+    matcher: function (item) {
+      if (item.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
+        return true;
+      }
+    },
+    
+    sorter: function (items) {
+        return items.sort();
+    },
+    
+    highlighter: function (item) {
+      var regex = new RegExp( '(' + this.query + ')', 'gi' );
+      return item.replace( regex, "<strong>$1</strong>" );
+    },
+  
+  });
+});
+</script>
+
 <%= form_for @room_passenger, html: {class: "form-horizontal"} do |f| %>
   
   <% if @room_passenger.errors.any? %>
@@ -21,6 +67,14 @@
 
 
   <%= f.fields_for :passenger do |passenger| %>
+
+  <div class="control-group">
+    <%= passenger.label :passenger_id, 'Pasajero', { class: 'control-label' } %>
+    <div class="controls">
+      <input id="passenger_search" placeholder="Buscar..." class="" type="text" name="">
+      <%= passenger.hidden_field :passenger_id  %>
+    </div>
+  </div>
     
   <div class="control-group">
     <%= passenger.label :dni, { class: 'control-label' } %>

@@ -15,6 +15,7 @@ class RoomPassengersController < ApplicationController
   # GET /room_passengers/new
   def new
     @room_passenger = RoomPassenger.new
+    @passengers = Passenger.all
   end
 
   # GET /room_passengers/1/edit
