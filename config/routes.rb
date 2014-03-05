@@ -1,6 +1,8 @@
 Euskadi::Application.routes.draw do
   
 
+  resources :room_passengers
+
   root to: 'reservations#index'
 
   resources :passengers,        only: [:index, :new, :create, :show, :edit, :update] # :destroy

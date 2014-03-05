@@ -28,11 +28,22 @@
   
   <% #rr.reservation_item.common_denomination %>
 
+  <li>
   <% if rr.reservation_item_type == 'Room' %>
-  <li><strong><%= rr.reservation_item.number.to_s %></strong><%= ' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %></li>
+    <strong><%= rr.reservation_item.number.to_s %></strong><%= ' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %> <%= link_to "Agregar pasajeros", room_passengers_path( reservation_room_id: rr.id ) %>
   <% else %>
-  <li><strong><%= rr.reservation_item.name.to_s %></strong><%= ' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %></li>
+    <strong><%= rr.reservation_item.name.to_s %></strong><%= ' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %> <%= link_to "Agregar pasajeros", room_passengers_path( reservation_room_id: rr.id ) %>
   <% end %>
+  
+  <% if rr.passengers.size != 0 %>
+  <ul>
+    <% rr.passengers.each do |passenger| %>
+    <li><%= link_to passenger.lastname + ', ' + passenger.name, passengers_path( passenger ) %></li>
+    <% end %>
+  </ul>
+  <% end %>
+  
+  </li>
   <% end %>
 </ul>
 
@@ -79,5 +90,6 @@
 <div class="form-actions">
   <%= link_to 'Editar', edit_reservation_path(@reservation), { class: 'btn btn-primary' } %>
   <%= link_to 'Registrar pago', new_payment_path(reservation_id: @reservation), { class: 'btn' } %>
+  <%= link_to 'Registrar Check-in', room_passengers_path(reservation_id: @reservation), { class: 'btn' } %>
   <%= link_to 'Atras', reservations_path, { class: 'btn' } %>
 </div>

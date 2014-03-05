@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303020709) do
+ActiveRecord::Schema.define(version: 20140304044253) do
 
   create_table "enterprises", force: true do |t|
     t.string   "cuit"
@@ -89,6 +89,13 @@ ActiveRecord::Schema.define(version: 20140303020709) do
     t.integer  "page_id"
     t.integer  "room_id"
     t.integer  "order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "room_passengers", force: true do |t|
+    t.integer  "reservation_room_id"
+    t.integer  "passenger_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
