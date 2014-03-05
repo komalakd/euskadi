@@ -30,9 +30,9 @@
 
   <li>
   <% if rr.reservation_item_type == 'Room' %>
-    <strong><%= rr.reservation_item.number.to_s %></strong><%= ' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %> <%= link_to "Agregar pasajeros", room_passengers_path( reservation_room_id: rr.id ) %>
+    <strong><%= rr.reservation_item.number.to_s %></strong><%= ' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %> <%= link_to "Agregar pasajeros", new_room_passenger_path( reservation_room_id: rr.id ) %>
   <% else %>
-    <strong><%= rr.reservation_item.name.to_s %></strong><%= ' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %> <%= link_to "Agregar pasajeros", room_passengers_path( reservation_room_id: rr.id ) %>
+    <strong><%= rr.reservation_item.name.to_s %></strong><%= ' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %> <%= link_to "Agregar pasajeros", new_room_passenger_path( reservation_room_id: rr.id ) %>
   <% end %>
   
   <% if rr.passengers.size != 0 %>

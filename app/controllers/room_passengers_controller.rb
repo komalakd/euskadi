@@ -3,14 +3,14 @@ class RoomPassengersController < ApplicationController
 
   # GET /room_passengers
   # GET /room_passengers.json
-  def index
-    @room_passengers = RoomPassenger.all
-  end
+  # def index
+  #   @room_passengers = RoomPassenger.all
+  # end
 
   # GET /room_passengers/1
   # GET /room_passengers/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /room_passengers/new
   def new
@@ -18,8 +18,8 @@ class RoomPassengersController < ApplicationController
   end
 
   # GET /room_passengers/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
   # POST /room_passengers
   # POST /room_passengers.json
@@ -39,17 +39,17 @@ class RoomPassengersController < ApplicationController
 
   # PATCH/PUT /room_passengers/1
   # PATCH/PUT /room_passengers/1.json
-  def update
-    respond_to do |format|
-      if @room_passenger.update(room_passenger_params)
-        format.html { redirect_to @room_passenger, notice: 'Room passenger was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @room_passenger.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @room_passenger.update(room_passenger_params)
+  #       format.html { redirect_to @room_passenger, notice: 'Room passenger was successfully updated.' }
+  #       format.json { head :no_content }
+  #     else
+  #       format.html { render action: 'edit' }
+  #       format.json { render json: @room_passenger.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /room_passengers/1
   # DELETE /room_passengers/1.json
