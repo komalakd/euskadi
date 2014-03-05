@@ -26,11 +26,12 @@ class RoomPassengersController < ApplicationController
   # POST /room_passengers.json
   def create
     @room_passenger = RoomPassenger.new(room_passenger_params)
+    @passengers = Passenger.all
 
     respond_to do |format|
       if @room_passenger.save
-        format.html { redirect_to @room_passenger, notice: 'Room passenger was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @room_passenger }
+        format.html { redirect_to @room_passenger.reservation_room.reservation, notice: 'Room passenger was successfully created.' }
+        # format.json { render action: 'show', status: :created, location: @room_passenger }
       else
         format.html { render action: 'new' }
         format.json { render json: @room_passenger.errors, status: :unprocessable_entity }
