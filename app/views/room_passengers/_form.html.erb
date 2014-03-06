@@ -1,7 +1,7 @@
 <script type="text/javascript">
 $(function() {
 
-  passengers  = <%= raw(passengers_as_json( @passengers )) %>;
+  passengers  = <%= raw(passengers_as_json_full( @passengers )) %>;
 
   $('#passenger_search').typeahead({
     
@@ -19,9 +19,21 @@ $(function() {
     },
     
     updater: function (item) {
-      selected = map[item].passenger_id;
-      $('#reservation_passenger_id').val( selected );
+      selected = map[item].passenger_id; // passenger_id
+      $('#room_passenger_passenger_passenger_id').val( selected ); // hidden
       $('#room_passenger_passenger_dni').val( map[item].dni );
+      $('#room_passenger_passenger_name').val( map[item].name );
+      $('#room_passenger_passenger_lastname').val( map[item].lastname );
+      $('#room_passenger_passenger_phone_number').val( map[item].phone_number );
+      $('#room_passenger_passenger_nationality').val( map[item].nationality );
+      $('#room_passenger_passenger_birthdate').val( map[item].birthdate );
+      $('#room_passenger_passenger_country').val( map[item].country );
+      $('#room_passenger_passenger_province').val( map[item].province );
+      $('#room_passenger_passenger_province').val( map[item].province );
+      $('#room_passenger_passenger_city').val( map[item].city );
+      $('#room_passenger_passenger_address').val( map[item].address );
+      $('#room_passenger_passenger_proffesion').val( map[item].proffesion );
+      $('#room_passenger_passenger_civil_status').val( map[item].civil_status );
       return item;
     },
     
@@ -66,12 +78,12 @@ $(function() {
   <% end %>
 
 
-  <%= f.fields_for :passenger do |passenger| %>
+  <%= f.fields_for :passenger, @room_passenger.passenger do |passenger| %>
 
   <div class="control-group">
-    <%= passenger.label :passenger_id, 'Pasajero', { class: 'control-label' } %>
+    <%= passenger.label :passenger_id, 'Buscar Pasajero', { class: 'control-label' } %>
     <div class="controls">
-      <input id="passenger_search" placeholder="Buscar..." class="" type="text" name="">
+      <input id="passenger_search" placeholder="Ingrese texto a buscar..." class="" type="text" name="">
       <%= passenger.hidden_field :passenger_id  %>
     </div>
   </div>

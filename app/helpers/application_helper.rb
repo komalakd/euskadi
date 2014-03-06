@@ -74,6 +74,25 @@ module ApplicationHelper
     passengers.map{ |p| { passenger_id: p.id, dni: p.dni, passenger_denomination: p.name + ' ' + p.lastname + ' (' + p.dni + ')' } }.to_json
   end
 
+  def passengers_as_json_full(passengers)
+    passengers.map{ |p| { 
+      passenger_id: p.id, 
+      dni: p.dni,
+      name: p.name,
+      lastname: p.lastname,
+      phone_number: p.phone_number,
+      nationality: p.nationality,
+      birthdate: p.birthdate,
+      country: p.country,
+      province: p.province,
+      city: p.city,
+      address: p.address,
+      proffesion: p.proffesion,
+      civil_status: p.civil_status,
+      passenger_denomination: p.name + ' ' + p.lastname + ' (' + p.dni + ')' } 
+    }.to_json
+  end
+
   # [ { id: 4, dni: 12345678, full_name: 'pepe argento' ]
   def enterprises_as_json(passengers)
     passengers.map{ |p| { enterprise_id: p.id, enterprise_denomination: p.name + ' (' + p.cuit + ')' } }.to_json

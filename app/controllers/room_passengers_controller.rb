@@ -28,6 +28,17 @@ class RoomPassengersController < ApplicationController
     @room_passenger = RoomPassenger.new(room_passenger_params)
     @passengers = Passenger.all
 
+logger.debug "---------------------------------"
+logger.debug @room_passenger.inspect
+
+    passenger_id = @room_passenger[:passenger][:passenger_id]
+
+    if ( passenger_id && passenger = Passenger.find( passenger_id ) )
+      @room_passenger.passenger = passenger.update_atributes( passenger_params.delete(:passenger_id) )
+    else
+      @room_passenger.passenger = Passenger.new( passenger_params.delete(:passenger_id) )
+    end
+
     respond_to do |format|
       if @room_passenger.save
         format.html { redirect_to @room_passenger.reservation_room.reservation, notice: 'Room passenger was successfully created.' }
@@ -71,6 +82,10 @@ class RoomPassengersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_passenger_params
-      params.require(:room_passenger).permit(:reservation_room_id, :passenger_id)
+      params.require(:room_passenger).permit(:reservation_room_id , passenger: [ :passenger_id, :dni, :name, :lastname, :phone_number ] )
     end
+
+    # def passenger_params
+    #   params.require(:passenger).permit( passenger: [ :passenger_id, :dni, :name, :lastname, :phone_number ])
+    # end
 end
