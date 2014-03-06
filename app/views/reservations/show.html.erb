@@ -27,18 +27,20 @@
   <% @reservation.reservation_rooms.each do |rr| %>
   
   <% #rr.reservation_item.common_denomination %>
-
   <li>
   <% if rr.reservation_item_type == 'Room' %>
-    <strong><%= rr.reservation_item.number.to_s %></strong><%= ' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %> <%= link_to "Agregar pasajeros", new_room_passenger_path( reservation_room_id: rr.id ) %>
+    <strong><%= rr.reservation_item.number.to_s %></strong><%= ' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %> <%= link_to "+Agregar pasajeros", new_room_passenger_path( reservation_room_id: rr.id ), { class: 'btn-small btn-info' } %>
   <% else %>
-    <strong><%= rr.reservation_item.name.to_s %></strong><%= ' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %> <%= link_to "Agregar pasajeros", new_room_passenger_path( reservation_room_id: rr.id ) %>
+    <strong><%= rr.reservation_item.name.to_s %></strong><%= ' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %> <%= link_to "+Agregar pasajeros", new_room_passenger_path( reservation_room_id: rr.id ) %>
   <% end %>
   
-  <% if rr.passengers.size != 0 %>
+  <% if rr.room_passengers.size != 0 %>
   <ul>
-    <% rr.passengers.each do |passenger| %>
-    <li><%= link_to passenger.lastname + ', ' + passenger.name, passengers_path( passenger ) %></li>
+    <% rr.room_passengers.each do |room_passenger| %>
+    <li>
+      <%= link_to room_passenger.passenger.lastname + ', ' + room_passenger.passenger.name  %>
+      <%= link_to 'Quitar', room_passenger, method: :delete, data: { confirm: '¿Desea quitar al pasajero?' }, class: 'btn-small btn-danger' %>
+    </li>
     <% end %>
   </ul>
   <% end %>

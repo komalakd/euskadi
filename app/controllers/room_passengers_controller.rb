@@ -69,7 +69,7 @@ logger.debug @room_passenger.inspect
   def destroy
     @room_passenger.destroy
     respond_to do |format|
-      format.html { redirect_to room_passengers_url }
+      format.html { redirect_to reservation_path( @room_passenger.reservation_room.reservation ) }
       format.json { head :no_content }
     end
   end
