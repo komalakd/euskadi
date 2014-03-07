@@ -78,113 +78,28 @@ $(function() {
   <% end %>
 
 
-  <%= f.fields_for :passenger, @room_passenger.passenger do |passenger| %>
+  <%= f.fields_for :reservation_room do |reservation_room| %>
+
+    <% reservation = @reservation_room.reservation %>
+    <p>Reserva #<%= reservation.id %></p>
+    <p>Habitacion <%= @reservation_room.reservation_item.number %></p>
+
+    <%= f.hidden_field :reservation_room_id %>
+
+  <% end %>
+
+
 
   <div class="control-group">
-    <%= passenger.label :passenger_id, 'Buscar Pasajero', { class: 'control-label' } %>
+    <%= f.label :passenger_id, 'Buscar Pasajero', { class: 'control-label' } %>
     <div class="controls">
       <input id="passenger_search" placeholder="Ingrese texto a buscar..." class="" type="text" name="">
-      <%= passenger.hidden_field :passenger_id  %>
+      <a href="#myModal" role="button" class="btn" data-toggle="modal">+Nuevo pasajero</a>
+      <%= f.hidden_field :passenger_id  %>
     </div>
   </div>
     
-  <div class="control-group">
-    <%= passenger.label :dni, { class: 'control-label' } %>
-    <div class="controls">
-      <%= passenger.text_field :dni %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= passenger.label :name, { class: 'control-label' } %>
-    <div class="controls">
-      <%= passenger.text_field :name %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= passenger.label :lastname, { class: 'control-label' } %>
-    <div class="controls">
-      <%= passenger.text_field :lastname %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= passenger.label :phone_number, { class: 'control-label' } %>
-    <div class="controls">
-      <%= passenger.text_field :phone_number %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= passenger.label :birthdate, { class: 'control-label' } %>
-    <div class="controls">
-      <%= passenger.text_field :birthdate %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= passenger.label :nationality, { class: 'control-label' } %>
-    <div class="controls">
-      <%= passenger.text_field :nationality %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= passenger.label :country, { class: 'control-label' } %>
-    <div class="controls">
-      <%= passenger.text_field :country %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= passenger.label :province, { class: 'control-label' } %>
-    <div class="controls">
-      <%= passenger.text_field :province %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= passenger.label :city, { class: 'control-label' } %>
-    <div class="controls">
-      <%= passenger.text_field :city %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= passenger.label :address, { class: 'control-label' } %>
-    <div class="controls">
-      <%= passenger.text_field :address %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= passenger.label :proffesion, { class: 'control-label' } %>
-    <div class="controls">
-      <%= passenger.text_field :proffesion %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= passenger.label :civil_status, { class: 'control-label' } %>
-    <div class="controls">
-      <%= passenger.text_field :civil_status %>
-    </div>
-  </div>
-
-  <% end %>
-
-
-  <%= f.fields_for :reservation_room do |reservation_room| %>
-
-  <div class="control-group">
-    <%= f.label :reservation_room_id, { class: 'control-label' } %>
-    <div class="controls">
-      <%= f.text_field :reservation_room_id %>
-    </div>
-  </div>
-
-  <% end %>
+  
 
 
   <div class="form-actions">
@@ -193,3 +108,18 @@ $(function() {
   </div>
 
 <% end %>
+
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Nuevo pasajero</h3>
+  </div>
+  <div class="modal-body">
+    <%= render 'passengers/form', passenger: @passenger, show_buttons: false %>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Save changes</button>
+  </div>
+</div>

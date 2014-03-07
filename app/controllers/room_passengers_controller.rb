@@ -1,5 +1,6 @@
 class RoomPassengersController < ApplicationController
   before_action :set_room_passenger, only: [:show, :edit, :update, :destroy]
+  before_action :set_reservation_room, only: [:new]
 
   # GET /room_passengers
   # GET /room_passengers.json
@@ -16,6 +17,9 @@ class RoomPassengersController < ApplicationController
   def new
     @room_passenger = RoomPassenger.new
     @passengers = Passenger.all
+    @passenger = Passenger.new
+logger.debug "---------------------------------"
+logger.debug @passenger.inspect
   end
 
   # GET /room_passengers/1/edit
@@ -27,9 +31,8 @@ class RoomPassengersController < ApplicationController
   def create
     @room_passenger = RoomPassenger.new(room_passenger_params)
     @passengers = Passenger.all
+    @passenger = Passenger.new
 
-logger.debug "---------------------------------"
-logger.debug @room_passenger.inspect
 
     passenger_id = @room_passenger[:passenger][:passenger_id]
 
@@ -78,6 +81,10 @@ logger.debug @room_passenger.inspect
     # Use callbacks to share common setup or constraints between actions.
     def set_room_passenger
       @room_passenger = RoomPassenger.find(params[:id])
+    end
+
+    def set_reservation_room
+      @reservation_room = ReservationRoom.find(params[:reservation_room_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

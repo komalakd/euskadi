@@ -169,3 +169,8 @@ html, body {
 .invalid_amount { 
   background-color: #ff8888 !important; 
 }
+
+/*.modal {
+  max-height: 420px !important;
+  overflow-y: auto !important;
+}*/
