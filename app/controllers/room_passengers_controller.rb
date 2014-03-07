@@ -1,6 +1,6 @@
 class RoomPassengersController < ApplicationController
   before_action :set_room_passenger, only: [:show, :edit, :update, :destroy]
-  before_action :set_reservation_room, only: [:new]
+  before_action :set_reservation_room, only: [:new, :create]
 
   # GET /room_passengers
   # GET /room_passengers.json
@@ -33,14 +33,15 @@ logger.debug @passenger.inspect
     @passengers = Passenger.all
     @passenger = Passenger.new
 
+    # @passenger = Passenger.new
 
-    passenger_id = @room_passenger[:passenger][:passenger_id]
+    # passenger_id = @room_passenger[:passenger][:passenger_id]
 
-    if ( passenger_id && passenger = Passenger.find( passenger_id ) )
-      @room_passenger.passenger = passenger.update_atributes( passenger_params.delete(:passenger_id) )
-    else
-      @room_passenger.passenger = Passenger.new( passenger_params.delete(:passenger_id) )
-    end
+    # if ( passenger_id && passenger = Passenger.find( passenger_id ) )
+    #   @room_passenger.passenger = passenger.update_atributes( passenger_params.delete(:passenger_id) )
+    # else
+    #   @room_passenger.passenger = Passenger.new( passenger_params.delete(:passenger_id) )
+    # end
 
     respond_to do |format|
       if @room_passenger.save
@@ -89,7 +90,7 @@ logger.debug @passenger.inspect
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_passenger_params
-      params.require(:room_passenger).permit(:reservation_room_id , passenger: [ :passenger_id, :dni, :name, :lastname, :phone_number ] )
+      params.require(:room_passenger).permit(:reservation_room_id , :passenger_id )
     end
 
     # def passenger_params

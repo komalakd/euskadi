@@ -85,6 +85,7 @@ $(function() {
     <p>Habitacion <%= @reservation_room.reservation_item.number %></p>
 
     <%= f.hidden_field :reservation_room_id %>
+    <%= hidden_field_tag 'reservation_room_id', @reservation_room.id %>
 
   <% end %>
 
