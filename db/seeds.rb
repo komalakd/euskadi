@@ -7,15 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # RoomType
-RoomType.create( id: 1, denomination: "Matrimonial", amount: 0 )
-RoomType.create( id: 2, denomination: "Twin", amount: 0 )
+RoomType.create( id: 1, denomination: "Matrimonial", amount: 200 )
+RoomType.create( id: 2, denomination: "Twin", amount: 100 )
 
 
 #Group
-Group.create( id: 1, name: "Combinada 123-124", amount: 0 )
-Group.create( id: 2, name: "Combinada 141-142", amount: 0 )
-Group.create( id: 3, name: "Combinada 211-212", amount: 0 )
-Group.create( id: 4, name: "Combinada 233-234", amount: 0 )
+Group.create( id: 1, name: "Combinada 123-124", amount: 150 )
+Group.create( id: 2, name: "Combinada 141-142", amount: 150 )
+Group.create( id: 3, name: "Combinada 211-212", amount: 150 )
+Group.create( id: 4, name: "Combinada 233-234", amount: 150 )
 
 
 # Room
@@ -68,6 +68,5 @@ Page.create( id: 2, name: "Pagina 2" )
 
 # User
 User.create( login: "avalle", password: "asd", password_confirmation: "asd", email: "andresvalle.isi@gmail.com", name: "Andres", lastname: "Valle" )
+User.create( login: "webmaster", password: "asd", password_confirmation: "asd", email: "webmaster", name: "webmaster", lastname: "webmaster" )
 
-# Passenger
-Passenger.create( dni: 34933298, name: "Andres", lastname: "Valle", phone_number: 123456 ) # FIXME - delete
