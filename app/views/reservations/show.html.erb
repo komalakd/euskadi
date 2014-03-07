@@ -16,7 +16,7 @@
 <% if e = @reservation.enterprise %>
 <p>
   <b><%= t('activerecord.attributes.reservation.enterprise_id') %>:</b>
-  <%= e.name %>
+  <%= link_to e.name, enterprise_path( @reservation.enterprise ) %>
 </p>
 <% end %>
 
