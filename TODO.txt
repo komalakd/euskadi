@@ -11,10 +11,15 @@ PAGOS
 [X] Listado de pagos realizados para una reserva
 [X] Validación del registro de pago (pago_a_registrar <= monto_total_reserva - suma_total_pagos)
 
-RESERVAS
+ESTADO RESERVAS
 [ ] Agregar estado de la reserva al ver detalle de una reserva. after_save( reservation, payment ) -> update_status( reservation )
+
+CANCELAR RESERVAS
 [ ] Agregar botón "Cancelar reserva". -> agregar filtro a consulta del mapa -> redirigir al listado de reservas canceladas.
 [ ] Agregar listado de reservas canceladas
+
+ESTADO HABITACION
+[ ] Mostrar alerta "La habitación no está disponible" cuando se selecciona una habitacion no disponible.
 
 BUSQUEDA PASAJEROS
 [ ] Cambiar COLLATE
