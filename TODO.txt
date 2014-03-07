@@ -91,7 +91,7 @@ SERVICIOS
 [ ] Eliminar los servicios de una habitación de una reserva.
 
 FECHAS
-[ ] Cambiar las fechas a UTC -3 
+[X] Cambiar las fechas a UTC -3 
 [ ] Cambiar días y meses a español
 
 DATOS INCICIALES
