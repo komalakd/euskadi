@@ -1,8 +1,9 @@
 TODO - LIST
 
 CHECK-IN
-[ ] Botón realizar check-in al editar o ver detalle de una reserva.
+[X] Botón "Agregar pasajeros" al ver detalle de una reserva (por cada habitacion reservada).
 [ ] Pantalla de check-in
+[X] Quitar usuarios
 
 PAGOS
 [X] Botón "Registrar nuevo pago" editar o ver detalle de una reserva.
@@ -12,7 +13,7 @@ PAGOS
 
 RESERVAS
 [ ] Agregar estado de la reserva al ver detalle de una reserva. after_save( reservation, payment ) -> update_status( reservation )
-[ ] Agregar botón "Cancelar reserva". -> agregar filtro a consulta del mapa
+[ ] Agregar botón "Cancelar reserva". -> agregar filtro a consulta del mapa -> redirigir al listado de reservas canceladas.
 [ ] Agregar listado de reservas canceladas
 
 BUSQUEDA PASAJEROS
