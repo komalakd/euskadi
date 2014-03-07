@@ -81,8 +81,12 @@ $(function() {
   <%= f.fields_for :reservation_room do |reservation_room| %>
 
     <% reservation = @reservation_room.reservation %>
-    <p>Reserva #<%= reservation.id %></p>
+    <p><b>C&oacute;digo Reserva:</b> #<%= reservation.id %></p>
+    <% if @reservation_room.reservation_item_type == 'Room' %>
     <p>Habitacion <%= @reservation_room.reservation_item.number %></p>
+    <% else %>
+    <p><%= @reservation_room.reservation_item.name %></p>
+    <% end %>
 
     <%= f.hidden_field :reservation_room_id %>
     <%= hidden_field_tag 'reservation_room_id', @reservation_room.id %>

@@ -31,7 +31,7 @@
   <% if rr.reservation_item_type == 'Room' %>
     <strong><%= rr.reservation_item.number.to_s %></strong><%= ' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %> <%= link_to "+Agregar pasajeros", new_room_passenger_path( reservation_room_id: rr.id ), { class: 'btn-small btn-info' } %>
   <% else %>
-    <strong><%= rr.reservation_item.name.to_s %></strong><%= ' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %> <%= link_to "+Agregar pasajeros", new_room_passenger_path( reservation_room_id: rr.id ) %>
+    <strong><%= rr.reservation_item.name.to_s %></strong><%= ' desde el ' + rr.since.strftime("%d/%m/%Y") + ' hasta el ' + rr.until.strftime("%d/%m/%Y") %> <%= link_to "+Agregar pasajeros", new_room_passenger_path( reservation_room_id: rr.id ), { class: 'btn-small btn-info' } %>
   <% end %>
   
   <% if rr.room_passengers.size != 0 %>
@@ -92,6 +92,5 @@
 <div class="form-actions">
   <%= link_to 'Editar', edit_reservation_path(@reservation), { class: 'btn btn-primary' } %>
   <%= link_to 'Registrar pago', new_payment_path(reservation_id: @reservation), { class: 'btn' } %>
-  <%= link_to 'Registrar Check-in', room_passengers_path(reservation_id: @reservation), { class: 'btn' } %>
   <%= link_to 'Atras', reservations_path, { class: 'btn' } %>
 </div>
