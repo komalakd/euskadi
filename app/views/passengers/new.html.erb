@@ -1,3 +1,12 @@
 <h2>Nuevo Pasajero</h2>
 
-<%= render 'form', passenger: @passenger %>
+<%= form_for @passenger, html: {class: "form-horizontal"} do |f| %>
+
+  <%= render 'fields', f: f %> <!-- llamando al partial _fields.html.erb -->
+
+  <div class="form-actions">
+    <%= f.submit "Guardar", { class: 'btn btn-primary' } %>
+    <%= link_to 'Atras', passengers_path, { class: 'btn' } %>
+  </div>
+
+<% end %>

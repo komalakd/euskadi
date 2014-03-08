@@ -1,9 +1,9 @@
-<% if passenger.errors.any? %>
+<% if f.object.errors.any? %>
   <div class="alert alert-error">
     <button type="button" class="close" data-dismiss="alert">×</button>
-    <h3>Se encontraron <%= passenger.errors.count %> errores:</h3>
+    <h3>Se encontraron <%= f.object.errors.count %> errores:</h3>
     <ul>
-    <% passenger.errors.full_messages.each do |msg| %>
+    <% f.object.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
     </ul>
