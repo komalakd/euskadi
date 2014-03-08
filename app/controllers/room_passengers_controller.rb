@@ -45,7 +45,7 @@ logger.debug @passenger.inspect
 
     respond_to do |format|
       if @room_passenger.save
-        format.html { redirect_to @room_passenger.reservation_room.reservation, notice: 'Room passenger was successfully created.' }
+        format.html { redirect_to @room_passenger.reservation_room.reservation, notice: 'El pasajero se ha asignado a la habitacion correctamente.' }
         # format.json { render action: 'show', status: :created, location: @room_passenger }
       else
         format.html { render action: 'new' }

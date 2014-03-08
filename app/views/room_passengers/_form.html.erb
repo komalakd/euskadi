@@ -20,20 +20,8 @@ $(function() {
     
     updater: function (item) {
       selected = map[item].passenger_id; // passenger_id
-      $('#room_passenger_passenger_passenger_id').val( selected ); // hidden
-      $('#room_passenger_passenger_dni').val( map[item].dni );
-      $('#room_passenger_passenger_name').val( map[item].name );
-      $('#room_passenger_passenger_lastname').val( map[item].lastname );
-      $('#room_passenger_passenger_phone_number').val( map[item].phone_number );
-      $('#room_passenger_passenger_nationality').val( map[item].nationality );
-      $('#room_passenger_passenger_birthdate').val( map[item].birthdate );
-      $('#room_passenger_passenger_country').val( map[item].country );
-      $('#room_passenger_passenger_province').val( map[item].province );
-      $('#room_passenger_passenger_province').val( map[item].province );
-      $('#room_passenger_passenger_city').val( map[item].city );
-      $('#room_passenger_passenger_address').val( map[item].address );
-      $('#room_passenger_passenger_proffesion').val( map[item].proffesion );
-      $('#room_passenger_passenger_civil_status').val( map[item].civil_status );
+      console.log( selected );
+      $('#room_passenger_passenger_id').val( selected ); // hidden
       return item;
     },
     
@@ -83,12 +71,16 @@ $(function() {
     <% reservation = @reservation_room.reservation %>
     <p><b>C&oacute;digo Reserva:</b> #<%= reservation.id %></p>
     <% if @reservation_room.reservation_item_type == 'Room' %>
-    <p>Habitacion <%= @reservation_room.reservation_item.number %></p>
+    <p><b>Habitacion <%= @reservation_room.reservation_item.number %></b></p>
     <% else %>
-    <p><%= @reservation_room.reservation_item.name %></p>
+    <p><b><%= @reservation_room.reservation_item.name %></b></p>
     <% end %>
 
+    <p><b>Fecha ingreso:</b> <%= @reservation_room.since %></p>
+    <p><b>Fecha salida:</b> <%= @reservation_room.until %></p>
+
     <%= f.hidden_field :reservation_room_id %>
+    <%= hidden_field_tag 'room_passenger[reservation_room_id]', @reservation_room.id %>
     <%= hidden_field_tag 'reservation_room_id', @reservation_room.id %>
 
   <% end %>
@@ -96,9 +88,9 @@ $(function() {
 
 
   <div class="control-group">
-    <%= f.label :passenger_id, 'Buscar Pasajero', { class: 'control-label' } %>
+    <%= f.label :passenger_id, 'Pasajero:', { class: 'control-label' } %>
     <div class="controls">
-      <input id="passenger_search" placeholder="Ingrese texto a buscar..." class="" type="text" name="">
+      <input id="passenger_search" placeholder="Buscar pasajero..." class="" type="text" name="">
       <a href="#myModal" role="button" class="btn" data-toggle="modal">+Nuevo pasajero</a>
       <%= f.hidden_field :passenger_id  %>
     </div>
