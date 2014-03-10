@@ -49,7 +49,7 @@ logger.debug @passenger.inspect
         # format.json { render action: 'show', status: :created, location: @room_passenger }
       else
         format.html { render action: 'new' }
-        format.json { render json: @room_passenger.errors, status: :unprocessable_entity }
+        format.json { render json: @room_passenger.errors.full_messages, status: :unprocessable_entity }
       end
     end
   end

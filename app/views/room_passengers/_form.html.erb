@@ -43,10 +43,40 @@ $(function() {
   });
 
 
+  function field_names(field){
+    if( field == 'dni' )
+      return 'DNI'
+    else if( field == 'name' )
+      return 'Nombre'
+    else if( field == 'lastname' )
+      return 'Apellido'
+    else if( field == 'phone_number' )
+      return 'Teléfono'
+  }
+
   $('#new_passenger').on('ajax:success', function(e, data, status, xhr) { 
-    console.log(data); 
+
+    var text = data.name + ' ' + data.lastname + ' (' + data.dni + ')';
+    $('#passenger_search').val(text);
+    $('#room_passenger_passenger_id').val(data.id);
+    $('#myModal').modal('toggle');
+
   }).on('ajax:error', function(e, data, status, xhr) { 
-    console.log(data); 
+
+    var messages = '';
+
+    $.each( data.responseJSON, function( field, description ){
+      messages += '<li>El ' + field_names(field) + ' ' + description + '</li>';
+    });
+    
+    var div_errors =
+    '<button data-dismiss="alert" class="close" type="button">×</button>'+
+      '<p><b>Se encontraron los siguientes errores:</b></p>'+
+      '<ul>'+ messages + '</ul>'+
+    '</div>';
+
+    $('#passenger_errors').empty().append( div_errors ).show();
+
   });
 
 
@@ -126,6 +156,7 @@ $(function() {
   <%= form_for( @passenger, html: { class: "form-horizontal", :'data-type' => 'json' }, remote: true ) do |f| %>
 
     <div class="modal-body">
+      <div id="passenger_errors" class="alert alert-error" style="display: none;"></div>
       <%= render 'passengers/fields', f: f %> <!-- llamando al partial _fields.html.erb -->
     </div>
 
