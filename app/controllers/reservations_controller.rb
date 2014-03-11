@@ -30,7 +30,7 @@ class ReservationsController < ApplicationController
     end
     @reservation = Reservation.new
     @enterprises = Enterprise.all.order(:name)
-    @rooms = Room.all
+    @rooms = Room.all.order(:id)
     @room_types = RoomType.all
     @groups = Group.all
   end
