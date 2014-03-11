@@ -5,7 +5,18 @@ class Reservation < ActiveRecord::Base
   has_many :payments
   validates :passenger_id, :amount, presence: true
   validates_presence_of :reservation_rooms, { message: 'Debe seleccionar al menos una.' }
-  before_save :validate_superpositions
+  before_save :validate_dates_chronology, :validate_superpositions
+
+  def validate_dates_chronology
+    invalid_rrs = self.reservation_rooms.select{ |rr| rr.validate_dates_chronology }
+    if invalid_rrs.size != 0
+
+      denominations = invalid_rrs.collect{ |rr| rr.reservation_item.id }.join( ', ' ) # FIXME - id -> denomination
+
+      self.errors[:base] << "Las fechas de la/s habitacion/es #{denominations} no son correctas."
+      return false
+    end
+  end
 
   def validate_superpositions
     invalid_rrs = self.reservation_rooms.select{ |rr| rr.validate_superposition }

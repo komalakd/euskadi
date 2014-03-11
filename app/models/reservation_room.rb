@@ -18,6 +18,11 @@ class ReservationRoom < ActiveRecord::Base
         return other_rr.nil? ? false : true
     end
 
+    # devuelve true cuando la fecha desde no es anterior a la fecha hasta
+    def validate_dates_chronology
+        return ( self.since >= self.until )    
+    end
+
     # Retorna todas las habitaciones reservadas en un periodo de tiempo.
     def self.Get_rooms(args)
 
