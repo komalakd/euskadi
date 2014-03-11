@@ -213,7 +213,11 @@ function calculate_total_amount(){
           console.log( this.id );
           console.log(amount);
           var subtotal = amount * day_difference;
-          $( '#'+this.id+'_total' ).val(subtotal);
+          if( subtotal < 0 ){
+            $( '#'+this.id+'_total' ).val(0);
+          }else{
+            $( '#'+this.id+'_total' ).val(subtotal);
+          }
           total += subtotal;
       }
   });
