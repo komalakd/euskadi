@@ -9,10 +9,20 @@ $(function() {
   enterprises = <%= raw(enterprises_as_json( @enterprises )) %>;
 
   load_reservation_form();
+
+  $("#e1").select2({
+    placeholder: "Seleccione un pasajero",
+    allowClear: true,
+    width: '300px'
+  });
+
 });
 </script>
 
+
 <%= form_for @reservation, html: {class: "form-horizontal reservation_form"} do |f| %>
+
+
 
   <% if @reservation.errors.any? %>
     <div class="alert alert-error">
@@ -41,15 +51,27 @@ $(function() {
 
   <h3>Datos pasajero</h3>
 
-
   <div class="control-group">
+    <%= f.label :passenger_id, 'Pasajero', { class: 'control-label' } %>
+    <div class="controls">
+      <select id="e1">
+        <option></option>
+        <option value="AL">Alabama</option>
+        <option value="LA">Los angeles</option>
+        <option value="CA">California</option>
+        <option value="WY">Wyoming</option>
+      </select>
+  </div>
+
+
+<!--   <div class="control-group">
     <%= f.label :passenger_id, 'Pasajero', { class: 'control-label' } %>
     <div class="controls">
       <input id="passenger_search" placeholder="Buscar..." class="" type="text" name="">
       <%= f.hidden_field :passenger_id  %>
       <%= link_to '+ Nuevo Pasajero', new_passenger_path, { class: 'btn' } %>
     </div>
-  </div>
+  </div> -->
     
   <% if @enterprises.size > 0 %>
 

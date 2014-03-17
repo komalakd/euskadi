@@ -57,3 +57,5 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'newrelic_rpm'
+
+gem "select2-rails", "~> 3.5.4"
