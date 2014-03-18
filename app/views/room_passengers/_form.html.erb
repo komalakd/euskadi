@@ -1,47 +1,17 @@
 <script type="text/javascript">
 $(function() {
 
-  passengers  = <%= raw(passengers_as_json_full( @passengers )) %>;
+  passengers  = <%= raw(passengers_as_json( @passengers )) %>;
 
-  $('#passenger_search').typeahead({
-    
-    source: function (query, process) {
-      matches = [];
-      map = {};
-   
-      $.each(passengers, function (i, passenger) {
-        // var passenger_denomination = passenger.dni + ' (' + passenger.name + ')';
-        map[passenger.passenger_denomination] = passenger;
-        matches.push(passenger.passenger_denomination);
-      });
-   
-      process(matches);
-    },
-    
-    updater: function (item) {
-      selected = map[item].passenger_id; // passenger_id
-      console.log( selected );
-      $('#room_passenger_passenger_id').val( selected ); // hidden
-      return item;
-    },
-    
-    matcher: function (item) {
-      if (item.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
-        return true;
-      }
-    },
-    
-    sorter: function (items) {
-        return items.sort();
-    },
-    
-    highlighter: function (item) {
-      var regex = new RegExp( '(' + this.query + ')', 'gi' );
-      return item.replace( regex, "<strong>$1</strong>" );
-    },
-  
+  $("#passenger_select").select2({
+    placeholder: "Seleccione un pasajero",
+    allowClear: true,
+    width: '300px',
+    minimumInputLength: 2,
+    data: passengers
+  }).on('change', function(e){
+   $('#room_passenger_passenger_id').val( e.val );
   });
-
 
   function field_names(field){
     if( field == 'dni' )
@@ -56,9 +26,21 @@ $(function() {
 
   $('#new_passenger').on('ajax:success', function(e, data, status, xhr) { 
 
-    var text = data.name + ' ' + data.lastname + ' (' + data.dni + ')';
-    $('#passenger_search').val(text);
     $('#room_passenger_passenger_id').val(data.id);
+
+    var text = data.name + ' ' + data.lastname + ' (' + data.dni + ')';
+    passengers.push( { id: data.id, text: text} );
+
+    $("#passenger_select").select2({ 
+      placeholder: "Seleccione un pasajero",
+      allowClear: true,
+      width: '300px',
+      minimumInputLength: 2,
+      data: passengers
+    });
+
+    $("#passenger_select").select2("val", data.id );
+
     $('#myModal').modal('toggle');
 
   }).on('ajax:error', function(e, data, status, xhr) { 
@@ -129,7 +111,7 @@ $(function() {
   <div class="control-group">
     <%= f.label :passenger_id, 'Pasajero:', { class: 'control-label' } %>
     <div class="controls">
-      <input id="passenger_search" placeholder="Buscar pasajero..." class="" type="text" name="">
+      <input type="hidden" id="passenger_select">
       <a href="#myModal" role="button" class="btn" data-toggle="modal">+Nuevo pasajero</a>
       <%= f.hidden_field :passenger_id  %>
     </div>
