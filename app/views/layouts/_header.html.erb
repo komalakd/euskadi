@@ -30,7 +30,8 @@
     
       <ul id="users_nav" class="nav pull-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Andr&eacute;s Valle<b class="caret"></b></a>
+          <% user = current_user %>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name + ' ' + user.lastname %><b class="caret"></b></a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
             <li><%= link_to "Datos personales", current_user %></li>
             <!--
