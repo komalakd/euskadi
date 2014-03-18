@@ -95,7 +95,7 @@ module ApplicationHelper
 
   # [ { id: 4, dni: 12345678, full_name: 'pepe argento' ]
   def enterprises_as_json(passengers)
-    passengers.map{ |p| { enterprise_id: p.id, enterprise_denomination: p.name + ' (' + p.cuit + ')' } }.to_json
+    passengers.map{ |p| { id: p.id, text: p.name + ' (' + p.cuit + ')' } }.to_json
   end
 
 end
