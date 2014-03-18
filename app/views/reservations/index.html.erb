@@ -50,7 +50,7 @@ $(function() {
   <tr>
     <th></th>
     <% @dates.each do |date| %>
-    <th><%= date.strftime("%a") %><br /><%= date.strftime("%d/%m") %></th>
+    <th><%= l(date, format: :abbr_name).capitalize %><br /><%= l(date, format: :number_short) %></th>
     <% end %>
   </tr>
 

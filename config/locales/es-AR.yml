@@ -128,6 +128,8 @@ es-AR:
       default: ! '%d/%m/%Y'
       long: ! '%A, %d de %B de %Y'
       short: ! '%d de %b'
+      abbr_name: ! '%a'
+      number_short: ! '%d/%m'
     month_names:
     -
     - enero
