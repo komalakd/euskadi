@@ -26,7 +26,7 @@ function load_selects(){
   }
 
   $("#enterprise_select").select2({
-    placeholder: "Seleccione un pasajero",
+    placeholder: "Seleccione una empresa",
     allowClear: true,
     width: '300px',
     minimumInputLength: 2,
