@@ -10,11 +10,21 @@ $(function() {
 
   load_reservation_form();
 
-  $("#e1").select2({
+
+  $("#passenger_select").select2({
     placeholder: "Seleccione un pasajero",
     allowClear: true,
-    width: '300px'
+    width: '300px',
+    minimumInputLength: 2,
+    data: passengers
+  }).on('change', function(e){
+   $('#reservation_passenger_id').val( e.val );
   });
+
+  var selected_text = '';
+  if( reservation.passenger ){
+    $("#passenger_select").select2("val", reservation.passenger.id);
+  }
 
 });
 </script>
@@ -54,24 +64,11 @@ $(function() {
   <div class="control-group">
     <%= f.label :passenger_id, 'Pasajero', { class: 'control-label' } %>
     <div class="controls">
-      <select id="e1">
-        <option></option>
-        <option value="AL">Alabama</option>
-        <option value="LA">Los angeles</option>
-        <option value="CA">California</option>
-        <option value="WY">Wyoming</option>
-      </select>
+      <input type="hidden" id="passenger_select">
+      <%= link_to '+ Nuevo Pasajero', new_passenger_path, { class: 'btn' } %>
+      <%= f.hidden_field :passenger_id  %>
   </div>
 
-
-<!--   <div class="control-group">
-    <%= f.label :passenger_id, 'Pasajero', { class: 'control-label' } %>
-    <div class="controls">
-      <input id="passenger_search" placeholder="Buscar..." class="" type="text" name="">
-      <%= f.hidden_field :passenger_id  %>
-      <%= link_to '+ Nuevo Pasajero', new_passenger_path, { class: 'btn' } %>
-    </div>
-  </div> -->
     
   <% if @enterprises.size > 0 %>
 

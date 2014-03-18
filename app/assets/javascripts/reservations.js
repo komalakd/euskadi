@@ -1,6 +1,6 @@
 
 function load_reservation_form(){
-  load_typeaheads();
+  // load_typeaheads();
   load_rooms();
   add_events();
   calculate_total_amount();
@@ -226,113 +226,113 @@ function calculate_total_amount(){
 
 }
 
-function load_typeaheads(){
-  if( reservation.passenger ){
-    $('#passenger_search').val( reservation.passenger.passenger_denomination );
-  }
+// function load_typeaheads(){
+//   if( reservation.passenger ){
+//     $('#passenger_search').val( reservation.passenger.passenger_denomination );
+//   }
 
-  if( reservation.enterprise ){ 
-    $('#enterprise_search').val( reservation.enterprise.enterprise_denomination );
-  }
+//   if( reservation.enterprise ){ 
+//     $('#enterprise_search').val( reservation.enterprise.enterprise_denomination );
+//   }
 
-  $('#passenger_search').typeahead({ // http://tatiyants.com/how-to-use-json-objects-with-twitter-bootstrap-typeahead/
+//   $('#passenger_search').typeahead({ // http://tatiyants.com/how-to-use-json-objects-with-twitter-bootstrap-typeahead/
     
-    source: function (query, process) {
-        // $.ajax({
-        //   url: "",
-        //   type: "get",
-        //   data: this.value,
-        //   success: function(response){
-        //       // var json = $.parseJSON(response);
-        //       alert("success");
-        //       // $("#result").html('Submitted successfully');
-        //   },
-        //   error:function(){
-        //       alert("failure");
-        //       // $("#result").html('There is error while submit');
-        //   }
-        // });
+//     source: function (query, process) {
+//         // $.ajax({
+//         //   url: "",
+//         //   type: "get",
+//         //   data: this.value,
+//         //   success: function(response){
+//         //       // var json = $.parseJSON(response);
+//         //       alert("success");
+//         //       // $("#result").html('Submitted successfully');
+//         //   },
+//         //   error:function(){
+//         //       alert("failure");
+//         //       // $("#result").html('There is error while submit');
+//         //   }
+//         // });
 
-      matches = [];
-      map = {};
+//       matches = [];
+//       map = {};
    
-      // var data = [
-      //   {"passenger_id": "CA", "dni": "California"},
-      //   {"passenger_id": "AZ", "dni": "Arizona"},
-      //   {"passenger_id": "NY", "dni": "New York"},
-      //   {"passenger_id": "NV", "dni": "Nevada"},
-      //   {"passenger_id": "OH", "dni": "Ohio"}
-      // ];
+//       // var data = [
+//       //   {"passenger_id": "CA", "dni": "California"},
+//       //   {"passenger_id": "AZ", "dni": "Arizona"},
+//       //   {"passenger_id": "NY", "dni": "New York"},
+//       //   {"passenger_id": "NV", "dni": "Nevada"},
+//       //   {"passenger_id": "OH", "dni": "Ohio"}
+//       // ];
    
-      $.each(passengers, function (i, passenger) {
-        // var passenger_denomination = passenger.dni + ' (' + passenger.name + ')';
-        map[passenger.passenger_denomination] = passenger;
-        matches.push(passenger.passenger_denomination);
-      });
+//       $.each(passengers, function (i, passenger) {
+//         // var passenger_denomination = passenger.dni + ' (' + passenger.name + ')';
+//         map[passenger.passenger_denomination] = passenger;
+//         matches.push(passenger.passenger_denomination);
+//       });
    
-      process(matches);
-    },
+//       process(matches);
+//     },
     
-    updater: function (item) {
-      selected = map[item].passenger_id;
-      $('#reservation_passenger_id').val( selected );
-      return item;
-    },
+//     updater: function (item) {
+//       selected = map[item].passenger_id;
+//       $('#reservation_passenger_id').val( selected );
+//       return item;
+//     },
     
-    matcher: function (item) {
-      if (item.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
-        return true;
-      }
-    },
+//     matcher: function (item) {
+//       if (item.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
+//         return true;
+//       }
+//     },
     
-    sorter: function (items) {
-        return items.sort();
-    },
+//     sorter: function (items) {
+//         return items.sort();
+//     },
     
-    highlighter: function (item) {
-      var regex = new RegExp( '(' + this.query + ')', 'gi' );
-      return item.replace( regex, "<strong>$1</strong>" );
-    },
+//     highlighter: function (item) {
+//       var regex = new RegExp( '(' + this.query + ')', 'gi' );
+//       return item.replace( regex, "<strong>$1</strong>" );
+//     },
   
-  });
+//   });
 
 
-  $('#enterprise_search').typeahead({
+//   $('#enterprise_search').typeahead({
     
-    source: function (query, process) {
+//     source: function (query, process) {
 
-      matches = [];
-      map = {};
+//       matches = [];
+//       map = {};
    
-      $.each(enterprises, function (i, enterprise) {
-        map[enterprise.enterprise_denomination] = enterprise;
-        matches.push(enterprise.enterprise_denomination);
-      });
+//       $.each(enterprises, function (i, enterprise) {
+//         map[enterprise.enterprise_denomination] = enterprise;
+//         matches.push(enterprise.enterprise_denomination);
+//       });
    
-      process(matches);
-    },
+//       process(matches);
+//     },
     
-    updater: function (item) {
-      selected = map[item].enterprise_id;
-      $('#reservation_enterprise_id').val( selected );
-      return item;
-    },
+//     updater: function (item) {
+//       selected = map[item].enterprise_id;
+//       $('#reservation_enterprise_id').val( selected );
+//       return item;
+//     },
     
-    matcher: function (item) {
-      if (item.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
-        return true;
-      }
-    },
+//     matcher: function (item) {
+//       if (item.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
+//         return true;
+//       }
+//     },
     
-    sorter: function (items) {
-        return items.sort();
-    },
+//     sorter: function (items) {
+//         return items.sort();
+//     },
     
-    highlighter: function (item) {
-      var regex = new RegExp( '(' + this.query + ')', 'gi' );
-      return item.replace( regex, "<strong>$1</strong>" );
-    },
+//     highlighter: function (item) {
+//       var regex = new RegExp( '(' + this.query + ')', 'gi' );
+//       return item.replace( regex, "<strong>$1</strong>" );
+//     },
   
-  });
+//   });
 
-}
+// }
