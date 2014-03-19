@@ -31,7 +31,7 @@
 <% else %>
   
   <% enterprise_reservations.order("created_at DESC").each do |reservation| %>
-  <p>Reserva realizada el dia <strong><%= reservation.created_at.strftime("%d/%m/%Y") %></strong> por el pasajero <strong><%= reservation.passenger.name + reservation.passenger.lastname %></strong>:</p>
+  <p>Reserva realizada el dia <strong><%= reservation.created_at.strftime("%d/%m/%Y") %></strong> por el pasajero <strong><%= reservation.passenger.name + ' ' +reservation.passenger.lastname %></strong>:</p>
   <ul>
     <% if reservation.reservation_rooms.size == 0 %>
       <li><i>Reserva sin habitaciones</i></li>
