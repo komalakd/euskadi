@@ -76,10 +76,10 @@
 <% else %>
   
   <% passenger_reservations.order("created_at DESC").each do |reservation| %>
-  <p>Reserva realizada el dia <strong><%= reservation.created_at.strftime("%d/%m/%Y") %></strong>:</p>
+  <p><%= link_to 'Reserva', reservation_path(reservation) %> realizada el dia <strong><%= reservation.created_at.strftime("%d/%m/%Y") %></strong>:</p>
   <ul>
     <% if reservation.reservation_rooms.size == 0 %>
-      <li><i>Reserva sin habitaciones</i></li>
+      <li><i><%= link_to 'Reserva', reservation_path(reservation) %> sin habitaciones</i></li>
     <% end %>
     <% reservation.reservation_rooms.each do |rr| %>
       <% if rr.reservation_item_type == 'Room' %>
