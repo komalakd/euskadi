@@ -11,17 +11,29 @@ class PassengersController < ApplicationController
     @search_field = params[:passenger_field]
     @search_value = params[:passenger_value]
 
-    if valid_fields.include?(@search_field) && @search_value
+    @exist_passengers = true
+
+    if Passenger.count == 0
+      @exist_passengers = false
+    elsif valid_fields.include?(@search_field) && @search_value
       @passengers = Passenger.where( "#{@search_field} LIKE '%#{@search_value}%' " )
-      if @passengers.size == 0 
+      if @passengers.size == 0
         @warning = 'No se encontraron pasajeros.'
-        @passengers = Passenger.all
-      else
-        @info = "Se encontraron #{@passengers.size} pasajeros."
-      end
+      end 
     else
       @passengers = Passenger.all
-    end
+    end  
+
+    # if valid_fields.include?(@search_field) && @search_value
+    #   @passengers = Passenger.where( "#{@search_field} LIKE '%#{@search_value}%' " )
+    #   if @passengers.size == 0 
+    #     @warning = 'No se encontraron pasajeros.'
+    #   else
+    #     @info = "Se encontraron #{@passengers.size} pasajeros."
+    #   end
+    # else
+    #   @passengers = Passenger.all
+    # end
 
     respond_to do |format|
       format.html # index.html.erb

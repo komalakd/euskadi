@@ -45,7 +45,7 @@
   </div>
 <% end %>
 
-<% if @passengers.size <= 0 %>
+<% unless @exist_passengers %>
 
   <div class="alert alert-info">
     <button type="button" class="close" data-dismiss="alert">×</button>
