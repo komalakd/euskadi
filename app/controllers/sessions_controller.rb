@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
     redirect_back_or root_url
   else
     # Create an error message and re-render the signin form.
-    @error = 'Los datos ingresados no son validos.'
+    @error = 1
     render 'new'
   end
 end
