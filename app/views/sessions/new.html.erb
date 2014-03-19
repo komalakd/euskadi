@@ -10,7 +10,7 @@
   <% if @error %>
     <div class="alert alert-error">
       <button type="button" class="close" data-dismiss="alert">×</button>
-      <p>Los datos ingresados no son v&aacute;lidos.</p>
+      <p><%= t('activerecord.attributes.session.datos_invalidos') %></p>
     </div>
   <% end %>
 
@@ -20,6 +20,6 @@
   </label>
 -->
 
-  <%= submit_tag 'Iniciar sesion', { class: "btn btn-large btn-primary" } %>
+  <%= submit_tag t('activerecord.attributes.session.iniciar_sesion'), { class: "btn btn-large btn-primary" } %>
 
 <% end %>

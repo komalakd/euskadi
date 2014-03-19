@@ -76,6 +76,9 @@ es-AR:
         lastname: "Apellido"
         password: "Contraseña"
         password_confirmation: "Confirmación"
+      session:
+        iniciar_sesion: "Iniciar sesión"
+        datos_invalidos: "Los datos ingresados no son válidos."
 
   will_paginate:
     next_label: siguiente →
