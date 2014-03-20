@@ -19,9 +19,18 @@ class Reservation < ActiveRecord::Base
     invalid_rrs = self.reservation_rooms.select{ |rr| rr.validate_dates_chronology }
     if invalid_rrs.size != 0
 
-      denominations = invalid_rrs.collect{ |rr| rr.reservation_item.id }.join( ', ' ) # FIXME - id -> denomination
+      denominations = []
+      invalid_rrs.each do |rr|
+        if rr.reservation_item_type == 'Room'
+          denominations.push( rr.reservation_item.number )
+        else
+          denominations.push( rr.reservation_item.name )
+        end
+      end
 
-      self.errors[:base] << "Las fechas de la/s habitacion/es #{denominations} no son correctas."
+      rooms = denominations.join( ', ' )
+
+      self.errors[:base] << "Las fechas de la/s habitacion/es #{rooms} no son correctas."
       return false
     end
   end
@@ -30,9 +39,18 @@ class Reservation < ActiveRecord::Base
     invalid_rrs = self.reservation_rooms.select{ |rr| rr.validate_superposition }
     if invalid_rrs.size != 0
 
-      denominations = invalid_rrs.collect{ |rr| rr.reservation_item.id }.join( ', ' ) # FIXME - id -> denomination
+      denominations = []
+      invalid_rrs.each do |rr|
+        if rr.reservation_item_type == 'Room'
+          denominations.push( rr.reservation_item.number )
+        else
+          denominations.push( rr.reservation_item.name )
+        end
+      end
 
-      self.errors[:base] << "La/s habitacion/es #{denominations} ya han sido reservadas."
+      rooms = denominations.join( ', ' )
+
+      self.errors[:base] << "La/s habitacion/es #{rooms} ya han sido reservadas."
       return false
     end
   end
