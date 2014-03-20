@@ -146,6 +146,8 @@ function add_events(){
 
     }
 
+    calculate_total_amount();
+
     var datepicker1 = $( '#'+this.id+'_since' );
     var datepicker2 = $( '#'+this.id+'_until' );
     var amount = $( '#'+this.id+'_amount' );
