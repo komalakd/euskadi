@@ -16,7 +16,7 @@ class PassengersController < ApplicationController
     if Passenger.count == 0
       @exist_passengers = false
     elsif valid_fields.include?(@search_field) && @search_value
-      @passengers = Passenger.where( "#{@search_field} LIKE '%#{@search_value}%' " )
+      @passengers = Passenger.where( "#{@search_field} LIKE ? ESCAPE '!'", '%' + @search_value.gsub(/[!%_]/) { |x| '!' + x } + '%' )
       if @passengers.size == 0
         @warning = 'No se encontraron pasajeros.'
       end 
