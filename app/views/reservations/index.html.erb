@@ -47,13 +47,7 @@ $(function() {
 <!-- Mapa de reservas -->
 <table id="mapa" class="table table-hover table-condensed table-striped table-bordered">
 
-  <tr>
-    <th></th>
-    <% @dates.each do |date| %>
-    <% th_class = (date == Date.today ) ? 'class=today_column' : '' %>
-    <th <%= th_class %> ><%= l(date, format: :abbr_name).capitalize %><br /><%= l(date, format: :number_short) %></th>
-    <% end %>
-  </tr>
+  <%= render 'reservation_map_th' %>
 
   <% @rooms.each do |room| %>
   <tr>
@@ -64,13 +58,7 @@ $(function() {
   </tr>
   <% end %>
 
-  <tr>
-    <th></th>
-    <% @dates.each do |date| %>
-    <% th_class = (date == Date.today ) ? 'class=today_column' : '' %>
-    <th <%= th_class %> ><%= l(date, format: :abbr_name).capitalize %><br /><%= l(date, format: :number_short) %></th>
-    <% end %>
-  </tr>
+  <%= render 'reservation_map_th' %>
 
 </table>
 
