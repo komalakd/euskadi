@@ -176,3 +176,6 @@ html, body {
   overflow-y: auto !important;
 }*/
 
+.today_column {
+  color: red;
+}

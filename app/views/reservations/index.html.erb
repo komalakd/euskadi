@@ -50,7 +50,8 @@ $(function() {
   <tr>
     <th></th>
     <% @dates.each do |date| %>
-    <th><%= l(date, format: :abbr_name).capitalize %><br /><%= l(date, format: :number_short) %></th>
+    <% th_class = (date == Date.today ) ? 'class=today_column' : '' %>
+    <th <%= th_class %> ><%= l(date, format: :abbr_name).capitalize %><br /><%= l(date, format: :number_short) %></th>
     <% end %>
   </tr>
 
@@ -62,6 +63,14 @@ $(function() {
     <% end %>
   </tr>
   <% end %>
+
+  <tr>
+    <th></th>
+    <% @dates.each do |date| %>
+    <% th_class = (date == Date.today ) ? 'class=today_column' : '' %>
+    <th <%= th_class %> ><%= l(date, format: :abbr_name).capitalize %><br /><%= l(date, format: :number_short) %></th>
+    <% end %>
+  </tr>
 
 </table>
 
