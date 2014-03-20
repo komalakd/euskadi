@@ -80,6 +80,8 @@ es-AR:
         iniciar_sesion: "Iniciar sesión"
         cerrar_sesion: "Cerrar sesión"
         datos_invalidos: "Los datos ingresados no son válidos."
+      room_passenger:
+        passenger_id: "Pasajero"
 
   will_paginate:
     next_label: siguiente →
