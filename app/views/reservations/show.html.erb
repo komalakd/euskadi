@@ -38,7 +38,7 @@
   <ul>
     <% rr.room_passengers.each do |room_passenger| %>
     <li>
-      <%= link_to room_passenger.passenger.lastname + ', ' + room_passenger.passenger.name  %>
+      <%= link_to room_passenger.passenger.lastname + ', ' + room_passenger.passenger.name, passenger_path(room_passenger.passenger) %>
       <%= link_to 'Quitar', room_passenger, method: :delete, data: { confirm: '¿Desea quitar al pasajero?' }, class: 'btn-small btn-danger' %>
     </li>
     <% end %>
