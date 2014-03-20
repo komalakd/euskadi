@@ -4,8 +4,12 @@ class Reservation < ActiveRecord::Base
   has_many :reservation_rooms
   has_many :payments
   validates :passenger_id, :amount, presence: true
-  validates_presence_of :reservation_rooms, { message: 'Debe seleccionar al menos una.' }
+  validates_presence_of :reservation_rooms, :validates_presence_of_reservation_room_error # { message: 'Debe seleccionar al menos una.' }
   before_save :validate_dates_chronology, :validate_superpositions
+
+  def validates_presence_of_reservation_room_error
+    self.errors[:base] << "Debe seleccionar al menos una habitacion."
+  end
 
   def validate_dates_chronology
     invalid_rrs = self.reservation_rooms.select{ |rr| rr.validate_dates_chronology }
