@@ -253,8 +253,8 @@ function calculate_total_amount(){
             $( '#'+this.id+'_total' ).val(0);
           }else{
             $( '#'+this.id+'_total' ).val(subtotal);
+            total += subtotal;
           }
-          total += subtotal;
       }
   });
 
