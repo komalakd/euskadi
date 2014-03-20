@@ -19,6 +19,15 @@
 $(function() {
 
   load_select2_locale();
+
+
+
+$('.datepicker').keydown(function() {
+  //code to not allow any changes to be made to input field
+  return false;
+});
+
+
   
 
 });
