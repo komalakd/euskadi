@@ -49,7 +49,7 @@ $(function() {
     <%= f.label :passenger_id, 'Pasajero', { class: 'control-label' } %>
     <div class="controls">
       <input type="hidden" id="passenger_select">
-      <%= link_to '+ Nuevo Pasajero', new_passenger_path, { class: 'btn' } %>
+      <a href="#passenger_modal" role="button" class="btn" data-toggle="modal">+Nuevo pasajero</a>
       <%= f.hidden_field :passenger_id  %>
   </div>
 
@@ -60,8 +60,8 @@ $(function() {
       <%= f.label :enterprise_id, { class: 'control-label' } %>
       <div class="controls">
         <input type="hidden" id="enterprise_select">
+      <a href="#enterprise_modal" role="button" class="btn" data-toggle="modal">+Nueva empresa</a>
         <%= f.hidden_field :enterprise_id  %>
-        <%= link_to '+ Nueva Empresa', new_enterprise_path, { class: 'btn' } %>
       </div>
     </div>
 
@@ -153,3 +153,52 @@ $(function() {
   </div>
 
 <% end %>
+
+
+
+<div id="passenger_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Nuevo pasajero</h3>
+  </div>
+  
+
+  <%= form_for( @passenger, html: { id: 'new_passenger', class: "form-horizontal", :'data-type' => 'json' }, remote: true, authenticity_token: true ) do |f| %>
+
+    <div class="modal-body">
+      <div id="passenger_errors" class="alert alert-error" style="display: none;"></div>
+      <%= render 'passengers/fields', f: f %> <!-- llamando al partial _fields.html.erb -->
+    </div>
+
+    <div class="modal-footer">
+      <%= f.submit "Guardar", { class: 'btn btn-primary' } %>
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+    </div>
+
+  <% end %>
+
+</div>
+
+<div id="enterprise_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Nuevo pasajero</h3>
+  </div>
+  
+  <%= form_for( @enterprise, html: { id: 'new_enterprise', class: "form-horizontal", :'data-type' => 'json' }, remote: true, authenticity_token: true ) do |f| %>
+
+    <div class="modal-body">
+      <div id="enterprise_errors" class="alert alert-error" style="display: none;"></div>
+      <%= render 'enterprises/fields', f: f %> <!-- llamando al partial _fields.html.erb -->
+    </div>
+
+    <div class="modal-footer">
+      <%= f.submit "Guardar", { class: 'btn btn-primary' } %>
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+    </div>
+
+  <% end %>
+
+</div>

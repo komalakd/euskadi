@@ -40,6 +40,98 @@ function load_selects(){
     $("#enterprise_select").select2("val", reservation.passenger.id);
   }
 
+
+  // AJAX PASAJERO
+
+  $('#new_passenger').on('submit', function() { // FIXME - HACK ASQUEROSO
+    $('#new_passenger').trigger('submit.rails');
+    return false;
+  });
+
+  $('#new_passenger').on('ajax:success', function(e, data, status, xhr) { 
+
+    $('#reservation_passenger_id').val(data.id);
+
+    var text = data.name + ' ' + data.lastname + ' (' + data.dni + ')';
+    passengers.push( { id: data.id, text: text} );
+
+    $("#passenger_select").select2({ 
+      placeholder: "Seleccione un pasajero",
+      allowClear: true,
+      width: '300px',
+      minimumInputLength: 2,
+      data: passengers
+    });
+
+    $("#passenger_select").select2("val", data.id );
+
+    $('#passenger_modal').modal('toggle');
+
+  }).on('ajax:error', function(e, data, status, xhr) { 
+
+    var messages = '';
+
+    $.each( data.responseJSON, function( field, description ){
+      messages += '<li>El ' + passenger_field_names(field) + ' ' + description + '</li>';
+    });
+    
+    var div_errors =
+    '<button data-dismiss="alert" class="close" type="button">×</button>'+
+      '<p><b>Se encontraron los siguientes errores:</b></p>'+
+      '<ul>'+ messages + '</ul>'+
+    '</div>';
+
+    $('#passenger_errors').empty().append( div_errors ).show();
+
+  });
+
+
+  // AJAX EMPRESA
+
+  $('#new_enterprise').on('submit', function() { // FIXME - HACK ASQUEROSO
+    $('#new_enterprise').trigger('submit.rails');
+    return false;
+  });
+
+  $('#new_enterprise').on('ajax:success', function(e, data, status, xhr) { 
+console.log( data );
+    $('#reservation_enterprise_id').val(data.id);
+
+    var text = data.name + ' (' + data.cuit + ')';
+    enterprises.push( { id: data.id, text: text} );
+
+    $("#enterprise_select").select2({ 
+      placeholder: "Seleccione una empresa",
+      allowClear: true,
+      width: '300px',
+      minimumInputLength: 2,
+      data: enterprises
+    });
+
+    $("#enterprise_select").select2("val", data.id );
+
+    $('#enterprise_modal').modal('toggle');
+
+  }).on('ajax:error', function(e, data, status, xhr) { 
+
+    var messages = '';
+
+    $.each( data.responseJSON, function( field, description ){
+      messages += '<li>El ' + enterprise_field_names(field) + ' ' + description + '</li>';
+    });
+    
+    var div_errors =
+    '<button data-dismiss="alert" class="close" type="button">×</button>'+
+      '<p><b>Se encontraron los siguientes errores:</b></p>'+
+      '<ul>'+ messages + '</ul>'+
+    '</div>';
+
+    $('#enterprise_errors').empty().append( div_errors ).show();
+
+  });
+
+
+
 }
 
 
@@ -260,4 +352,24 @@ function calculate_total_amount(){
 
   $('#reservation_amount').val(total);
 
+}
+
+function passenger_field_names(field){
+  if( field == 'dni' )
+    return 'DNI'
+  else if( field == 'name' )
+    return 'Nombre'
+  else if( field == 'lastname' )
+    return 'Apellido'
+  else if( field == 'phone_number' )
+    return 'Teléfono'
+}
+
+function enterprise_field_names(field){
+  if( field == 'cuit' )
+    return 'CUIT'
+  else if( field == 'name' )
+    return 'Razon social'
+  else if( field == 'address' )
+    return 'Direccion fiscal'
 }

@@ -22,6 +22,7 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/new
   def new
+    @passenger = Passenger.new
     @passengers = Passenger.all
     if !(@passengers.size > 0)
       respond_to do |format|
@@ -30,6 +31,7 @@ class ReservationsController < ApplicationController
     end
     @reservation = Reservation.new
     @enterprises = Enterprise.all.order(:name)
+    @enterprise = Enterprise.new
     @rooms = Room.all.order(:id)
     @room_types = RoomType.all
     @groups = Group.all

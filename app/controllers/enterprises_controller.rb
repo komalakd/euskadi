@@ -31,7 +31,7 @@ class EnterprisesController < ApplicationController
     respond_to do |format|
       if @enterprise.save
         format.html { redirect_to @enterprise, notice: 'La empresa se ha registrado correctamente.' }
-        format.json { render action: 'show', status: :created, location: @enterprise }
+        format.json { render json: @enterprise, status: :created, location: @enterprise }
       else
         format.html { render action: 'new' }
         format.json { render json: @enterprise.errors, status: :unprocessable_entity }
