@@ -179,3 +179,8 @@ html, body {
 .today_column {
   color: red;
 }
+
+.select2-container .select2-choice {
+  width: 290px;
+  display: inline-block !important;
+}
