@@ -1,0 +1,37 @@
+<% if f.object.errors.any? %>
+  <div class="alert alert-error">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <h3>Se encontraron <%= f.object.errors.count %> errores:</h3>
+    <ul>
+    <% f.object.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if notice %>
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <p><%= notice %></p>
+  </div>
+<% end %>
+
+<div class="control-group">
+  <%= f.label :cuit, { class: 'control-label' } %>
+  <div class="controls">
+    <%= f.text_field :cuit %>
+  </div>
+</div>
+<div class="control-group">
+  <%= f.label :name, { class: 'control-label' } %>
+  <div class="controls">
+    <%= f.text_field :name %>
+  </div>
+</div>
+<div class="control-group">
+  <%= f.label :address, { class: 'control-label' } %>
+  <div class="controls">
+    <%= f.text_field :address %>
+  </div>
+</div>
