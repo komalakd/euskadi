@@ -3,55 +3,29 @@ class Reservation < ActiveRecord::Base
   belongs_to :enterprise
   has_many :reservation_rooms
   has_many :payments
+  
   validates :passenger_id, :amount, presence: true
-  before_save :validates_presence_of_reservation_room, :validate_dates_chronology, :validate_superpositions
+  validates_presence_of :reservation_rooms
+  
+  after_save :save_reservation_rooms
+  
+  def guardar
 
-  def validates_presence_of_reservation_room
-    if self.reservation_rooms.size != 0
-      return true
+    logger.debug "----------------------------- guardar ---------------------------------"
+    logger.debug self.reservation_rooms.select{ |rr| !rr.valid? }.inspect
+
+    if self.valid? && self.reservation_rooms.select{ |rr| !rr.valid? }.empty?
+      return self.save
     else
-      self.errors[:base] << "Debe seleccionar al menos una habitacion."
       return false
     end
   end
 
-  def validate_dates_chronology
-    invalid_rrs = self.reservation_rooms.select{ |rr| rr.validate_dates_chronology }
-    if invalid_rrs.size != 0
-
-      denominations = []
-      invalid_rrs.each do |rr|
-        if rr.reservation_item_type == 'Room'
-          denominations.push( rr.reservation_item.number )
-        else
-          denominations.push( rr.reservation_item.name )
-        end
-      end
-
-      rooms = denominations.join( ', ' )
-
-      self.errors[:base] << "Las fechas de la/s habitacion/es #{rooms} no son correctas."
-      return false
-    end
-  end
-
-  def validate_superpositions
-    invalid_rrs = self.reservation_rooms.select{ |rr| rr.validate_superposition }
-    if invalid_rrs.size != 0
-
-      denominations = []
-      invalid_rrs.each do |rr|
-        if rr.reservation_item_type == 'Room'
-          denominations.push( rr.reservation_item.number )
-        else
-          denominations.push( rr.reservation_item.name )
-        end
-      end
-
-      rooms = denominations.join( ', ' )
-
-      self.errors[:base] << "La/s habitacion/es #{rooms} ya han sido reservadas."
-      return false
+  def save_reservation_rooms
+    logger.debug '---------------------------save_reservation_rooms--------------------------'
+    self.reservation_rooms.each do |rr| 
+      logger.debug rr.inspect
+      rr.save!
     end
   end
 
@@ -77,7 +51,7 @@ class Reservation < ActiveRecord::Base
       elsif( old && !new ) #destroy
         old.destroy
       elsif( !old && new ) # create 
-        self.reservation_rooms.build( 
+        self.reservation_rooms.build(
           since: new.since,
           until: new.until,
           amount: new.amount,

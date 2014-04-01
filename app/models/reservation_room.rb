@@ -3,25 +3,37 @@ class ReservationRoom < ActiveRecord::Base
     belongs_to :reservation_item, polymorphic: true
     has_many :room_passengers
     has_many :passengers, through: :room_passengers
-    # validates :reservation_id, presence: { message: "reservation_id no puede ser vacio" }
+
     validates :reservation_item_id, :reservation_item_type, :since, :until, :amount, presence: true #{ message: "sarasa" }
     validates_numericality_of :amount, greater_than: 0
 
+    validate :validate_superposition, :validate_dates_chronology
+
     # devuelve true cuando se superpone con otra
     def validate_superposition
-        return false if self.changed? == false # nos ahorramos la consulta
 
         self_condition = "AND id != #{self.id}" if ( self.id  ) # excluir de la consulta
         other_rr = ReservationRoom.where( 
             "reservation_item_type = ? AND reservation_item_id = ? AND since < ? AND until > ? #{self_condition}", 
             self.reservation_item_type, self.reservation_item_id, self.until, self.since 
         ).first
-        return other_rr.nil? ? false : true
+
+        return true if other_rr.nil?
+
+        denomination = self.reservation_item_type == 'Room' ? self.reservation_item.number : self.reservation_item.name
+
+        self.errors[:base] << "La habitacion #{denomination} ya ha sido reservada."
+        return false
     end
 
     # devuelve true cuando la fecha desde no es anterior a la fecha hasta
     def validate_dates_chronology
-        return ( self.since >= self.until )    
+      return true if self.since < self.until
+      
+      denomination = self.reservation_item_type == 'Room' ? self.reservation_item.number : self.reservation_item.name
+
+      self.errors[:base] << "Las fechas de la habitacion #{denomination} no son correctas."
+      return false
     end
 
     # Retorna todas las habitaciones reservadas en un periodo de tiempo.
