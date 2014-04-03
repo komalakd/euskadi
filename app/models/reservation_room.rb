@@ -4,7 +4,7 @@ class ReservationRoom < ActiveRecord::Base
     has_many :room_passengers
     has_many :passengers, through: :room_passengers
 
-    validates :reservation_item_id, :reservation_item_type, :since, :until, :amount, presence: true #{ message: "sarasa" }
+    validates :reservation_item_id, :reservation_item_type, :since, :until, :amount, presence: true
     validates_numericality_of :amount, greater_than: 0
 
     validate :validate_superposition, :validate_dates_chronology

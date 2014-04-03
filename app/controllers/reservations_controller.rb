@@ -53,7 +53,6 @@ class ReservationsController < ApplicationController
   def create
 
     @reservation = Reservation.new(reservation_params)
-    @reservation.update_instance( new_reservation_rooms )
 
     @passenger = Passenger.new
     @passengers = Passenger.all
@@ -64,7 +63,7 @@ class ReservationsController < ApplicationController
     @room_types = RoomType.all
 
     respond_to do |format|
-      if @reservation.guardar
+      if @reservation.guardar( new_reservation_rooms )
         format.html { redirect_to @reservation, notice: 'La reserva se ha registrado correctamente.' }
         format.json { render action: 'show', status: :created, location: @reservation }
       else
@@ -87,10 +86,9 @@ class ReservationsController < ApplicationController
     @room_types = RoomType.all
 
     @reservation.update_attributes( reservation_params )
-    @reservation.update_instance( new_reservation_rooms )
 
     respond_to do |format|
-      if @reservation.guardar
+      if @reservation.guardar( new_reservation_rooms )
         format.html { redirect_to @reservation, notice: 'Los datos de la reserva ha sido modificados correctamente.' }
         format.json { head :no_content }
       else
