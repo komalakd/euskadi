@@ -73,15 +73,22 @@ class Reservation < ActiveRecord::Base
       end
     end
 
-    logger.debug "---------------------------COUNT".inspect
-    logger.debug count.inspect
 
     if count == 0
       self.errors[:base] << "Debe seleccionar al menos una habitacion."
       return false
     end
 
-    return false unless to_validate.select{ |rr| !rr.valid? }.empty?
+    to_validate.each do |rr|
+      if !rr.valid?
+        # logger.debug "---------------------------RR NOT VALID".inspect
+        # logger.debug rr.errors.full_messages
+        rr.errors.full_messages.each do |msg|
+          self.errors[:base] << msg
+        end
+        return false
+      end
+    end
 
     return self.save
 
