@@ -77,7 +77,7 @@ class Reservation < ActiveRecord::Base
     logger.debug count.inspect
 
     if count == 0
-      self.errors[:base] << "No hay RR."
+      self.errors[:base] << "Debe seleccionar al menos una habitacion."
       return false
     end
 
