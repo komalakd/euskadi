@@ -196,9 +196,8 @@ function show_rooms(){
     var total = $( '#'+this.id+'_total' );
 
     if ( $(this).is(':checked') ){
-
-      datepicker1.datepicker( {format: "dd/mm/yyyy", language: "es"} ).on('changeDate', function(ev){ calculate_total_amount(); });;
-      datepicker2.datepicker( {format: "dd/mm/yyyy", language: "es"} ).on('changeDate', function(ev){ calculate_total_amount(); });;
+      datepicker1.datepicker( {format: "dd/mm/yyyy", language: "es", autoclose: true, todayHighlight: true } ).on('changeDate', function(ev){ calculate_total_amount(); });;
+      datepicker2.datepicker( {format: "dd/mm/yyyy", language: "es", autoclose: true, todayHighlight: true } ).on('changeDate', function(ev){ calculate_total_amount(); });;
 
       datepicker1.show();
       datepicker2.show();
@@ -245,8 +244,8 @@ function add_events(){
     var amount = $( '#'+this.id+'_amount' );
     var total = $( '#'+this.id+'_total' );
     
-    datepicker1.datepicker( {format: "dd/mm/yyyy", language: "es"} ).on('changeDate', function(ev){ calculate_total_amount(); });
-    datepicker2.datepicker( {format: "dd/mm/yyyy", language: "es"} ).on('changeDate', function(ev){ calculate_total_amount(); });
+    datepicker1.datepicker( {format: "dd/mm/yyyy", language: "es", autoclose: true, todayHighlight: true } ).on('changeDate', function(ev){ calculate_total_amount(); });
+    datepicker2.datepicker( {format: "dd/mm/yyyy", language: "es", autoclose: true, todayHighlight: true } ).on('changeDate', function(ev){ calculate_total_amount(); });
 
     if ( $(this).is(':checked') ){
       datepicker1.show();
