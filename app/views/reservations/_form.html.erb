@@ -51,6 +51,7 @@ $(function() {
       <input type="hidden" id="passenger_select">
       <a href="#passenger_modal" role="button" class="btn" data-toggle="modal">+Nuevo pasajero</a>
       <%= f.hidden_field :passenger_id  %>
+    </div>
   </div>
 
     
@@ -132,6 +133,8 @@ $(function() {
       <% end %>
     </div>
   <% end %>
+
+  </div> <!-- end tab-content -->
 
   <div class="control-group">
     <%= f.label :amount, { class: 'control-label' } %>
