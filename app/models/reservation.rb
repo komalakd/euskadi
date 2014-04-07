@@ -26,7 +26,7 @@ class Reservation < ActiveRecord::Base
       new = new_rooms.find { |rr| rr.reservation_item_id == room.id } 
 
       if( old && new ) # update
-        old.update_attributes( 
+        old.assign_attributes( 
           since: new.since, 
           until: new.until, 
           amount: new.amount 
@@ -34,7 +34,7 @@ class Reservation < ActiveRecord::Base
         count += 1
         to_validate.push( old )
       elsif( old && !new ) #destroy
-        old.destroy
+        old.mark_for_destruction
       elsif( !old && new ) # create 
         self.reservation_rooms.build(
           since: new.since,
@@ -52,7 +52,7 @@ class Reservation < ActiveRecord::Base
       new = new_groups.find { |rr| rr.reservation_item_id == group.id } 
 
       if( old && new ) # update
-        old.update_attributes( 
+        old.assign_attributes( 
           since: new.since, 
           until: new.until, 
           amount: new.amount 
@@ -60,7 +60,7 @@ class Reservation < ActiveRecord::Base
         count += 1
         to_validate.push( old )
       elsif( old && !new ) #destroy
-        old.destroy
+        old.mark_for_destruction
       elsif( !old && new ) # create 
         self.reservation_rooms.build( 
           since: new.since,
