@@ -54,7 +54,7 @@ es-AR:
         name: "Denominación"
         amount: "Monto"
       reservation:
-        passenger_id: "Pasajero"
+        passenger_id: "Responsable"
         enterprise_id: "Empresa"
         amount: "Monto"
         observation: "Observación"
