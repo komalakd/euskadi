@@ -1,0 +1,186 @@
+
+#container {
+  padding-top: 60px;
+}
+
+.container {
+  /*max-width: none !important;
+  width: 920px !important;*/
+}
+
+#footer {
+  height: 60px;
+  /*background-color: #1B1B1B;*/
+  /*background-image: linear-gradient(to bottom, #222222, #111111);*/
+  margin-top: 30px;
+}
+
+#footer .container {
+  border-top: 1px solid #CCC;
+}
+
+.credit {
+  margin: 20px 0;
+  text-align: center;
+}
+
+/* sticky footer */
+html, body {
+  height: 100%; /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%; 
+  /* Negative indent footer by its height */
+  margin: 0 auto 0px; 
+  /* Pad bottom by footer height */
+  /*padding: 0 0 120px 0;  60 footer + 60 wrap */
+  padding: 0; /* 60 footer + 60 wrap */
+}
+
+.reserva {
+  /*background-color: red;*/
+  margin-top: -10px;
+  padding-left: 5px;
+}
+
+.fijo {
+  background-color: #6495ED;  
+}
+.noFijo {
+  background-color: #B0E0E6;  
+}
+
+.dp_room, .dp_group {
+  /*display: none !important;*/
+}
+
+.reservation_form div.control-group {
+  margin-bottom: 0px;
+}
+
+.reservation_form div.select {
+  padding-top: 3px;
+}
+
+.reservation_form div.select a {
+  width: 120px;
+  text-align: center;
+}
+
+.reservation_form input[type="text"] {
+  height: 14px;
+}
+
+.tab-content .controls input[type="text"]{
+  width: 80px;
+}
+
+#mapa td {
+  line-height: 10px;
+}
+
+
+/* ROW COLORS */
+/*.table tbody tr > td.success {
+  background-color: #dff0d8 !important;
+}
+
+.table tbody tr > td.error {
+  background-color: #f2dede !important;
+}
+
+.table tbody tr > td.warning {
+  background-color: #fcf8e3 !important;
+}
+
+.table tbody tr > td.info {
+  background-color: #d9edf7 !important;
+}
+
+.table-hover tbody tr:hover > td.success {
+  background-color: #d0e9c6 !important;
+}
+
+.table-hover tbody tr:hover > td.error {
+  background-color: #ebcccc !important;
+}
+
+.table-hover tbody tr:hover > td.warning {
+  background-color: #faf2cc !important;
+}
+
+.table-hover tbody tr:hover > td.info {
+  background-color: #c4e3f3 !important;
+}*/
+
+/* MAPA DE RESERVAS */
+
+.map_reservation {
+  cursor: pointer;
+}
+
+.reserved {
+  background-color: red !important
+}
+.paid {
+  background-color: green !important
+}
+.busy {
+  background-color: orange !important
+}
+
+.circle {
+  /*height: 10px;*/
+  /*-moz-border-radius: 10px;*/
+  /*-webkit-border-radius: 10px;*/
+}
+
+.circle_left {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.circle_rigth {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.form-signin {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    margin: 0 auto 20px;
+    max-width: 300px;
+    padding: 19px 29px 29px;
+}
+
+.form-signin .form-signin-heading, .form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+#mapa th {
+  text-align: center;
+}
+
+.invalid_amount { 
+  background-color: #ff8888 !important; 
+}
+
+/*.modal {
+  max-height: 420px !important;
+  overflow-y: auto !important;
+}*/
+
+.today_column {
+  color: red;
+}
+
+.select2-container .select2-choice {
+  width: 290px;
+  display: inline-block !important;
+}
