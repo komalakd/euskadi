@@ -68,6 +68,6 @@ Page.create( id: 2, name: "Pagina 2" )
 
 # User
 User.create( login: "webmaster", password: "asd", password_confirmation: "asd", email: "webmaster", name: "webmaster", lastname: "webmaster" )
-User.create( login: "junzueta", password: "asd", password_confirmation: "asd", email: "mail@completar", name: "José", lastname: "Unzueta" )
-User.create( login: "aunzueta", password: "asd", password_confirmation: "asd", email: "mail@completar", name: "Agustín", lastname: "Unzueta" )
+User.create( login: "junzueta", password: "asd", password_confirmation: "asd", email: "mail@completar", name: "Jose", lastname: "Unzueta" )
+User.create( login: "aunzueta", password: "asd", password_confirmation: "asd", email: "mail@completar", name: "Agustin", lastname: "Unzueta" )
 
