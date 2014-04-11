@@ -67,7 +67,7 @@ Page.create( id: 1, name: "Pagina 1" )
 Page.create( id: 2, name: "Pagina 2" )
 
 # User
-User.create( login: "webmaster", password: "asd", password_confirmation: "asd", email: "webmaster", name: "webmaster", lastname: "webmaster" )
-User.create( login: "junzueta", password: "asd", password_confirmation: "asd", email: "mail@completar", name: "Jose", lastname: "Unzueta" )
-User.create( login: "aunzueta", password: "asd", password_confirmation: "asd", email: "mail@completar", name: "Agustin", lastname: "Unzueta" )
+User.create( login: "webmaster", password: "asd", password_confirmation: "asd", email: "webmaster@completar.com", name: "webmaster", lastname: "webmaster" )
+User.create( login: "junzueta", password: "euskadi", password_confirmation: "euskadi", email: "junzueta@completar", name: "Jose", lastname: "Unzueta" )
+User.create( login: "aunzueta", password: "euskadi", password_confirmation: "euskadi", email: "aunzueta@completar", name: "Agustin", lastname: "Unzueta" )
 
