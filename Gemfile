@@ -58,4 +58,4 @@ end
 
 gem 'newrelic_rpm'
 
-gem "select2-rails", "~> 3.5.4"
+gem "select2-rails", "3.5.4"
