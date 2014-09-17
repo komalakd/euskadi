@@ -99,3 +99,8 @@ DATOS INCICIALES
 
 FUTURO
 [ ] Varios "hoteles" x app
+
+WINDOWS
+[ ] Rails 4
+[ ] Git
+[ ] Heroku
