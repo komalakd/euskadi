@@ -54,7 +54,7 @@ $(function() {
 
   <%= render 'reservation_map_th' %>
 
-  <% @rooms.each do |room| %>
+  <% @rooms.order('number').each do |room| %>
   <tr>
     <td><%= room.number %></td>
     <% @dates.each do |date| %>

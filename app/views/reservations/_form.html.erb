@@ -99,7 +99,7 @@ $(function() {
 
 
 
-      <% page.rooms.each do |room| %>
+      <% page.rooms.order('number').each do |room| %>
         
         <% group = room.group  %>
         <% if( !group.nil? && !group_count[group.id] ) %>

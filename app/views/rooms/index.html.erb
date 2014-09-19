@@ -29,7 +29,7 @@
       -->
     </tr>
 
-    <% @rooms.each do |room| %>
+    <% @rooms.order('number').each do |room| %>
       <tr>
         <td><%= room.number %></td>
         <td><%= room.active ? 'Disponible' : 'No disponible' %></td>
